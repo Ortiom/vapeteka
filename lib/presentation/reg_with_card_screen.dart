@@ -36,21 +36,8 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
               ),
               SizedBox(height: 19.w),
               LoginTextField(
-                controller: _phoneController,
-                label: 'Имя',
-                textInputType: TextInputType.phone,
-              ),
-              SizedBox(height: 19.w),
-              LoginTextField(
-                controller: _phoneController,
-                label: 'Фамилия',
-                textInputType: TextInputType.phone,
-              ),
-              SizedBox(height: 19.w),
-              LoginTextField(
-                controller: _phoneController,
-                label: 'Отчество',
-                textInputType: TextInputType.phone,
+                controller: _passwordController,
+                label: 'Введите номер карты',
               ),
               SizedBox(height: 19.w),
               PasswordTextField(

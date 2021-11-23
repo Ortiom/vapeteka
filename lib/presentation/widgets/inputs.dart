@@ -34,13 +34,13 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.w,
-            color: const Color.fromRGBO(0, 0, 0, 0.1),
+            color: Colors.grey.withOpacity(0.20),
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.w,
-            color: const Color.fromRGBO(0, 0, 0, 0.1),
+            color: Colors.grey.withOpacity(0.20),
           ),
         ),
         labelStyle: GoogleFonts.roboto(
@@ -91,13 +91,13 @@ class _LoginTextFieldState extends State<LoginTextField> {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.w,
-            color: const Color.fromRGBO(0, 0, 0, 0.1),
+            color: Colors.grey.withOpacity(0.20),
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.w,
-            color: const Color.fromRGBO(0, 0, 0, 0.1),
+            color: Colors.grey.withOpacity(0.20),
           ),
         ),
         labelStyle: GoogleFonts.roboto(
