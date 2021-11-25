@@ -9,6 +9,7 @@ import 'package:vapeteka/presentation/reg_with_card_screen.dart';
 import 'package:vapeteka/presentation/registration_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
+import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -30,67 +31,72 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: _getBody(),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/frame.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(child: _getBody()),
+      ),
     );
   }
 
+  //DecoratedBox(
+  //           decoration: const BoxDecoration(
+  //             color: Colors.black,
+  //           ),
+  //           child: Image.asset(
+  //             'assets/images/frame.png',
+  //             fit: BoxFit.cover,
+  //           ),
+  //         ),
+
   Widget _getBody() {
-    return Stack(
-      children: [
-        DecoratedBox(
-          decoration: const BoxDecoration(
-            color: Colors.black,
+    return Padding(
+      padding: EdgeInsets.only(top: 160.w, left: 36.w, right: 36.w),
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            'assets/images/logotype.svg',
+            width: 213.w,
           ),
-          child: SvgPicture.asset(
-            'assets/images/frame.svg',
-            fit: BoxFit.fill,
-            width: 1.sw,
-            height: 1.sh,
+          SizedBox(height: 50.w),
+          LoginTextField(
+            controller: _phoneController,
+            label: 'Номер телефона',
+            textInputType: TextInputType.phone,
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 160.w, left: 36.w, right: 36.w),
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                'assets/images/logotype.svg',
-                width: 213.w,
-              ),
-              SizedBox(height: 50.w),
-              LoginTextField(
-                controller: _phoneController,
-                label: 'Номер телефона',
-                textInputType: TextInputType.phone,
-              ),
-              SizedBox(height: 27.5.w),
-              PasswordTextField(
-                controller: _passwordController,
-                label: 'Пароль',
-              ),
-              SizedBox(height: 27.w),
-              GreenButton(
-                onPressed: () {},
-                label: 'Войти',
-                width: 79.w,
-              ),
-              SizedBox(height: 28.w),
-              GrayButton(
-                  label: 'Зарегистрироваться',
-                  onPressed: () {
-                    Get.to(() => const RegistrationScreen());
-                  }),
-              SizedBox(height: 16.w),
-              GrayButton(
-                  label: 'У меня есть карта',
-                  onPressed: () {
-                    Get.to(() => const RegWithCardScreen());
-                  }),
-            ],
+          SizedBox(height: 27.5.w),
+          PasswordTextField(
+            controller: _passwordController,
+            label: 'Пароль',
           ),
-        ),
-      ],
+          SizedBox(height: 27.w),
+          GreenButton(
+            onPressed: () {
+              Get.to(() => const NavBarPage());
+            },
+            label: 'Войти',
+          ),
+          SizedBox(height: 28.w),
+          GrayButton(
+              label: 'Зарегистрироваться',
+              onPressed: () {
+                Get.to(() => const RegistrationScreen());
+              }),
+          SizedBox(height: 16.w),
+          GrayButton(
+              label: 'У меня есть карта',
+              onPressed: () {
+                Get.to(() => const RegWithCardScreen());
+              }),
+        ],
+      ),
     );
   }
 }
