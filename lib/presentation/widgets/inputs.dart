@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
@@ -69,12 +70,14 @@ class LoginTextField extends StatefulWidget {
     Key? key,
     this.label,
     this.textInputType,
-    required this.controller,
+    this.controller,
+    this.formatter,
   }) : super(key: key);
 
   final String? label;
   final TextInputType? textInputType;
   final TextEditingController? controller;
+  final MaskTextInputFormatter? formatter;
 
   @override
   _LoginTextFieldState createState() => _LoginTextFieldState();
@@ -84,6 +87,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: [widget.formatter ?? MaskTextInputFormatter()],
       controller: widget.controller,
       keyboardType: widget.textInputType ?? TextInputType.text,
       style: GoogleFonts.roboto(fontSize: 16.sp, color: Colors.white),

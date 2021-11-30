@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'internal/application.dart';
+import 'package:vapeteka/presentation/pages/application.dart';
 
 void main() {
   runApp(const MyApp());

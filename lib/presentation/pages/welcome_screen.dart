@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:vapeteka/domain/state/registration_state.dart';
-import 'package:vapeteka/internal/dependencies/registration_module.dart';
-import 'package:vapeteka/presentation/reg_with_card_screen.dart';
-import 'package:vapeteka/presentation/registration_screen.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/models/login_models/login.dart';
+import 'package:vapeteka/presentation/pages/reg_with_card_screen.dart';
+import 'package:vapeteka/presentation/pages/registration_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
-import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/services/response_result.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -19,14 +19,13 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  RegController _homeState = Get.put(RegController());
+  ApiController apiController = Get.put(ApiController());
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _homeState = HomeModule.regController();
   }
 
   @override
@@ -45,16 +44,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
-
-  //DecoratedBox(
-  //           decoration: const BoxDecoration(
-  //             color: Colors.black,
-  //           ),
-  //           child: Image.asset(
-  //             'assets/images/frame.png',
-  //             fit: BoxFit.cover,
-  //           ),
-  //         ),
 
   Widget _getBody() {
     return Padding(
@@ -79,7 +68,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           SizedBox(height: 27.w),
           GreenButton(
             onPressed: () {
-              Get.to(() => const NavBarPage());
+              postData();
+              //Get.to(() => const NavBarPage());
             },
             label: 'Войти',
           ),
@@ -98,5 +88,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       ),
     );
+  }
+
+  Future postData() async {
+    Login login = Login(
+      phoneNumber: _phoneController.text,
+      password: _passwordController.text,
+    );
+
+    await apiController.login(login).then((value) async {
+      if (value.status == Status.success) {
+        Get.snackbar('Авторизация прошла успешно', '',
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+            duration: 4.seconds);
+      } else {
+        Get.snackbar('Ошибка', value.errorText.toString(),
+            backgroundColor: Colors.redAccent,
+            colorText: Colors.white,
+            duration: 4.seconds);
+      }
+    });
   }
 }

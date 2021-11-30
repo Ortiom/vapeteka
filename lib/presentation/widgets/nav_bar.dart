@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vapeteka/presentation/catalog_page.dart';
-import 'package:vapeteka/presentation/promotion_page.dart';
-import 'package:vapeteka/presentation/settings_page.dart';
+import 'package:vapeteka/presentation/pages/catalog_page.dart';
+import 'package:vapeteka/presentation/pages/promotion_page.dart';
+import 'package:vapeteka/presentation/pages/settings_page.dart';
 
-import '../qr_page.dart';
+import '../pages/qr_page.dart';
 
 class NavBarPage extends StatefulWidget {
   const NavBarPage({Key? key}) : super(key: key);
