@@ -25,7 +25,7 @@ class ApiController extends GetxController {
     });
     print(formData.fields);
     final firstStep = restService.request(
-      register,
+      REGISTER,
       method: post,
       data: formData,
     );
@@ -53,7 +53,7 @@ class ApiController extends GetxController {
     });
     print(formData.fields);
     final firstStep = restService.request(
-      register,
+      REG_WITH_CARD,
       method: post,
       data: formData,
     );
@@ -78,7 +78,7 @@ class ApiController extends GetxController {
     });
     print(formData.fields);
     final firstStep = restService.request(
-      register,
+      LOGIN,
       method: post,
       data: formData,
     );
