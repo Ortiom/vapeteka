@@ -5,10 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/login.dart';
+import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/pages/reg_with_card_screen.dart';
 import 'package:vapeteka/presentation/pages/registration_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
+import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/response_result.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -102,6 +104,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
+        Get.to(() => const NavBarPage());
       } else {
         Get.snackbar('Ошибка', value.errorText.toString(),
             backgroundColor: Colors.redAccent,

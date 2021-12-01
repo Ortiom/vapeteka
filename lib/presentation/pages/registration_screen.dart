@@ -51,19 +51,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 LoginTextField(
                   controller: _firstNameController,
                   label: 'Имя',
-                  textInputType: TextInputType.phone,
+                  textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _lastNameController,
                   label: 'Фамилия',
-                  textInputType: TextInputType.phone,
+                  textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _middleNameController,
                   label: 'Отчество',
-                  textInputType: TextInputType.phone,
+                  textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 PasswordTextField(

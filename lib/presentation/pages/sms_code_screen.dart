@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
+import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
+import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/response_result.dart';
 
 class SmsCodeScreen extends StatefulWidget {
@@ -35,15 +37,18 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                   'assets/images/logotype.svg',
                   width: 100.w,
                 ),
+                SizedBox(
+                  height: 215.h,
+                ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _smsCodeController,
-                  label: 'Номер телефона',
+                  label: 'Код подтверждения',
                   textInputType: TextInputType.number,
                 ),
                 SizedBox(height: 23.w),
                 GreenButton(
-                  label: 'зарегистрироваться'.toUpperCase(),
+                  label: 'ПРОВЕРИТЬ'.toUpperCase(),
                   onPressed: () {
                     postData();
                   },
@@ -64,10 +69,11 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
 
     await apiController.smsCode(smsCode).then((value) async {
       if (value.status == Status.success) {
-        Get.snackbar('Авторизация прошла успешно', '',
+        Get.snackbar('Проверка прошла успешно', '',
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
+        Get.to(() => const NavBarPage());
       } else {
         Get.snackbar('Ошибка', value.errorText.toString(),
             backgroundColor: Colors.redAccent,
