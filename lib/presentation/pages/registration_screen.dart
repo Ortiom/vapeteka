@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/register.dart';
+import 'package:vapeteka/presentation/pages/sms_code_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
 import 'package:vapeteka/services/response_result.dart';
@@ -112,6 +113,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
+        Get.to(() => const SmsCodeScreen());
       } else {
         Get.snackbar('Ошибка', value.errorText.toString(),
             backgroundColor: Colors.redAccent,
