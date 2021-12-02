@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:vapeteka/constants/url.dart';
 import 'package:vapeteka/models/login_models/login.dart';
@@ -14,8 +12,9 @@ class ApiController extends GetxController {
   RestService restService = RestService();
   bool loading = false.obs();
   String number = ''.obs();
+  String token = ''.obs();
 
-  Future<Result> registration(Register model) async {
+  Future<Result> registrationReq(Register model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -46,7 +45,7 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> registrationWithCard(RegWithCard model) async {
+  Future<Result> registrationWithCardReq(RegWithCard model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -74,7 +73,7 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> login(Login model) async {
+  Future<Result> loginReq(Login model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -88,8 +87,10 @@ class ApiController extends GetxController {
       data: formData,
     );
     var result = await firstStep;
-    print(result.errorText);
+    print(result.data);
     if (result.status == Status.success) {
+      token = result.data['token'];
+      print(token);
       loading = false;
       update();
     } else if (result.status == Status.error) {
@@ -99,7 +100,7 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> smsCode(SmsCode model) async {
+  Future<Result> smsCodeReq(SmsCode model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -116,6 +117,26 @@ class ApiController extends GetxController {
     print(result.errorText);
     if (result.status == Status.success) {
       print(result.data);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> qrCodeReq() async {
+    loading = true;
+    update();
+    final firstStep = restService.request(
+      qrCode,
+      method: get,
+      token: token,
+    );
+    var result = await firstStep;
+    print(result.errorText);
+    if (result.status == Status.success) {
       loading = false;
       update();
     } else if (result.status == Status.error) {

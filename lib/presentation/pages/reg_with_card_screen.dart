@@ -88,7 +88,9 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
       birthday: _birthdayController.text,
     );
 
-    await apiController.registrationWithCard(regWithCard).then((value) async {
+    await apiController
+        .registrationWithCardReq(regWithCard)
+        .then((value) async {
       if (value.status == Status.success) {
         Get.snackbar('Авторизация прошла успешно', '',
             backgroundColor: Colors.green,

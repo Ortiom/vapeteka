@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/presentation/widgets/buttons.dart';
 
 class QRPage extends StatefulWidget {
   const QRPage({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class QRPage extends StatefulWidget {
 }
 
 class _QRPageState extends State<QRPage> {
+  ApiController apiController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -35,6 +40,12 @@ class _QRPageState extends State<QRPage> {
               color: Colors.white,
             ),
           ),
+          GreenButton(
+            label: 'asd',
+            onPressed: () {
+              apiController.qrCodeReq();
+            },
+          )
         ],
       ),
     );
