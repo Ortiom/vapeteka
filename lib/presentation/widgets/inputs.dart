@@ -23,6 +23,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   void initState() {
     _passVisible = false;
+    super.initState();
   }
 
   @override

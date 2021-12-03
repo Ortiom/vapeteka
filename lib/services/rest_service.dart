@@ -29,7 +29,7 @@ class RestService {
       Map<String, dynamic>? queryParameters,
       String token = ''}) async {
     try {
-      if (token != '') _options.headers["Authorization"] = token;
+      if (token != '') _options.headers["Authorization"] = 'Bearer ' + token;
       switch (method) {
         case post:
           Response response = await _dio!.post(url, data: data);

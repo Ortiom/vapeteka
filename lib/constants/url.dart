@@ -1,9 +1,9 @@
 const baseUrl = "http://159.223.0.39";
 const baseApi = "$baseUrl/api/";
 
-const LOGIN = "login";
-const REGISTER = "register";
-const REG_WITH_CARD = "has-card";
-const SMS_CODE = "verify/phone";
-const qrCode = "qr-code";
-const catalog = "products";
+const loginUrl = "login";
+const registerUrl = "register";
+const regWithCardUrl = "has-card";
+const smsCodeUrl = "verify/phone";
+const qrCodeUrl = "qr-code";
+const catalogUrl = "products";

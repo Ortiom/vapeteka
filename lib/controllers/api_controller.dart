@@ -7,12 +7,14 @@ import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
 import 'package:vapeteka/services/response_result.dart';
 import 'package:vapeteka/services/rest_service.dart';
+import 'package:vapeteka/services/shared_preferences.dart';
 
 class ApiController extends GetxController {
   RestService restService = RestService();
   bool loading = false.obs();
   String number = ''.obs();
   String token = ''.obs();
+  int qrCode = 0.obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
@@ -26,14 +28,12 @@ class ApiController extends GetxController {
       'phone_number': model.phoneNumber,
       'birthday': model.birthday,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      REGISTER,
+    final request = restService.request(
+      registerUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.statusCode);
+    var result = await request;
     if (result.status == Status.success) {
       number = model.phoneNumber!;
       loading = false;
@@ -55,14 +55,12 @@ class ApiController extends GetxController {
       'conf_password': model.passConfirm,
       'birthday': model.birthday,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      REG_WITH_CARD,
+    final request = restService.request(
+      regWithCardUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.errorText);
+    var result = await request;
     if (result.status == Status.success) {
       loading = false;
       update();
@@ -80,17 +78,16 @@ class ApiController extends GetxController {
       'phone_number': model.phoneNumber,
       'password': model.password,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      LOGIN,
+    final request = restService.request(
+      loginUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.data);
+    var result = await request;
     if (result.status == Status.success) {
       token = result.data['token'];
       print(token);
+      PreferencesService.setToken(token);
       loading = false;
       update();
     } else if (result.status == Status.error) {
@@ -107,16 +104,13 @@ class ApiController extends GetxController {
       'phone_number': number,
       'code': model.code,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      SMS_CODE,
+    final request = restService.request(
+      smsCodeUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.errorText);
+    var result = await request;
     if (result.status == Status.success) {
-      print(result.data);
       loading = false;
       update();
     } else if (result.status == Status.error) {
@@ -128,15 +122,15 @@ class ApiController extends GetxController {
 
   Future<Result> qrCodeReq() async {
     loading = true;
-    update();
-    final firstStep = restService.request(
-      qrCode,
+    final request = restService.request(
+      qrCodeUrl,
       method: get,
       token: token,
     );
-    var result = await firstStep;
+    var result = await request;
     print(result.errorText);
     if (result.status == Status.success) {
+      qrCode = result.data['qr_code']['qr_code'];
       loading = false;
       update();
     } else if (result.status == Status.error) {
