@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
-import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
-import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
@@ -67,7 +65,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
       phoneNumber: apiController.number,
     );
 
-    await apiController.smsCode(smsCode).then((value) async {
+    await apiController.smsCodeReq(smsCode).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar('Проверка прошла успешно', '',
             backgroundColor: Colors.green,

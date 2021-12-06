@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/login.dart';
-import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/pages/reg_with_card_screen.dart';
 import 'package:vapeteka/presentation/pages/registration_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
@@ -21,12 +20,14 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  ApiController apiController = Get.put(ApiController());
+  ApiController apiController = Get.find();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
+    _phoneController.text = '77474991201';
+    _passwordController.text = '1';
     super.initState();
   }
 
@@ -98,7 +99,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       password: _passwordController.text,
     );
 
-    await apiController.login(login).then((value) async {
+    await apiController.loginReq(login).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar('Авторизация прошла успешно', '',
             backgroundColor: Colors.green,

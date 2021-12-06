@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    ApiController apiController = Get.put(ApiController());
     return ScreenUtilInit(
       designSize: const Size(411, 731),
       builder: () => const GetMaterialApp(

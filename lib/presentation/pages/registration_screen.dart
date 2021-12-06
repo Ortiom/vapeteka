@@ -107,7 +107,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       birthday: _birthdayController.text,
     );
 
-    await apiController.registration(register).then((value) async {
+    await apiController.registrationReq(register).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar('Регистрация прошла успешно', '',
             backgroundColor: Colors.green,

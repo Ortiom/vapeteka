@@ -16,8 +16,9 @@ class ApiController extends GetxController {
   String number = ''.obs();
   String? deviceToken = ''.obs();
   String token = ''.obs();
+  int qrCode = 0.obs();
 
-  Future<Result> registration(Register model) async {
+  Future<Result> registrationReq(Register model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -29,14 +30,12 @@ class ApiController extends GetxController {
       'phone_number': model.phoneNumber,
       'birthday': model.birthday,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      REGISTER,
+    final request = restService.request(
+      registerUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.statusCode);
+    var result = await request;
     if (result.status == Status.success) {
       number = model.phoneNumber!;
       loading = false;
@@ -48,7 +47,7 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> registrationWithCard(RegWithCard model) async {
+  Future<Result> registrationWithCardReq(RegWithCard model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
@@ -58,14 +57,12 @@ class ApiController extends GetxController {
       'conf_password': model.passConfirm,
       'birthday': model.birthday,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      REG_WITH_CARD,
+    final request = restService.request(
+      regWithCardUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.errorText);
+    var result = await request;
     if (result.status == Status.success) {
       loading = false;
       update();
@@ -76,21 +73,45 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> login(Login model) async {
+  Future<Result> loginReq(Login model) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
       'phone_number': model.phoneNumber,
       'password': model.password,
     });
-    print(formData.fields);
-    final firstStep = restService.request(
-      LOGIN,
+    final request = restService.request(
+      loginUrl,
       method: post,
       data: formData,
     );
-    var result = await firstStep;
-    print(result.errorText);
+    var result = await request;
+    if (result.status == Status.success) {
+      token = result.data['token'];
+      print(token);
+      PreferencesService.setToken(token);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> smsCodeReq(SmsCode model) async {
+    loading = true;
+    update();
+    FormData formData = FormData.fromMap({
+      'phone_number': number,
+      'code': model.code,
+    });
+    final request = restService.request(
+      smsCodeUrl,
+      method: post,
+      data: formData,
+    );
+    var result = await request;
     if (result.status == Status.success) {
       loading = false;
       update();
@@ -101,23 +122,17 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> smsCode(SmsCode model) async {
+  Future<Result> qrCodeReq() async {
     loading = true;
-    update();
-    FormData formData = FormData.fromMap({
-      'phone_number': number,
-      'code': model.code,
-    });
-    print(formData.fields);
-    final firstStep = restService.request(
-      SMS_CODE,
-      method: post,
-      data: formData,
+    final request = restService.request(
+      qrCodeUrl,
+      method: get,
+      token: token,
     );
-    var result = await firstStep;
+    var result = await request;
     print(result.errorText);
     if (result.status == Status.success) {
-      print(result.data);
+      qrCode = result.data['qr_code']['qr_code'];
       loading = false;
       update();
     } else if (result.status == Status.error) {
