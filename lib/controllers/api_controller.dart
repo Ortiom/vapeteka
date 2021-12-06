@@ -14,6 +14,8 @@ class ApiController extends GetxController {
   RestService restService = RestService();
   bool loading = false.obs();
   String number = ''.obs();
+  String? deviceToken = ''.obs();
+  String token = ''.obs();
 
   Future<Result> registration(Register model) async {
     loading = true;
