@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     var initializationSettingsAndroid =
-        const AndroidInitializationSettings('@drawable/ic_stat_vapeteka_logo');
+        const AndroidInitializationSettings('@drawable/vapeteka_push_logo');
     FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification
       badge: true,
@@ -55,8 +55,8 @@ class _MyAppState extends State<MyApp> {
               channel.id,
               channel.name,
               styleInformation: BigTextStyleInformation(''),
-              color: Colors.red,
-              icon: '@drawable/ic_stat_vapeteka_logo',
+              color: Colors.black,
+              icon: '@drawable/vapeteka_push_logo',
             )));
       }
     });

@@ -10,6 +10,8 @@ import 'package:vapeteka/models/login_models/sms_code.dart';
 import 'package:vapeteka/services/response_result.dart';
 import 'package:vapeteka/services/rest_service.dart';
 
+import '../services/shared_preferences.dart';
+
 class ApiController extends GetxController {
   RestService restService = RestService();
   bool loading = false.obs();
