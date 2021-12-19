@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:vapeteka/constants/url.dart';
+import 'package:vapeteka/models/login_models/device_token_model.dart';
 import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/models/login_models/register.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
@@ -141,6 +142,39 @@ class ApiController extends GetxController {
       loading = false;
       update();
     }
+    return result;
+  }
+
+  Future<Result> sendDeviceToken() async {
+    loading = true;
+    update();
+    FormData formData = FormData.fromMap({
+      'mobile_token': deviceToken,
+    });
+    final request = restService.request(
+      deviceTokenUrl,
+      method: post,
+      data: formData,
+    );
+    var result = await request;
+    if (result.status == Status.success) {
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> logOut() async {
+    final request = restService.request(
+      logout,
+      token: token,
+      method: post,
+    );
+    var result = await request;
+    print([result.errorText, result.status, result.statusCode]);
     return result;
   }
 }

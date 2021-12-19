@@ -7,3 +7,5 @@ const regWithCardUrl = "has-card";
 const smsCodeUrl = "verify/phone";
 const qrCodeUrl = "qr-code";
 const catalogUrl = "products";
+const deviceTokenUrl = "get-token";
+const logout = "logout";

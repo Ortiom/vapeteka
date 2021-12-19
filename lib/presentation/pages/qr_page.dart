@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/models/login_models/device_token_model.dart';
 
 class QRPage extends StatefulWidget {
   const QRPage({Key? key}) : super(key: key);
@@ -19,6 +20,8 @@ class _QRPageState extends State<QRPage> {
   @override
   void initState() {
     apiController.qrCodeReq();
+    apiController.sendDeviceToken();
+    print('device token: ${apiController.deviceToken}');
     super.initState();
   }
 
