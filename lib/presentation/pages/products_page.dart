@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
-import 'package:vapeteka/models/catalog_models/catalogs.dart';
-import 'package:vapeteka/presentation/pages/products_page.dart';
-import 'package:vapeteka/presentation/widgets/buttons.dart';
+import 'package:vapeteka/models/products_models/product_model.dart';
+import 'package:vapeteka/presentation/widgets/containers.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
-class CatalogPage extends StatefulWidget {
-  const CatalogPage({Key? key}) : super(key: key);
+class ProductsScreen extends StatefulWidget {
+  const ProductsScreen({Key? key}) : super(key: key);
 
   @override
-  _CatalogPageState createState() => _CatalogPageState();
+  _ProductsScreenState createState() => _ProductsScreenState();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _ProductsScreenState extends State<ProductsScreen> {
   ApiController apiController = Get.find();
-  CatalogsModel catalogsModel = CatalogsModel().obs();
+  ProductsModel products = ProductsModel().obs();
 
   @override
   void initState() {
@@ -25,8 +24,8 @@ class _CatalogPageState extends State<CatalogPage> {
   }
 
   void getData() async {
-    await apiController.catalogReq();
-    catalogsModel = apiController.catalogs!;
+    await apiController.productsReq(Get.arguments);
+    products = apiController.products!;
     apiController.update();
   }
 
@@ -34,10 +33,9 @@ class _CatalogPageState extends State<CatalogPage> {
   Widget build(BuildContext context) {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
-        showLeading: false,
-        title: 'Каталог',
+        title: 'Товары',
         children: [
-          apiController.loading && catalogsModel.catalogs == null
+          apiController.loading && products.products == null
               ? SizedBox(
                   height: 1.sh,
                   child: Center(
@@ -54,22 +52,30 @@ class _CatalogPageState extends State<CatalogPage> {
                         )),
                   ),
                 )
-              : catalogsModel.catalogs != null
+              : products.products != null
                   ? Padding(
-                      padding: EdgeInsets.only(left: 16.w),
+                      padding: EdgeInsets.only(top: 16.w),
                       child: ListView.builder(
-                        itemCount: catalogsModel.catalogs!.length,
+                        itemCount: products.products!.length,
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemBuilder: (context, int index) {
-                          return CatalogItemButton(
-                            title: catalogsModel.catalogs![index].catalog,
-                            onPressed: () {
-                              Get.to(
-                                () => const ProductsScreen(),
-                                arguments: catalogsModel.catalogs![index].id,
-                              );
+                          return ProductCard(
+                            title: products.products![index].name,
+                            amount: products.products![index].amount,
+                            addButton: () {},
+                            minusButton: () {
+                              products.products![index].amount! - 1;
+                              setState(() {});
                             },
+                            plusButton: () {
+                              products.products![index].amount! + 1;
+                              setState(() {});
+                            },
+                            onTap: () {
+                              print('aboba');
+                            },
+                            imageUrl: products.products![index].images,
                           );
                         },
                       ),

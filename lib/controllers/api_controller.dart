@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:vapeteka/constants/url.dart';
-import 'package:vapeteka/models/login_models/device_token_model.dart';
+import 'package:vapeteka/models/catalog_models/catalogs.dart';
 import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/models/login_models/register.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
+import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/services/response_result.dart';
 import 'package:vapeteka/services/rest_service.dart';
+import 'package:vapeteka/services/shared_preferences.dart';
 
 import '../services/shared_preferences.dart';
 
@@ -20,6 +20,8 @@ class ApiController extends GetxController {
   String? deviceToken = ''.obs();
   String token = ''.obs();
   int qrCode = 0.obs();
+  CatalogsModel? catalogs = CatalogsModel().obs();
+  ProductsModel? products = ProductsModel().obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
@@ -135,6 +137,7 @@ class ApiController extends GetxController {
     var result = await request;
     print(result.errorText);
     if (result.status == Status.success) {
+      print(token);
       qrCode = result.data['qr_code']['qr_code'];
       loading = false;
       update();
@@ -175,6 +178,46 @@ class ApiController extends GetxController {
     );
     var result = await request;
     print([result.errorText, result.status, result.statusCode]);
+    return result;
+  }
+
+  Future<Result> catalogReq() async {
+    loading = true;
+    final request = restService.request(
+      catalogUrl,
+      method: get,
+      token: token,
+    );
+    var result = await request;
+    if (result.status == Status.success) {
+      print(result.data);
+      catalogs = CatalogsModel.fromJson(result.data);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> productsReq(int index) async {
+    loading = true;
+    final request = restService.request(
+      productsUrl + index.toString(),
+      method: get,
+      token: token,
+    );
+    var result = await request;
+    if (result.status == Status.success) {
+      print(result.data);
+      products = ProductsModel.fromJson(result.data);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
     return result;
   }
 }

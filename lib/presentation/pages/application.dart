@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:vapeteka/presentation/pages/welcome_screen.dart';
+import 'package:vapeteka/presentation/pages/splash_screen.dart';
 
 import '../../controllers/api_controller.dart';
 import '../../main.dart';
@@ -65,22 +65,21 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    ApiController apiController = Get.put(ApiController());
     return ScreenUtilInit(
       designSize: const Size(411, 731),
       builder: () => const GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: WelcomeScreen(),
+        home: SplashScreen(),
       ),
     );
   }
-}
 
-getToken() async {
-  String? token = await FirebaseMessaging.instance.getToken();
-  apiController.deviceToken = token;
-  PreferencesService.setFcmToken(apiController.deviceToken!);
-  if (kDebugMode) {
-    print(token);
+  getToken() async {
+    String? token = await FirebaseMessaging.instance.getToken();
+    apiController.deviceToken = token;
+    PreferencesService.setFcmToken(apiController.deviceToken!);
+    if (kDebugMode) {
+      print(token);
+    }
   }
 }

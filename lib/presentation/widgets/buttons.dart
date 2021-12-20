@@ -14,20 +14,18 @@ class GreenButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-      child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        color: const Color(0xFF27AE60),
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        onPressed: onPressed,
-        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
-        child: Text(
-          label!,
-          style: GoogleFonts.roboto(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
+    return MaterialButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      color: const Color(0xFF27AE60),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      onPressed: onPressed,
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
+      child: Text(
+        label!,
+        style: GoogleFonts.roboto(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
         ),
       ),
     );

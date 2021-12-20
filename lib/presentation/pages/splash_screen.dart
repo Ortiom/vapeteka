@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/pages/welcome_screen.dart';
-import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await apiController.qrCodeReq().then((value) {
       if (value.data != null && apiController.qrCode != 0) {
         isUserIn = true;
-        Get.to(() => const NavBarPage());
+        Get.to(() => const QRPage());
       } else if (value.errorText != null && apiController.qrCode == 0) {
         isUserIn = true;
         Get.to(() => const WelcomeScreen());

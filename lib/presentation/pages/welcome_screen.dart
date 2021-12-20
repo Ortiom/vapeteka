@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
-        Get.to(() => const NavBarPage());
+        Get.to(() => const CustomScaffold());
       } else {
         Get.snackbar('Ошибка', value.errorText.toString(),
             backgroundColor: Colors.redAccent,

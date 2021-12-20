@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "446785788884",
+    "project_id": "vapeteka-app",
+    "storage_bucket": "vapeteka-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446785788884:android:1cb13bd8222b78e3339441",
+        "android_client_info": {
+          "package_name": "com.example.vapeteka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446785788884-4gdm59fk7tb3ir84aken1fodbve75i4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhufwHAhvh1TELM3MWdTvVS_KCqzTpYrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446785788884-4gdm59fk7tb3ir84aken1fodbve75i4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
