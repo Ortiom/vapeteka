@@ -52,7 +52,7 @@ class _ProductCardState extends State<ProductCard> {
                 width: 84.w,
                 height: 84.w,
                 child: Image.network(
-                  baseApi + (widget.imageUrl ?? '') + '?w=200&h=200&m=fill',
+                  baseUrl + '/storage/' + (widget.imageUrl ?? ''),
                   fit: BoxFit.cover,
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;

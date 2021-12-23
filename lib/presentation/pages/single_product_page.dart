@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vapeteka/constants/url.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
@@ -34,7 +35,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
           SizedBox(
             height: 320.w,
             child: Image.network(
-              products.images ?? '',
+              baseUrl + '/storage/' + (products.images ?? ''),
               fit: BoxFit.cover,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;

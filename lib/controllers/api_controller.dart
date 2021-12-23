@@ -150,7 +150,6 @@ class ApiController extends GetxController {
 
   Future<Result> sendDeviceToken() async {
     loading = true;
-    update();
     FormData formData = FormData.fromMap({
       'mobile_token': deviceToken,
     });
