@@ -173,6 +173,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: widget.children ?? [],
           ),
         ),

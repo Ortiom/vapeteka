@@ -7,10 +7,12 @@ class GreenButton extends StatelessWidget {
     Key? key,
     this.onPressed,
     this.label,
+    this.fonSize,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
   final String? label;
+  final double? fonSize;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class GreenButton extends StatelessWidget {
       child: Text(
         label!,
         style: GoogleFonts.roboto(
-          fontSize: 14.sp,
+          fontSize: fonSize ?? 16.sp,
           fontWeight: FontWeight.w400,
           color: Colors.white,
         ),

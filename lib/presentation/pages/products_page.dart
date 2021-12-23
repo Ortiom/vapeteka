@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
+import 'package:vapeteka/presentation/pages/single_product_page.dart';
 import 'package:vapeteka/presentation/widgets/containers.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
@@ -66,6 +69,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             addButton: () {},
                             minusButton: () {
                               products.products![index].amount! - 1;
+                              print(json
+                                  .decode(products.products![index].images!));
                               setState(() {});
                             },
                             plusButton: () {
@@ -73,7 +78,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               setState(() {});
                             },
                             onTap: () {
-                              print('aboba');
+                              Get.to(() => const SingleProductScreen(),
+                                  arguments: products.products![index]);
                             },
                             imageUrl: products.products![index].images,
                           );

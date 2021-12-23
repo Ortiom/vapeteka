@@ -56,14 +56,11 @@ class _QRPageState extends State<QRPage> {
                             width: 100.w,
                           ),
                           SizedBox(height: 17.w),
-                          DecoratedBox(
-                            decoration:
-                                const BoxDecoration(color: Colors.white),
-                            child: QrImage(
-                              data: apiController.qrCode.toString(),
-                              version: QrVersions.auto,
-                              size: 298.w,
-                            ),
+                          QrImage(
+                            data: apiController.qrCode.toString(),
+                            version: QrVersions.auto,
+                            foregroundColor: Colors.white,
+                            size: 298.w,
                           ),
                           SizedBox(height: 17.w),
                           Text(
