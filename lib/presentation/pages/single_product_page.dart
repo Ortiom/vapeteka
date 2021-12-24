@@ -59,7 +59,8 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
           ),
           Text(
             products.name!,
-            style: GoogleFonts.roboto(fontSize: 24.sp, color: Colors.white),
+            style: TextStyle(
+                fontFamily: 'BlissPro', fontSize: 24.sp, color: Colors.white),
           ),
           Divider(
             color: const Color(0xFF474747),
@@ -72,14 +73,18 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
               padding: EdgeInsets.only(left: 20.w),
               child: Text(
                 'Цена: ${products.price} тенге\nКоличество: $amount шт.',
-                style: GoogleFonts.roboto(fontSize: 24.sp, color: Colors.white),
+                style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 24.sp,
+                    color: Colors.white),
               ),
             ),
           ),
           SizedBox(height: 21.h),
           Text(
             'Выберите количество',
-            style: GoogleFonts.roboto(fontSize: 14.sp, color: Colors.white),
+            style: TextStyle(
+                fontFamily: 'BlissPro', fontSize: 14.sp, color: Colors.white),
           ),
           SizedBox(
             width: 205.w,
@@ -110,7 +115,8 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                   ),
                   Text(
                     amount.toString(),
-                    style: GoogleFonts.roboto(
+                    style: TextStyle(
+                      fontFamily: 'BlissPro',
                       fontSize: 48.sp,
                       fontWeight: FontWeight.w400,
                       color: Colors.white,

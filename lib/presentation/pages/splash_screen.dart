@@ -67,8 +67,10 @@ class _SplashScreenState extends State<SplashScreen> {
                       children: [
                         Text(
                           'Упс! Проблмы с сетью',
-                          style: GoogleFonts.roboto(
-                              fontSize: 22.w, color: Colors.white),
+                          style: TextStyle(
+                              fontFamily: 'BlissPro',
+                              fontSize: 22.w,
+                              color: Colors.white),
                         ),
                         SizedBox(height: 200.h),
                         Padding(

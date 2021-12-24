@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vapeteka/constants/url.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/presentation/widgets/containers.dart';
@@ -75,7 +76,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                             onTap: () {
                               print('aboba');
                             },
-                            imageUrl: products.products![index].images,
+                            imageUrl:
+                                '$baseUrl/${products.products?[index].images}',
                           );
                         },
                       ),

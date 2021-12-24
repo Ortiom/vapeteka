@@ -83,7 +83,8 @@ class _ProductCardState extends State<ProductCard> {
                       width: 180.w,
                       child: Text(
                         widget.title ?? '',
-                        style: GoogleFonts.roboto(
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
@@ -117,7 +118,8 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                           Text(
                             widget.amount.toString(),
-                            style: GoogleFonts.roboto(
+                            style: TextStyle(
+                              fontFamily: 'BlissPro',
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,

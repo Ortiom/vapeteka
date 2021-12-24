@@ -62,12 +62,22 @@ class _QRPageState extends State<QRPage> {
                             foregroundColor: Colors.white,
                             size: 298.w,
                           ),
-                          SizedBox(height: 17.w),
+                          SizedBox(height: 25.w),
                           Text(
-                            'Текущая скидка: 5%',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w400,
+                            '5%',
+                            style: TextStyle(
+                              fontFamily: 'BlissPro',
+                              fontSize: 48.sp,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            'Текущая скидка',
+                            style: TextStyle(
+                              fontFamily: 'BlissPro',
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w800,
                               color: Colors.white,
                             ),
                           ),

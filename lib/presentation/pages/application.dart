@@ -67,7 +67,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(411, 731),
-      builder: () => const GetMaterialApp(
+      builder: () => GetMaterialApp(
+        theme: ThemeData(fontFamily: 'BlissPro'),
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
       ),

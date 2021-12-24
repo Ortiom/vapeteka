@@ -27,18 +27,18 @@ class _SettingsPageState extends State<SettingsPage> {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
         showLeading: false,
-        title: 'Главная',
+        title: 'Настройки',
         children: [
           Padding(
             padding: EdgeInsets.only(left: 16.w),
             child: Column(
               children: [
                 CatalogItemButton(
-                  title: 'Сменить язык',
+                  title: 'Тип кода',
                   onPressed: () {},
                 ),
                 CatalogItemButton(
-                  title: 'Помощь',
+                  title: 'Сменить язык',
                   onPressed: () {},
                 ),
                 CatalogItemButton(

@@ -24,7 +24,8 @@ class GreenButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
       child: Text(
         label!,
-        style: GoogleFonts.roboto(
+        style: TextStyle(
+          fontFamily: 'BlissPro',
           fontSize: fonSize ?? 16.sp,
           fontWeight: FontWeight.w400,
           color: Colors.white,
@@ -55,7 +56,8 @@ class GrayButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
         child: Text(
           label!,
-          style: GoogleFonts.roboto(
+          style: TextStyle(
+            fontFamily: 'BlissPro',
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: Colors.white,
@@ -85,7 +87,8 @@ class CatalogItemButton extends StatelessWidget {
             SizedBox(height: 12.w),
             Text(
               title!,
-              style: GoogleFonts.roboto(
+              style: TextStyle(
+                fontFamily: 'BlissPro',
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white,
@@ -139,7 +142,8 @@ class ItemButton extends StatelessWidget {
                 height: 24.w,
                 child: Text(
                   title!,
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
+                    fontFamily: 'BlissPro',
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.white,
@@ -180,7 +184,8 @@ class PromotionItem extends StatelessWidget {
               width: 160.w,
               child: Text(
                 title!,
-                style: GoogleFonts.roboto(
+                style: TextStyle(
+                  fontFamily: 'BlissPro',
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
@@ -191,7 +196,8 @@ class PromotionItem extends StatelessWidget {
               width: 80.w,
               child: Text(
                 date!,
-                style: GoogleFonts.roboto(
+                style: TextStyle(
+                  fontFamily: 'BlissPro',
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
@@ -205,7 +211,8 @@ class PromotionItem extends StatelessWidget {
           width: 250.w,
           child: Text(
             body!,
-            style: GoogleFonts.roboto(
+            style: TextStyle(
+              fontFamily: 'BlissPro',
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
               color: const Color(0xFFBDBDBD),

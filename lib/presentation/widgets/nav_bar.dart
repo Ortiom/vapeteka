@@ -44,7 +44,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
                       ),
                       Text(
                         'QR',
-                        style: GoogleFonts.roboto(
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: Colors.white.withOpacity(0.74),
@@ -68,7 +69,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
                       ),
                       Text(
                         'Каталог',
-                        style: GoogleFonts.roboto(
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: Colors.white.withOpacity(0.74),
@@ -92,7 +94,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
                       ),
                       Text(
                         'Акции',
-                        style: GoogleFonts.roboto(
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: Colors.white.withOpacity(0.74),
@@ -116,7 +119,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
                       ),
                       Text(
                         'Настройки',
-                        style: GoogleFonts.roboto(
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: Colors.white.withOpacity(0.74),
@@ -162,7 +166,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
         actions: widget.actions,
         title: Text(
           widget.title ?? '',
-          style: GoogleFonts.roboto(
+          style: TextStyle(
+              fontFamily: 'BlissPro',
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
               color: Colors.white),

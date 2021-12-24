@@ -31,7 +31,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return TextFormField(
       controller: widget.controller,
       obscureText: _passVisible!,
-      style: GoogleFonts.roboto(fontSize: 16.sp, color: Colors.white),
+      style: TextStyle(
+          fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -45,10 +46,16 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             color: Colors.grey.withOpacity(0.20),
           ),
         ),
-        labelStyle: GoogleFonts.roboto(
-            fontWeight: FontWeight.w400, fontSize: 18.sp, color: Colors.white),
-        floatingLabelStyle: GoogleFonts.roboto(
-            fontWeight: FontWeight.w400, fontSize: 18.sp, color: Colors.white),
+        labelStyle: TextStyle(
+            fontFamily: 'BlissPro',
+            fontWeight: FontWeight.w400,
+            fontSize: 18.sp,
+            color: Colors.white),
+        floatingLabelStyle: TextStyle(
+            fontFamily: 'BlissPro',
+            fontWeight: FontWeight.w400,
+            fontSize: 18.sp,
+            color: Colors.white),
         label: Text(
           widget.label!,
         ),
@@ -91,7 +98,8 @@ class _LoginTextFieldState extends State<LoginTextField> {
       inputFormatters: [widget.formatter ?? MaskTextInputFormatter()],
       controller: widget.controller,
       keyboardType: widget.textInputType ?? TextInputType.text,
-      style: GoogleFonts.roboto(fontSize: 16.sp, color: Colors.white),
+      style: TextStyle(
+          fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -105,10 +113,16 @@ class _LoginTextFieldState extends State<LoginTextField> {
             color: Colors.grey.withOpacity(0.20),
           ),
         ),
-        labelStyle: GoogleFonts.roboto(
-            fontWeight: FontWeight.w400, fontSize: 18.sp, color: Colors.white),
-        floatingLabelStyle: GoogleFonts.roboto(
-            fontWeight: FontWeight.w400, fontSize: 18.sp, color: Colors.white),
+        labelStyle: TextStyle(
+            fontFamily: 'BlissPro',
+            fontWeight: FontWeight.w400,
+            fontSize: 18.sp,
+            color: Colors.white),
+        floatingLabelStyle: TextStyle(
+            fontFamily: 'BlissPro',
+            fontWeight: FontWeight.w400,
+            fontSize: 18.sp,
+            color: Colors.white),
         label: Text(
           widget.label!,
         ),
