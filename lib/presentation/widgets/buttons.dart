@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class GreenButton extends StatelessWidget {
   const GreenButton({
@@ -164,70 +164,76 @@ class PromotionItem extends StatelessWidget {
     this.title,
     this.date,
     this.body,
+    this.onPressed,
   }) : super(key: key);
 
   final String? title;
   final String? date;
   final String? body;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 12.w),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              width: 160.w,
-              child: Text(
-                title!,
-                style: TextStyle(
-                  fontFamily: 'BlissPro',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+    DateTime dateStart = DateFormat('yyyy-MM-dd').parse(date!);
+    return GestureDetector(
+      onTap: onPressed ?? () {},
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 12.w),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 280.w,
+                child: Text(
+                  title!,
+                  style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 80.w,
-              child: Text(
-                date!,
-                style: TextStyle(
-                  fontFamily: 'BlissPro',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+              SizedBox(
+                width: 80.w,
+                child: Text(
+                  DateFormat('dd/MM/yyyy').format(dateStart).toString(),
+                  style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(height: 4.w),
-        SizedBox(
-          width: 250.w,
-          child: Text(
-            body!,
-            style: TextStyle(
-              fontFamily: 'BlissPro',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              color: const Color(0xFFBDBDBD),
+            ],
+          ),
+          SizedBox(height: 4.w),
+          SizedBox(
+            width: 250.w,
+            child: Text(
+              body!,
+              style: TextStyle(
+                fontFamily: 'BlissPro',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFFBDBDBD),
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 4.w),
-        Padding(
-          padding: EdgeInsets.only(left: 4.w),
-          child: Divider(
-            thickness: 1.w,
-            color: Colors.white,
+          SizedBox(height: 4.w),
+          Padding(
+            padding: EdgeInsets.only(left: 4.w),
+            child: Divider(
+              thickness: 1.w,
+              color: Colors.white,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

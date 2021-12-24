@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/models/promotion_model.dart';
+import 'package:vapeteka/presentation/pages/promotion_detail_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
@@ -14,10 +16,18 @@ class PromotionPage extends StatefulWidget {
 
 class _PromotionPageState extends State<PromotionPage> {
   ApiController apiController = Get.find();
+  PromotionsModel promotionsModel = PromotionsModel().obs();
 
   @override
   void initState() {
+    getData();
     super.initState();
+  }
+
+  void getData() async {
+    await apiController.promotionsReq();
+    promotionsModel = apiController.promotionsModel;
+    apiController.update();
   }
 
   @override
@@ -27,29 +37,48 @@ class _PromotionPageState extends State<PromotionPage> {
         showLeading: false,
         title: 'Акции',
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 16.w),
-            child: Column(
-              children: const [
-                PromotionItem(
-                  title: 'Акция',
-                  date: '22/09/2021',
-                  body:
-                      'Обслужите Ваш девайс абсолютно бесплатно, во всей сети «Vapeteka»!',
-                ),
-                PromotionItem(
-                  title: 'Акция',
-                  date: '22/09/2021',
-                  body: 'Уточнить цены, спросить любой вопрос 24/7',
-                ),
-                PromotionItem(
-                  title: 'Акция',
-                  date: '22/09/2021',
-                  body: 'Поздравляем с 76 годовщиной победы!',
-                ),
-              ],
-            ),
-          ),
+          apiController.loading && promotionsModel.notifications == null
+              ? SizedBox(
+                  height: 1.sh,
+                  child: Center(
+                    child: CircleAvatar(
+                        radius: 35.w,
+                        backgroundColor: Colors.white.withOpacity(0.64),
+                        child: Container(
+                          padding: EdgeInsets.all(10.w),
+                          height: 75.w,
+                          width: 75.w,
+                          child: const CircularProgressIndicator(
+                            color: Colors.blueAccent,
+                          ),
+                        )),
+                  ),
+                )
+              : promotionsModel.notifications != null
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 16.w),
+                      child: ListView.builder(
+                        itemCount: promotionsModel.notifications!.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, int index) {
+                          return PromotionItem(
+                            title: promotionsModel.notifications![index].title,
+                            date:
+                                promotionsModel.notifications![index].createdAt,
+                            body: promotionsModel.notifications![index].content,
+                            onPressed: () {
+                              Get.to(
+                                () => const PromotionDetailScreen(),
+                                arguments:
+                                    promotionsModel.notifications![index],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    )
+                  : const SizedBox(),
         ],
       ),
     );

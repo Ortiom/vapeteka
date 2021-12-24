@@ -36,6 +36,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.white,
+            ),
+          )
+        ],
         title: 'Товары',
         children: [
           apiController.loading && products.products == null

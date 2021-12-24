@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/pages/welcome_screen.dart';
@@ -35,8 +35,16 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  void getBool() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getBool('discount') != null
+        ? apiController.discount = prefs.getBool('discount')!
+        : apiController.discount = false;
+  }
+
   @override
   void initState() {
+    getBool();
     getUser();
     super.initState();
   }

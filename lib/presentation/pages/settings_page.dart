@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/presentation/pages/change_language_page.dart';
 import 'package:vapeteka/presentation/pages/welcome_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
+
+import 'change_discount_screen.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -35,11 +38,15 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 CatalogItemButton(
                   title: 'Тип кода',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const ChangeDiscountScreen());
+                  },
                 ),
                 CatalogItemButton(
                   title: 'Сменить язык',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const ChangeLanguageScreen());
+                  },
                 ),
                 CatalogItemButton(
                   title: 'Выход',

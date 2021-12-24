@@ -7,6 +7,7 @@ import 'package:vapeteka/models/login_models/register.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
+import 'package:vapeteka/models/promotion_model.dart';
 import 'package:vapeteka/services/response_result.dart';
 import 'package:vapeteka/services/rest_service.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
@@ -22,6 +23,8 @@ class ApiController extends GetxController {
   int qrCode = 0.obs();
   CatalogsModel? catalogs = CatalogsModel().obs();
   ProductsModel? products = ProductsModel().obs();
+  bool discount = false.obs();
+  PromotionsModel promotionsModel = PromotionsModel().obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
@@ -211,6 +214,26 @@ class ApiController extends GetxController {
     if (result.status == Status.success) {
       print(result.data);
       products = ProductsModel.fromJson(result.data);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> promotionsReq() async {
+    loading = true;
+    final request = restService.request(
+      promotionUrl,
+      method: get,
+      token: token,
+    );
+    var result = await request;
+    print(result.errorText);
+    if (result.status == Status.success) {
+      promotionsModel = PromotionsModel.fromJson(result.data);
       loading = false;
       update();
     } else if (result.status == Status.error) {

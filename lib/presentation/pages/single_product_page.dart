@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vapeteka/constants/url.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
@@ -30,6 +29,15 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.white,
+            ),
+          )
+        ],
         title: 'Товар',
         children: [
           SizedBox(
