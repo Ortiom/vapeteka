@@ -61,7 +61,7 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
                   label: 'Повторите пароль',
                 ),
                 SizedBox(height: 19.w),
-                LoginTextField(
+                BirthTextField(
                   controller: _birthdayController,
                   label: 'Дата рождения',
                   textInputType: TextInputType.phone,
