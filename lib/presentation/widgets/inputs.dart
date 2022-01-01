@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class PasswordTextField extends StatefulWidget {
@@ -61,7 +61,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             color: Colors.white),
         label: Text(
           widget.label!,
-        ),
+        ).tr(),
         suffixIcon: IconButton(
           icon: Icon(
             _passVisible! ? Icons.visibility : Icons.visibility_off,
@@ -128,7 +128,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
             color: Colors.white),
         label: Text(
           widget.label!,
-        ),
+        ).tr(),
       ),
     );
   }
@@ -213,7 +213,7 @@ class _BirthTextFieldState extends State<BirthTextField> {
             color: Colors.white),
         label: Text(
           widget.label!,
-        ),
+        ).tr(),
       ),
     );
   }

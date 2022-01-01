@@ -44,7 +44,7 @@ class _CatalogPageState extends State<CatalogPage> {
           )
         ],
         showLeading: false,
-        title: 'Каталог',
+        title: 'catalog',
         children: [
           apiController.loading && catalogsModel.catalogs == null
               ? SizedBox(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -38,7 +39,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
             ),
           )
         ],
-        title: 'Товар',
+        title: 'product',
         children: [
           SizedBox(
             height: 320.w,
@@ -80,20 +81,20 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
             child: Padding(
               padding: EdgeInsets.only(left: 20.w),
               child: Text(
-                'Цена: ${products.price} тенге\nКоличество: $amount шт.',
+                'price: ${products.price} tenge\namount: $amount шт.',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 24.sp,
                     color: Colors.white),
-              ),
+              ).tr(),
             ),
           ),
           SizedBox(height: 21.h),
           Text(
-            'Выберите количество',
+            'select_quantity',
             style: TextStyle(
                 fontFamily: 'BlissPro', fontSize: 14.sp, color: Colors.white),
-          ),
+          ).tr(),
           SizedBox(
             width: 205.w,
             child: Padding(
@@ -158,7 +159,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
           ),
           SizedBox(height: 40.h),
           GreenButton(
-            label: 'Добавить',
+            label: 'add',
             onPressed: () {},
           ),
           SizedBox(height: 26.h),

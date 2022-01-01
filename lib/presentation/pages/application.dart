@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,9 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
       designSize: const Size(411, 731),
       builder: () => GetMaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         theme: ThemeData(fontFamily: 'BlissPro'),
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),

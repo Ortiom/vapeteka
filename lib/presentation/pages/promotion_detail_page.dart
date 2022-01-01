@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -26,13 +27,13 @@ class _PromotionDetailScreenState extends State<PromotionDetailScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          'Акции',
+          'discount',
           style: TextStyle(
               fontFamily: 'BlissPro',
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
               color: Colors.white),
-        ),
+        ).tr(),
         backgroundColor: const Color(0xFF333333),
       ),
       bottomNavigationBar: const CustomNavBar(),

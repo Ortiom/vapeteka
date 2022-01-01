@@ -45,7 +45,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             ),
           )
         ],
-        title: 'Товары',
+        title: 'products',
         children: [
           apiController.loading && products.products == null
               ? SizedBox(

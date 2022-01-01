@@ -35,7 +35,7 @@ class _PromotionPageState extends State<PromotionPage> {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
         showLeading: false,
-        title: 'Акции',
+        title: 'discount',
         children: [
           apiController.loading && promotionsModel.notifications == null
               ? SizedBox(

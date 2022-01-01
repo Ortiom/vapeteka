@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -30,26 +31,26 @@ class _SettingsPageState extends State<SettingsPage> {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
         showLeading: false,
-        title: 'Настройки',
+        title: 'settings',
         children: [
           Padding(
             padding: EdgeInsets.only(left: 16.w),
             child: Column(
               children: [
                 CatalogItemButton(
-                  title: 'Тип кода',
+                  title: 'code_type',
                   onPressed: () {
                     Get.to(() => const ChangeDiscountScreen());
                   },
                 ),
                 CatalogItemButton(
-                  title: 'Сменить язык',
+                  title: 'change_lng',
                   onPressed: () {
                     Get.to(() => const ChangeLanguageScreen());
                   },
                 ),
                 CatalogItemButton(
-                  title: 'Выход',
+                  title: 'exit',
                   onPressed: () {
                     apiController.logOut();
                     PreferencesService.setToken('');

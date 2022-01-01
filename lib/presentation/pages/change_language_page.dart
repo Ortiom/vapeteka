@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
@@ -23,13 +24,13 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          'Настройки',
+          'settings',
           style: TextStyle(
               fontFamily: 'BlissPro',
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
               color: Colors.white),
-        ),
+        ).tr(),
         backgroundColor: const Color(0xFF333333),
       ),
       bottomNavigationBar: const CustomNavBar(),
@@ -48,23 +49,23 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           children: [
             SizedBox(height: 13.h),
             Text(
-              'Сменить язык',
+              'change_lng',
               style: TextStyle(
                   fontFamily: 'BlissPro',
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.white),
-            ),
+            ).tr(),
             SizedBox(height: 25.h),
             ListTile(
               title: Text(
-                'Русский',
+                'russian',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
-              ),
+              ).tr(),
               leading: Radio<bool>(
                 fillColor: MaterialStateProperty.all(Colors.white),
                 value: true,
@@ -72,19 +73,20 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 onChanged: (value) {
                   setState(() {
                     language = value!;
+                    context.setLocale(const Locale('ru', 'RU'));
                   });
                 },
               ),
             ),
             ListTile(
               title: Text(
-                'Aнглийский',
+                'english',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
-              ),
+              ).tr(),
               leading: Radio<bool>(
                 fillColor: MaterialStateProperty.all(Colors.white),
                 value: false,
@@ -92,6 +94,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 onChanged: (value) {
                   setState(() {
                     language = value!;
+                    context.setLocale(const Locale('en', 'US'));
                   });
                 },
               ),

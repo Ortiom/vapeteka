@@ -60,13 +60,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           SizedBox(height: 50.w),
           LoginTextField(
             controller: _phoneController,
-            label: 'Номер телефона',
+            label: 'phone_number',
             textInputType: TextInputType.phone,
           ),
           SizedBox(height: 27.5.w),
           PasswordTextField(
             controller: _passwordController,
-            label: 'Пароль',
+            label: 'password',
           ),
           SizedBox(height: 27.w),
           GreenButton(
@@ -74,17 +74,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               postData();
               //Get.to(() => const NavBarPage());
             },
-            label: 'Войти',
+            label: 'enter',
           ),
           SizedBox(height: 28.w),
           GrayButton(
-              label: 'Зарегистрироваться',
+              label: 'register',
               onPressed: () {
                 Get.to(() => const RegistrationScreen());
               }),
           SizedBox(height: 16.w),
           GrayButton(
-              label: 'У меня есть карта',
+              label: 'register_card',
               onPressed: () {
                 Get.to(() => const RegWithCardScreen());
               }),

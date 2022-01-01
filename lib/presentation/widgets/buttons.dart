@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class GreenButton extends StatelessWidget {
   const GreenButton({
@@ -30,7 +30,7 @@ class GreenButton extends StatelessWidget {
           fontWeight: FontWeight.w400,
           color: Colors.white,
         ),
-      ),
+      ).tr(),
     );
   }
 }
@@ -62,7 +62,7 @@ class GrayButton extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
-        ),
+        ).tr(),
       ),
     );
   }
@@ -93,7 +93,7 @@ class CatalogItemButton extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: Colors.white,
               ),
-            ),
+            ).tr(),
             SizedBox(height: 4.w),
             Padding(
               padding: EdgeInsets.only(left: 4.w),

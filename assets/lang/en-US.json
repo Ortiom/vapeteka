@@ -1,0 +1,48 @@
+{
+  "enter": "ENTER",
+  "register": "Register",
+  "register_card": "I have a card",
+  "card_number": "Enter the card number",
+  "phone_number": "Phone number",
+  "password": "Password",
+  "repeat_password": "Repeat password",
+  "name": "Name",
+  "surname": "Surname",
+  "middle_name": "Patronymic",
+  "birthdate": "Date of birth",
+  "code" : "Confirmation code",
+  "check_sms": "CHECK",
+
+  "discount": "Discounts",
+
+  "home": "Home",
+  "basket": "Basket",
+  "settings": "Settings",
+  "catalog": "Catalog",
+
+  "code_type" : "Code type",
+  "barcode": "Barcode",
+  "qr_code": "QR code",
+
+  "change_lng" : "Change the language",
+  "russian" : "Russian",
+  "english" : "English",
+
+  "exit" : "Exit",
+
+  "current_discount": "Current discount",
+  "product": "Product",
+  "products": "Products",
+  "add": "ADD",
+  "order": "ORDER",
+  "great": "GREAT",
+  "amount": "Amount",
+  "price": "Price",
+  "select_quantity": "Select quantity",
+  "tenge": "tenge",
+  "items": "items",
+
+
+  "order_created": "Your order has been created!",
+  "order_details": "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
+}

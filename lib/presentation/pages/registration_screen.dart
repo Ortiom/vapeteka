@@ -45,46 +45,46 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _phoneController,
-                  label: 'Номер телефона',
+                  label: 'phone_number',
                   textInputType: TextInputType.phone,
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _firstNameController,
-                  label: 'Имя',
+                  label: 'name',
                   textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _lastNameController,
-                  label: 'Фамилия',
+                  label: 'surname',
                   textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _middleNameController,
-                  label: 'Отчество',
+                  label: 'middle_name',
                   textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
                 PasswordTextField(
                   controller: _passwordController,
-                  label: 'Пароль',
+                  label: 'password',
                 ),
                 SizedBox(height: 19.w),
                 PasswordTextField(
                   controller: _passwordConfirmController,
-                  label: 'Повторите пароль',
+                  label: 'repeat_password',
                 ),
                 SizedBox(height: 19.w),
                 BirthTextField(
                   controller: _birthdayController,
-                  label: 'Дата рождения',
+                  label: 'birthdate',
                   textInputType: TextInputType.phone,
                 ),
                 SizedBox(height: 23.w),
                 GreenButton(
-                  label: 'зарегистрироваться'.toUpperCase(),
+                  label: 'register',
                   onPressed: () {
                     postData();
                   },

@@ -1,4 +1,5 @@
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,7 +31,7 @@ class _QRPageState extends State<QRPage> {
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
         showLeading: false,
-        title: 'Главная',
+        title: 'home',
         children: [
           apiController.loading && apiController.qrCode == 0
               ? Center(
@@ -74,14 +75,14 @@ class _QRPageState extends State<QRPage> {
                                 ),
                               ),
                               Text(
-                                'Текущая скидка',
+                                'current_discount',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 24.sp,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white,
                                 ),
-                              ),
+                              ).tr(),
                             ],
                           ),
                         )
@@ -146,14 +147,14 @@ class _QRPageState extends State<QRPage> {
                                 ),
                               ),
                               Text(
-                                'Текущая скидка',
+                                'current_discount',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 24.sp,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white,
                                 ),
-                              ),
+                              ).tr(),
                             ],
                           ),
                         )

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,13 +29,13 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          'Настройки',
+          'settings',
           style: TextStyle(
               fontFamily: 'BlissPro',
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
               color: Colors.white),
-        ),
+        ).tr(),
         backgroundColor: const Color(0xFF333333),
       ),
       bottomNavigationBar: const CustomNavBar(),
@@ -53,23 +54,23 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
           children: [
             SizedBox(height: 13.h),
             Text(
-              'Тип кода',
+              'code_type',
               style: TextStyle(
                   fontFamily: 'BlissPro',
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.white),
-            ),
+            ).tr(),
             SizedBox(height: 25.h),
             ListTile(
               title: Text(
-                'Штрих код',
+                'barcode',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
-              ),
+              ).tr(),
               leading: Radio<bool>(
                 fillColor: MaterialStateProperty.all(Colors.white),
                 value: false,
@@ -85,13 +86,13 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
             ),
             ListTile(
               title: Text(
-                'QR код',
+                'qr_code',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
-              ),
+              ).tr(),
               leading: Radio<bool>(
                 fillColor: MaterialStateProperty.all(Colors.white),
                 value: true,
