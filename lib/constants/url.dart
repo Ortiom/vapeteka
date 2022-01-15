@@ -6,6 +6,7 @@ const registerUrl = "register";
 const regWithCardUrl = "has-card";
 const smsCodeUrl = "verify/phone";
 const qrCodeUrl = "qr-code";
+const discountUrl = "qr-discount";
 const catalogUrl = "catalogs";
 const productsUrl = "products/";
 const deviceTokenUrl = "get-token";

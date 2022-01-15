@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/catalog_models/catalogs.dart';
 import 'package:vapeteka/presentation/pages/products_page.dart';
+import 'package:vapeteka/presentation/pages/shopping_cart_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
@@ -36,7 +37,9 @@ class _CatalogPageState extends State<CatalogPage> {
       builder: (_) => CustomScaffold(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const ShoppingCartScreen());
+            },
             icon: const Icon(
               Icons.shopping_bag_outlined,
               color: Colors.white,

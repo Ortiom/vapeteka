@@ -1,10 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
+import 'package:vapeteka/presentation/pages/shopping_cart_page.dart';
 import 'package:vapeteka/presentation/pages/single_product_page.dart';
 import 'package:vapeteka/presentation/widgets/containers.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
@@ -19,6 +18,7 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   ApiController apiController = Get.find();
   ProductsModel products = ProductsModel().obs();
+  List<int> countList = <int>[].obs();
 
   @override
   void initState() {
@@ -29,6 +29,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   void getData() async {
     await apiController.productsReq(Get.arguments);
     products = apiController.products!;
+    countList = List.generate(products.products!.length, (i) => 0);
     apiController.update();
   }
 
@@ -38,7 +39,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
       builder: (_) => CustomScaffold(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const ShoppingCartScreen());
+            },
             icon: const Icon(
               Icons.shopping_bag_outlined,
               color: Colors.white,
@@ -74,16 +77,19 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         itemBuilder: (context, int index) {
                           return ProductCard(
                             title: products.products![index].name,
-                            amount: products.products![index].amount,
-                            addButton: () {},
+                            amount: countList[index],
+                            addButton: () {
+                              apiController.productsInCart!
+                                  .add(products.products![index]);
+                              apiController.update();
+                            },
                             minusButton: () {
-                              products.products![index].amount! - 1;
-                              print(json
-                                  .decode(products.products![index].images!));
+                              countList[index] - 1;
                               setState(() {});
                             },
                             plusButton: () {
-                              products.products![index].amount! + 1;
+                              countList[index] + 1;
+                              apiController.update();
                               setState(() {});
                             },
                             onTap: () {

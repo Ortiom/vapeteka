@@ -23,12 +23,13 @@ class GreenButton extends StatelessWidget {
       onPressed: onPressed,
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
       child: Text(
-        label!,
+        label!.toUpperCase(),
         style: TextStyle(
           fontFamily: 'BlissPro',
           fontSize: fonSize ?? 16.sp,
           fontWeight: FontWeight.w400,
           color: Colors.white,
+          letterSpacing: 1.25.w,
         ),
       ).tr(),
     );

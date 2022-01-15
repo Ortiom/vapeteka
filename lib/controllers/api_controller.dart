@@ -23,8 +23,10 @@ class ApiController extends GetxController {
   int qrCode = 0.obs();
   CatalogsModel? catalogs = CatalogsModel().obs();
   ProductsModel? products = ProductsModel().obs();
+  List<Products>? productsInCart = <Products>[].obs();
   bool discount = false.obs();
   PromotionsModel promotionsModel = PromotionsModel().obs();
+  String? discountString = ''.obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
@@ -137,14 +139,22 @@ class ApiController extends GetxController {
       method: get,
       token: token,
     );
+    final secondRequest = restService.request(
+      discountUrl,
+      method: get,
+      token: token,
+    );
     var result = await request;
-    print(result.errorText);
-    if (result.status == Status.success) {
+    var secondResult = await secondRequest;
+    if (result.status == Status.success &&
+        secondResult.status == Status.success) {
       print(token);
       qrCode = result.data['qr_code']['qr_code'];
+      discountString = secondResult.data['discount']['discount'];
       loading = false;
       update();
-    } else if (result.status == Status.error) {
+    } else if (result.status == Status.error ||
+        secondResult.status == Status.error) {
       loading = false;
       update();
     }

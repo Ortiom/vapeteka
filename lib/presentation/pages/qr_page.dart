@@ -66,7 +66,7 @@ class _QRPageState extends State<QRPage> {
                               ),
                               SizedBox(height: 25.w),
                               Text(
-                                '5%',
+                                apiController.discountString! + '%',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 48.sp,
@@ -95,15 +95,6 @@ class _QRPageState extends State<QRPage> {
                                 width: 100.w,
                               ),
                               SizedBox(height: 17.w),
-                              // SizedBox(
-                              //   height: 145.h,
-                              //   child: SfBarcodeGenerator(
-                              //     barColor: Colors.white,
-                              //     value: apiController.qrCode.toString(),
-                              //     symbology: EAN13(),
-                              //     //showValue: true,
-                              //   ),
-                              // ),
                               SizedBox(
                                 height: 145.h,
                                 width: 363.w,
@@ -138,7 +129,7 @@ class _QRPageState extends State<QRPage> {
                               ),
                               SizedBox(height: 25.w),
                               Text(
-                                '5%',
+                                apiController.discountString! + '%',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 48.sp,
