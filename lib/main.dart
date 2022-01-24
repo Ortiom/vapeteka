@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vapeteka/presentation/pages/application.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
+import 'package:vapeteka/translations/codegen_loader.g.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -55,11 +56,14 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(EasyLocalization(
-      path: 'assets/lang',
-      fallbackLocale: const Locale('ru', 'RU'),
+      path: 'assets/translations',
+      fallbackLocale: const Locale('ru'),
+      startLocale: const Locale('ru'),
+      assetLoader: const CodegenLoader(),
+      useOnlyLangCode: true,
       supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ru', 'RU'),
+        Locale('en'),
+        Locale('ru'),
       ],
       child: const MyApp()));
 }

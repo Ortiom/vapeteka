@@ -27,6 +27,7 @@ class ApiController extends GetxController {
   bool discount = false.obs();
   bool language = false.obs();
 
+  bool changeLng = false.obs();
   PromotionsModel promotionsModel = PromotionsModel().obs();
   String? discountString = ''.obs();
 

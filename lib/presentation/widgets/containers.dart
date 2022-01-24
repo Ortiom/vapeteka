@@ -110,15 +110,16 @@ class ProductCard extends StatelessWidget {
                               ),
                             ),
                           ),
-                          amount?? Text(
-                            amount.toString(),
-                            style: TextStyle(
-                              fontFamily: 'BlissPro',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                            ),
-                          ),
+                          amount ??
+                              Text(
+                                amount.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'BlissPro',
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                ),
+                              ),
                           GestureDetector(
                             onTap: minusButton,
                             child: DecoratedBox(
@@ -146,7 +147,7 @@ class ProductCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 35.w, 12.w, 15.w),
                 child: GreenButton(
-                  label: 'Добавить',
+                  label: 'add',
                   onPressed: addButton,
                 ),
               )

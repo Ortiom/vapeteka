@@ -84,7 +84,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
             child: Padding(
               padding: EdgeInsets.only(left: 20.w),
               child: Text(
-                'price: ${products.price} tenge\namount: $amount шт.',
+                'price: ${products.price} ${'tenge'}\n${'amount'}: $amount шт.',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
                     fontSize: 24.sp,
