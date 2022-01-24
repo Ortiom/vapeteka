@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/presentation/pages/qr_page.dart';
@@ -23,10 +24,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   ApiController apiController = Get.find();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '(###) ###-##-##',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
 
   @override
   void initState() {
-    _phoneController.text = '77474991201';
+    _phoneController.text = '7474991201';
     _passwordController.text = '1';
     super.initState();
   }
@@ -59,6 +64,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           SizedBox(height: 50.w),
           LoginTextField(
+            prefix: '+7 ',
+            formatter: maskFormatter,
             controller: _phoneController,
             label: 'phone_number',
             textInputType: TextInputType.phone,
@@ -95,7 +102,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Future postData() async {
     Login login = Login(
-      phoneNumber: _phoneController.text,
+      phoneNumber: '7' + _phoneController.text,
       password: _passwordController.text,
     );
 

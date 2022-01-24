@@ -85,18 +85,41 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               ),
                             ),
                             addButton: () {
-                              apiController.productsInCart!
-                                  .add(products.products![index]);
-                              apiController.update();
+                              if (apiController.productsInCart!
+                                  .where((element) =>
+                                      element.id ==
+                                      products.products![index].id)
+                                  .isNotEmpty) {
+                                Get.snackbar(
+                                    'Упс!', 'Продукт уже находится в корзине',
+                                    backgroundColor: Colors.transparent,
+                                    colorText: Colors.white,
+                                    duration: 4.seconds);
+                              } else if (products.products![index].amount ==
+                                  0) {
+                                Get.snackbar('Упс!',
+                                    'Вы не указали количество продукта, который хотите добавить в корзину',
+                                    backgroundColor: Colors.transparent,
+                                    colorText: Colors.white,
+                                    duration: 4.seconds);
+                              } else {
+                                products.products![index].initialPrice =
+                                    products.products![index].price;
+                                apiController.productsInCart!
+                                    .add(products.products![index]);
+                                apiController.update();
+                              }
                             },
                             minusButton: () {
-                              if (products.products![index].amount! > 0){
-                                products.products![index].amount = products.products![index].amount! - 1;
+                              if (products.products![index].amount! > 0) {
+                                products.products![index].amount =
+                                    products.products![index].amount! - 1;
                               }
                               setState(() {});
                             },
                             plusButton: () {
-                              products.products![index].amount = products.products![index].amount! + 1;
+                              products.products![index].amount =
+                                  products.products![index].amount! + 1;
                               apiController.update();
                               setState(() {});
                             },

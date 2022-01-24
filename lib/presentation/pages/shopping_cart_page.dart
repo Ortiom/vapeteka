@@ -18,70 +18,81 @@ class ShoppingCartScreen extends StatefulWidget {
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   ApiController apiController = Get.find();
-  List<Products> products = <Products>[].obs();
+  List<Products>? products = <Products>[].obs();
   int totalPrice = 0.obs();
   List<int> initialPriceList = <int>[];
 
   @override
   void initState() {
     products = apiController.productsInCart!;
-    initialPriceList = List.generate(products.length, (i) => products[i].price!);
+    initialPriceList =
+        List.generate(products!.length, (i) => products![i].price!);
+    getInitialPrice();
+    getTotalPrice();
     super.initState();
   }
 
-  // void getInitialPrice (){
-  //   for(var i = 0; i < products.length; i++){
-  //
-  //   }
-  // }
-
-  void getPricePlus(int index) {
-    products[index].price = initialPriceList[index] * products[index].amount!;
-    for(var i = 0; i < products.length; i++){
-      totalPrice += products[index].price!;
+  void getInitialPrice() {
+    for (var i = 0; i < products!.length; i++) {
+      initialPriceList[i] = products![i].initialPrice!;
+      if (products![i].initialPrice! * products![i].amount! !=
+          products![i].price) {
+        products![i].price = initialPriceList[i] * products![i].amount!;
+      }
     }
   }
-  void getPriceMinus(int index) {
-    products[index].price = initialPriceList[index] * products[index].amount!;
-    for(var i = 0; i < products.length; i++){
-      totalPrice -= products[index].price!;
+
+  void getTotalPrice() {
+    int price = 0;
+    for (var i = 0; i < products!.length; i++) {
+      price = price + (initialPriceList[i] * products![i].amount!);
     }
+    totalPrice = price;
   }
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ApiController>(
-      builder: (_) => products.isNotEmpty
+      builder: (_) => products!.isNotEmpty
           ? CustomScaffold(
               title: 'Корзина',
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 16.w),
                   child: ListView.builder(
-                    itemCount: products.length,
+                    itemCount: products!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, int index) {
                       return ProductInCartCard(
-                        price: products[index].price.toString(),
-                        title: products[index].name,
-                        amount: products[index].amount!,
+                        price: products![index].price.toString(),
+                        title: products![index].name,
+                        amount: products![index].amount!,
                         minusButton: () {
-                          if (products[index].amount! > 0){
-                            products[index].amount = products[index].amount! - 1;
-                            getPriceMinus(index);
+                          if (products![index].amount! > 0) {
+                            products![index].amount =
+                                products![index].amount! - 1;
+                            products![index].price = initialPriceList[index] *
+                                products![index].amount!;
+                            getTotalPrice();
                           }
+                          // else if (products![index].amount! == 0) {
+                          //   products!.remove(products![index]);
+                          // } удаление продуктов из корзины
                           setState(() {});
                         },
                         plusButton: () {
-                          products[index].amount = products[index].amount! + 1;
-                          getPricePlus(index);
+                          products![index].amount =
+                              products![index].amount! + 1;
+                          products![index].price = initialPriceList[index] *
+                              products![index].amount!;
+                          getTotalPrice();
                           setState(() {});
                         },
                         onTap: () {
                           print('aboba');
                         },
-                        imageUrl: products[index].images,
+                        imageUrl: products![index].images,
                       );
                     },
                   ),

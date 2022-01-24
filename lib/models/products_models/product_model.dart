@@ -43,6 +43,7 @@ class Products {
   String? updatedAt;
   int? categoryId;
   int? check;
+  int? initialPrice;
 
   Products({
     this.id,
@@ -66,6 +67,7 @@ class Products {
     this.updatedAt,
     this.categoryId,
     this.check,
+    this.initialPrice,
   });
 
   Products.fromJson(Map<String, dynamic> json) {

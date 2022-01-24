@@ -83,12 +83,14 @@ class LoginTextField extends StatefulWidget {
     this.textInputType,
     this.controller,
     this.formatter,
+    this.prefix,
   }) : super(key: key);
 
   final String? label;
   final TextInputType? textInputType;
   final TextEditingController? controller;
   final MaskTextInputFormatter? formatter;
+  final String? prefix;
 
   @override
   _LoginTextFieldState createState() => _LoginTextFieldState();
@@ -116,6 +118,12 @@ class _LoginTextFieldState extends State<LoginTextField> {
             color: Colors.grey.withOpacity(0.20),
           ),
         ),
+        prefixText: widget.prefix ?? '',
+        prefixStyle: TextStyle(
+            fontFamily: 'BlissPro',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+            color: Colors.white),
         labelStyle: TextStyle(
             fontFamily: 'BlissPro',
             fontWeight: FontWeight.w400,
