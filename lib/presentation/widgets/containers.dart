@@ -17,7 +17,7 @@ class ProductCard extends StatelessWidget {
 
   final String? imageUrl;
   final String? title;
-  final int? amount;
+  final Widget? amount;
   final VoidCallback? plusButton;
   final VoidCallback? minusButton;
   final VoidCallback? addButton;
@@ -110,7 +110,7 @@ class ProductCard extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(
+                          amount?? Text(
                             amount.toString(),
                             style: TextStyle(
                               fontFamily: 'BlissPro',
@@ -120,7 +120,7 @@ class ProductCard extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                            onTap: plusButton,
+                            onTap: minusButton,
                             child: DecoratedBox(
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
@@ -275,7 +275,7 @@ class ProductInCartCard extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                            onTap: plusButton,
+                            onTap: minusButton,
                             child: DecoratedBox(
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,

@@ -18,7 +18,6 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   ApiController apiController = Get.find();
   ProductsModel products = ProductsModel().obs();
-  List<int> countList = <int>[].obs();
 
   @override
   void initState() {
@@ -29,7 +28,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
   void getData() async {
     await apiController.productsReq(Get.arguments);
     products = apiController.products!;
-    countList = List.generate(products.products!.length, (i) => 0);
     apiController.update();
   }
 
@@ -77,18 +75,28 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         itemBuilder: (context, int index) {
                           return ProductCard(
                             title: products.products![index].name,
-                            amount: countList[index],
+                            amount: Text(
+                              products.products![index].amount!.toString(),
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
                             addButton: () {
                               apiController.productsInCart!
                                   .add(products.products![index]);
                               apiController.update();
                             },
                             minusButton: () {
-                              countList[index] - 1;
+                              if (products.products![index].amount! > 0){
+                                products.products![index].amount = products.products![index].amount! - 1;
+                              }
                               setState(() {});
                             },
                             plusButton: () {
-                              countList[index] + 1;
+                              products.products![index].amount = products.products![index].amount! + 1;
                               apiController.update();
                               setState(() {});
                             },

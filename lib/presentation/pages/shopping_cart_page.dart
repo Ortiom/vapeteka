@@ -20,11 +20,32 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   ApiController apiController = Get.find();
   List<Products> products = <Products>[].obs();
   int totalPrice = 0.obs();
+  List<int> initialPriceList = <int>[];
 
   @override
   void initState() {
     products = apiController.productsInCart!;
+    initialPriceList = List.generate(products.length, (i) => products[i].price!);
     super.initState();
+  }
+
+  // void getInitialPrice (){
+  //   for(var i = 0; i < products.length; i++){
+  //
+  //   }
+  // }
+
+  void getPricePlus(int index) {
+    products[index].price = initialPriceList[index] * products[index].amount!;
+    for(var i = 0; i < products.length; i++){
+      totalPrice += products[index].price!;
+    }
+  }
+  void getPriceMinus(int index) {
+    products[index].price = initialPriceList[index] * products[index].amount!;
+    for(var i = 0; i < products.length; i++){
+      totalPrice -= products[index].price!;
+    }
   }
 
   @override
@@ -44,13 +65,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       return ProductInCartCard(
                         price: products[index].price.toString(),
                         title: products[index].name,
-                        amount: products[index].amount,
+                        amount: products[index].amount!,
                         minusButton: () {
-                          products[index].amount! - 1;
+                          if (products[index].amount! > 0){
+                            products[index].amount = products[index].amount! - 1;
+                            getPriceMinus(index);
+                          }
                           setState(() {});
                         },
                         plusButton: () {
-                          products[index].amount! + 1;
+                          products[index].amount = products[index].amount! + 1;
+                          getPricePlus(index);
                           setState(() {});
                         },
                         onTap: () {
@@ -64,7 +89,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 16.h, 0.w, 16.h),
                   child: Text(
-                    'Итого: ' + (totalPrice.toString() ?? '0') + ' KZT',
+                    'Итого: ' + (totalPrice.toString()) + ' KZT',
                     style: TextStyle(
                       fontFamily: 'BlissPro',
                       fontSize: 24.sp,

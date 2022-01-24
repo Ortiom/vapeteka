@@ -48,8 +48,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    getBool();
     getUser();
+    getBool();
     super.initState();
   }
 
