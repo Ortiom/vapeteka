@@ -6,6 +6,7 @@ class PreferencesService {
   static const _token = 'token';
   static const _fcmToken = 'fcmToken';
   static const _discount = 'discount';
+  static const _language = 'language';
 
   static Future init() async =>
       _sharedPreferences = await SharedPreferences.getInstance();
@@ -22,4 +23,9 @@ class PreferencesService {
       _sharedPreferences?.setBool(_discount, data);
   static bool getDiscountBool() =>
       _sharedPreferences?.getBool(_discount) ?? false;
+
+  static Future setLngBool(bool data) async =>
+      _sharedPreferences?.setBool(_language, data);
+  static bool getLngBool() =>
+      _sharedPreferences?.getBool(_language) ?? false;
 }

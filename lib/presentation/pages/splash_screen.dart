@@ -40,6 +40,10 @@ class _SplashScreenState extends State<SplashScreen> {
     prefs.getBool('discount') != null
         ? apiController.discount = prefs.getBool('discount')!
         : apiController.discount = false;
+
+    prefs.getBool('discount') != null
+        ? apiController.language = prefs.getBool('language')!
+        : apiController.language = false;
   }
 
   @override

@@ -1,7 +1,13 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/services/shared_preferences.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
   const ChangeLanguageScreen({Key? key}) : super(key: key);
@@ -11,10 +17,15 @@ class ChangeLanguageScreen extends StatefulWidget {
 }
 
 class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
-  bool language = true;
+  late bool language;
+  ApiController apiController = Get.find();
+  // late Locale locale;
+
+  // bool isSelected(BuildContext context) => locale == context.locale;
 
   @override
   void initState() {
+    language = apiController.language;
     super.initState();
   }
 
@@ -73,7 +84,8 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 onChanged: (value) {
                   setState(() {
                     language = value!;
-                    context.setLocale(const Locale('ru', 'RU'));
+                    apiController.language = value;
+                    PreferencesService.setLngBool(!apiController.language);
                   });
                 },
               ),
@@ -91,10 +103,11 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 fillColor: MaterialStateProperty.all(Colors.white),
                 value: false,
                 groupValue: language,
-                onChanged: (value) {
-                  setState(() {
+                onChanged: (value)  {
+                  setState(()  {
                     language = value!;
-                    context.setLocale(const Locale('en', 'US'));
+                    apiController.language = value;
+                    PreferencesService.setLngBool(!apiController.language);
                   });
                 },
               ),

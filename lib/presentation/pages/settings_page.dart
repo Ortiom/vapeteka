@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 CatalogItemButton(
                   title: 'change_lng',
                   onPressed: () {
-                    Get.to(() => const ChangeLanguageScreen());
+                    Get.to(() =>  ChangeLanguageScreen());
                   },
                 ),
                 CatalogItemButton(

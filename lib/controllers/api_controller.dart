@@ -25,6 +25,8 @@ class ApiController extends GetxController {
   ProductsModel? products = ProductsModel().obs();
   List<Products>? productsInCart = <Products>[].obs();
   bool discount = false.obs();
+  bool language = false.obs();
+
   PromotionsModel promotionsModel = PromotionsModel().obs();
   String? discountString = ''.obs();
 
