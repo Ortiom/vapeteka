@@ -60,6 +60,18 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       builder: (_) => products!.isNotEmpty
           ? CustomScaffold(
               title: 'basket',
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    products!.clear();
+                    setState(() {});
+                  },
+                  icon: const Icon(
+                    Icons.restore_from_trash_outlined,
+                    color: Colors.white,
+                  ),
+                )
+              ],
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 16.w),
