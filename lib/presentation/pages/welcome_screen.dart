@@ -31,8 +31,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
-    _phoneController.text = '7474991201';
-    _passwordController.text = '1';
+    _phoneController.text = '';
+    _passwordController.text = '';
     super.initState();
   }
 
@@ -112,7 +112,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
-        Get.to(() => const QRPage());
+        Get.offAll(() => const QRPage());
       } else {
         Get.snackbar('Ошибка', value.errorText.toString(),
             backgroundColor: Colors.redAccent,

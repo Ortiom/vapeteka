@@ -1,3 +1,4 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Get.off(() => const QRPage());
+                  Get.offAll(() => const QRPage());
                 },
                 child: SizedBox(
                   child: Column(

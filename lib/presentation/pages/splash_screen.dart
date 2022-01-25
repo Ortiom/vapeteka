@@ -27,10 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
     await apiController.qrCodeReq().then((value) {
       if (value.data != null && apiController.qrCode != 0) {
         isUserIn = true;
-        Get.to(() => const QRPage());
+        Get.offAll(() => const QRPage());
       } else if (value.errorText != null && apiController.qrCode == 0) {
         isUserIn = true;
-        Get.to(() => const WelcomeScreen());
+        Get.offAll(() => const WelcomeScreen());
       }
     });
   }

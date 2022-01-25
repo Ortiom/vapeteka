@@ -9,7 +9,6 @@ import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 
-
 class ChangeLanguageScreen extends StatefulWidget {
   const ChangeLanguageScreen({Key? key}) : super(key: key);
 
@@ -18,16 +17,15 @@ class ChangeLanguageScreen extends StatefulWidget {
 }
 
 class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
-
   ApiController apiController = Get.find();
   late bool language;
-
 
   @override
   void initState() {
     language = apiController.language;
     super.initState();
   }
+
   void _setLanguage(Locale locale) async {
     log(locale.toString(), name: toString());
     await context.setLocale(locale);
@@ -92,7 +90,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   setState(() {
                     language = value!;
                     apiController.language = value;
-                    PreferencesService.setLngBool(!apiController.language);
+                    PreferencesService.setLngBool(language);
                     // print(apiController.language);
                   });
                   _setLanguage(Locale('ru'));
@@ -116,9 +114,8 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   setState(() {
                     language = value!;
                     apiController.language = value;
-                    PreferencesService.setLngBool(!apiController.language);
+                    PreferencesService.setLngBool(language);
                     // print(apiController.language);
-
                   });
                   _setLanguage(Locale('en'));
                 },

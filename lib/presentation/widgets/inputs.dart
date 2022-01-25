@@ -193,7 +193,6 @@ class BirthTextField extends StatefulWidget {
 class _BirthTextFieldState extends State<BirthTextField> {
   ApiController apiController = Get.find();
 
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -203,7 +202,7 @@ class _BirthTextFieldState extends State<BirthTextField> {
       style: TextStyle(
           fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
-        hintText: apiController.language == false ? 'MM/DD/YYYY' : 'ММ/ДД/ГГГГ',
+        hintText: apiController.language == true ? 'MM/DD/YYYY' : 'ММ/ДД/ГГГГ',
         hintStyle: TextStyle(color: Colors.white.withOpacity(0.64)),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(

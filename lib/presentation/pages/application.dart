@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vapeteka/presentation/pages/promotion_page.dart';
+import 'package:vapeteka/presentation/pages/qr_page.dart';
+import 'package:vapeteka/presentation/pages/settings_page.dart';
 import 'package:vapeteka/presentation/pages/splash_screen.dart';
 
 import '../../controllers/api_controller.dart';
 import '../../main.dart';
 import '../../services/shared_preferences.dart';
+import 'catalog_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -75,6 +79,31 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(fontFamily: 'BlissPro'),
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
+        // initialRoute: '/',
+        // defaultTransition: Transition.native,
+        // transitionDuration: Duration(milliseconds: 150),
+        // getPages: [
+        //   GetPage(
+        //     name: "/",
+        //     page: () => SplashScreen(),
+        //   ),
+        //   GetPage(
+        //     name: "/qr_page",
+        //     page: () => QRPage(),
+        //   ),
+        //   GetPage(
+        //     name: "/settings_page",
+        //     page: () => SettingsPage(),
+        //   ),
+        //   GetPage(
+        //     name: "/promotion_page",
+        //     page: () => PromotionPage(),
+        //   ),
+        //   GetPage(
+        //     name: "/catalog_page",
+        //     page: () => CatalogPage(),
+        //   ),
+        // ],
       ),
     );
   }
