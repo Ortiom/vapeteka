@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,14 +20,16 @@ class ChangeLanguageScreen extends StatefulWidget {
 class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
   late bool language;
   ApiController apiController = Get.find();
-  // late Locale locale;
-
-  // bool isSelected(BuildContext context) => locale == context.locale;
 
   @override
   void initState() {
     language = apiController.language;
     super.initState();
+  }
+  void _setLanguage(Locale locale) async {
+    log(locale.toString(), name: toString());
+    await context.setLocale(locale);
+    await Get.updateLocale(locale);
   }
 
   @override
@@ -67,95 +71,52 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   color: Colors.white),
             ).tr(),
             SizedBox(height: 25.h),
-            GestureDetector(
-              onTap: () async {
-                const _newLocale = Locale('ru');
-                await context.setLocale(_newLocale);
-                Get.updateLocale(_newLocale);
-              },
-              child: ListTile(
-                title: Text(
-                  'russian',
-                  style: TextStyle(
-                      fontFamily: 'BlissPro',
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ).tr(),
-                leading: Radio<bool>(
-                  fillColor: MaterialStateProperty.all(Colors.white),
-                  value: true,
-                  groupValue: language,
-                  onChanged: (value) {
-                    setState(() {
-                      language = value!;
-                      apiController.language = value;
-                      PreferencesService.setLngBool(!apiController.language);
-                    });
-                  },
-                ),
+            ListTile(
+              title: Text(
+                'russian',
+                style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ).tr(),
+              leading: Radio<bool>(
+                fillColor: MaterialStateProperty.all(Colors.white),
+                value: false,
+                groupValue: language,
+                onChanged: (value) {
+                  _setLanguage(Locale('ru'));
+                  setState(() {
+                    language = value!;
+                    apiController.language = value;
+                    PreferencesService.setLngBool(!apiController.language);
+                  });
+                },
               ),
             ),
-            GestureDetector(
-              onTap: () async {
-                const _newLocale = Locale('en');
-                await context.setLocale(_newLocale);
-                Get.updateLocale(_newLocale);
-              },
-              child: ListTile(
-                title: Text(
-                  'english',
-                  style: TextStyle(
-                      fontFamily: 'BlissPro',
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ).tr(),
-                leading: Radio<bool>(
-                  fillColor: MaterialStateProperty.all(Colors.white),
-                  value: false,
-                  groupValue: language,
-                  onChanged: (value) {
-                    setState(() {
-                      // language = value!;
-                      // context.setLocale(const Locale('en'));
-                    });
-                  },
-                ),
+            ListTile(
+              title: Text(
+                'english',
+                style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ).tr(),
+              leading: Radio<bool>(
+                fillColor: MaterialStateProperty.all(Colors.white),
+                value: true,
+                groupValue: language,
+                onChanged: (value) {
+                  _setLanguage(Locale('en'));
+                  setState(() {
+                    language = value!;
+                    apiController.language = value;
+                    PreferencesService.setLngBool(!apiController.language);
+                  });
+                },
               ),
             ),
-            // const Text(
-            //   LocaleKeys.english,
-            //   style: TextStyle(color: Colors.white),
-            // ).tr(),
-            // const Text(
-            //   LocaleKeys.russian,
-            //   style: TextStyle(color: Colors.white),
-            // ).tr(),
-            // const SizedBox(height: 15),
-            // Row(
-            //   children: [
-            //     ElevatedButton(
-            //         onPressed: () async {
-            //           const _newLocale = Locale('ru');
-            //           await context.setLocale(_newLocale);
-            //           Get.updateLocale(_newLocale);
-            //         },
-            //         child: const Text("ru")),
-            //     ElevatedButton(
-            //         onPressed: () async {
-            //           const _newLocale = Locale('en');
-            //           await context.setLocale(_newLocale);
-            //           Get.updateLocale(_newLocale);
-            //         },
-            //         child: const Text("en")),
-            //     ElevatedButton(
-            //         onPressed: () async {
-            //           context.resetLocale();
-            //         },
-            //         child: const Text("reset")),
-            //   ],
-            // )
           ],
         ),
       ),
