@@ -37,10 +37,11 @@
   "order": "ЗАКАЗАТЬ",
   "great": "ОТЛИЧНО",
   "amount": "Количество",
-  "price": "Цена",
+  "price": "Цена:",
   "select_quantity": "Выберите количество",
   "tenge": "тенге",
   "items": "шт",
+  "final_price": "Итого:",
 
 
   "order_created": "Ваш заказ создан!",

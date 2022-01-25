@@ -8,6 +8,8 @@ import 'package:vapeteka/presentation/pages/complete_oreder_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/containers.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   const ShoppingCartScreen({Key? key}) : super(key: key);
@@ -55,7 +57,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     return GetBuilder<ApiController>(
       builder: (_) => products!.isNotEmpty
           ? CustomScaffold(
-              title: 'Корзина',
+              title: 'basket',
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 16.w),
@@ -99,18 +101,31 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 16.h, 0.w, 16.h),
-                  child: Text(
-                    'Итого: ' + (totalPrice.toString()) + ' KZT',
-                    style: TextStyle(
-                      fontFamily: 'BlissPro',
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        LocaleKeys.final_price,
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ).tr(),Text(
+                        totalPrice.toString() + ' KZT',
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 GreenButton(
-                  label: 'заказать'.toUpperCase(),
+                  label: 'order',
                   onPressed: () {
                     Get.to(() => const CompleteOrderScreen());
                   },
@@ -169,7 +184,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                     SizedBox(height: 16.h),
                     GreenButton(
-                      label: 'Отлично'.toUpperCase(),
+                      label: 'great',
                       onPressed: () {
                         Get.to(() => const CatalogPage());
                       },

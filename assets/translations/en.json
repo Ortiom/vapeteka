@@ -37,10 +37,11 @@
   "order": "ORDER",
   "great": "GREAT",
   "amount": "Amount",
-  "price": "Price",
+  "price": "Price:",
   "select_quantity": "Select quantity",
   "tenge": "tenge",
   "items": "items",
+  "final_price": "Final price:",
 
 
   "order_created": "Your order has been created!",

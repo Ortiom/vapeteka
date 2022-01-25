@@ -1,8 +1,10 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/translations/locale_keys.g.dart';
 
 import 'catalog_page.dart';
 
@@ -40,17 +42,18 @@ class CompleteOrderScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Ваш заказ создан!',
+              LocaleKeys.order_created,
               style: TextStyle(
                 fontFamily: 'BlissPro',
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white,
               ),
-            ),
+            ).tr(),
             SizedBox(height: 16.h),
             Text(
-              'Наши сотрудники свяжутся с Вами по\n контактному телефону для согласования\n заказа и уточнения условий доставки.',
+              LocaleKeys.order_details,
+              // 'Наши сотрудники свяжутся с Вами по\n контактному телефону для согласования\n заказа и уточнения условий доставки.',
               style: TextStyle(
                 fontFamily: 'BlissPro',
                 fontSize: 14.sp,
@@ -59,10 +62,10 @@ class CompleteOrderScreen extends StatelessWidget {
                 height: 1.8.w,
               ),
               textAlign: TextAlign.center,
-            ),
+            ).tr(),
             SizedBox(height: 16.h),
             GreenButton(
-              label: 'Отлично'.toUpperCase(),
+              label: 'great',
               onPressed: () {
                 Get.to(() => const CatalogPage());
               },

@@ -37,6 +37,7 @@ abstract class  LocaleKeys {
   static const select_quantity = 'select_quantity';
   static const tenge = 'tenge';
   static const items = 'items';
+  static const final_price = 'final_price';
   static const order_created = 'order_created';
   static const order_details = 'order_details';
 

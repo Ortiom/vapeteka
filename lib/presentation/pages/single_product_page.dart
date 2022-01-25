@@ -8,6 +8,7 @@ import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/presentation/pages/shopping_cart_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/translations/locale_keys.g.dart';
 
 class SingleProductScreen extends StatefulWidget {
   const SingleProductScreen({Key? key}) : super(key: key);
@@ -83,13 +84,48 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.only(left: 20.w),
-              child: Text(
-                'price: ${products.price} ${'tenge'}\n${'amount'}: $amount шт.',
-                style: TextStyle(
-                    fontFamily: 'BlissPro',
-                    fontSize: 24.sp,
-                    color: Colors.white),
-              ).tr(),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(LocaleKeys.price, style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          color: Colors.white)).tr(),
+                      Text(' ${products.price} ',style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          color: Colors.white)),
+                      Text(LocaleKeys.tenge,style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          color: Colors.white)).tr(),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        LocaleKeys.amount,
+                        style: TextStyle(
+                            fontFamily: 'BlissPro',
+                            fontSize: 24.sp,
+                            color: Colors.white),
+                      ).tr(),
+                      Text(' $amount ',style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          color: Colors.white)),
+                      Text(
+                        LocaleKeys.items,
+                        style: TextStyle(
+                            fontFamily: 'BlissPro',
+                            fontSize: 24.sp,
+                            color: Colors.white),
+                      ).tr(),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 21.h),

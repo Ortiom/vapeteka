@@ -45,11 +45,18 @@ class _SplashScreenState extends State<SplashScreen> {
         ? apiController.language = prefs.getBool('language')!
         : apiController.language = false;
   }
+  // void getLngBool() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.getBool('language') != null
+  //       ? apiController.language = prefs.getBool('language')!
+  //       : apiController.language = false;
+  // }
 
   @override
   void initState() {
     getUser();
     getBool();
+    // getLngBool();
     super.initState();
   }
 

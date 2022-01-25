@@ -47,10 +47,11 @@ class CodegenLoader extends AssetLoader{
   "order": "ORDER",
   "great": "GREAT",
   "amount": "Amount",
-  "price": "Price",
+  "price": "Price:",
   "select_quantity": "Select quantity",
   "tenge": "tenge",
   "items": "items",
+  "final_price": "Final price:",
   "order_created": "Your order has been created!",
   "order_details": "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
 };
@@ -87,10 +88,11 @@ static const Map<String,dynamic> ru = {
   "order": "ЗАКАЗАТЬ",
   "great": "ОТЛИЧНО",
   "amount": "Количество",
-  "price": "Цена",
+  "price": "Цена:",
   "select_quantity": "Выберите количество",
   "tenge": "тенге",
   "items": "шт",
+  "final_price": "Итого:",
   "order_created": "Ваш заказ создан!",
   "order_details": "Наши сотрудники свяжутся с Вами по контактному телефону для согласования заказа и уточнения условий доставки."
 };

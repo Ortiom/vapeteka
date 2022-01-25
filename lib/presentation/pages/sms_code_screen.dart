@@ -41,12 +41,12 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                 SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _smsCodeController,
-                  label: 'code'.tr,
+                  label: 'code',
                   textInputType: TextInputType.number,
                 ),
                 SizedBox(height: 23.w),
                 GreenButton(
-                  label: 'check_sms'.tr.toUpperCase(),
+                  label: 'check_sms',
                   onPressed: () {
                     postData();
                   },
