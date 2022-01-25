@@ -4,7 +4,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
@@ -188,6 +191,9 @@ class BirthTextField extends StatefulWidget {
 }
 
 class _BirthTextFieldState extends State<BirthTextField> {
+  ApiController apiController = Get.find();
+
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -197,6 +203,8 @@ class _BirthTextFieldState extends State<BirthTextField> {
       style: TextStyle(
           fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
+        hintText: apiController.language == false ? 'MM/DD/YYYY' : 'ММ/ДД/ГГГГ',
+        hintStyle: TextStyle(color: Colors.white.withOpacity(0.64)),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.w,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
@@ -24,6 +25,10 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
       TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _birthdayController = TextEditingController();
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '(###) ###-##-##',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +46,9 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
+                  prefix: '+7 ',
                   controller: _phoneController,
+                  formatter: maskFormatter,
                   label: 'phone_number',
                   textInputType: TextInputType.phone,
                 ),

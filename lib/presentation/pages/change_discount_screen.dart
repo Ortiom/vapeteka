@@ -80,6 +80,7 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
                     discount = value!;
                     apiController.discount = value;
                     PreferencesService.setDiscountBool(!apiController.discount);
+                    print(apiController.discount);
                   });
                 },
               ),
@@ -102,6 +103,7 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
                     discount = value!;
                     apiController.discount = value;
                     PreferencesService.setDiscountBool(!apiController.discount);
+                    print(apiController.discount);
                   });
                 },
               ),

@@ -112,8 +112,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
-                      ).tr(),Text(
-                        totalPrice.toString() + ' KZT',
+                      ).tr(),
+                      Text(
+                        totalPrice.toString(),
                         style: TextStyle(
                           fontFamily: 'BlissPro',
                           fontSize: 24.sp,
@@ -121,6 +122,15 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           color: Colors.white,
                         ),
                       ),
+                      Text(
+                        LocaleKeys.tenge,
+                        style: TextStyle(
+                          fontFamily: 'BlissPro',
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ).tr(),
                     ],
                   ),
                 ),
@@ -137,13 +147,13 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               backgroundColor: Colors.black,
               appBar: AppBar(
                 title: Text(
-                  'Корзина',
+                  LocaleKeys.basket,
                   style: TextStyle(
                       fontFamily: 'BlissPro',
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
-                ),
+                ).tr(),
                 backgroundColor: const Color(0xFF333333),
               ),
               bottomNavigationBar: const CustomNavBar(),
@@ -162,29 +172,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Ваш заказ создан!',
+                      LocaleKeys.basket_empty,
                       style: TextStyle(
                         fontFamily: 'BlissPro',
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
                       ),
-                    ),
-                    SizedBox(height: 16.h),
-                    Text(
-                      'Наши сотрудники свяжутся с Вами по\n контактному телефону для согласования\n заказа и уточнения условий доставки.',
-                      style: TextStyle(
-                        fontFamily: 'BlissPro',
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        height: 1.8.w,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                    ).tr(),
                     SizedBox(height: 16.h),
                     GreenButton(
-                      label: 'great',
+                      label: LocaleKeys.basket_comeback,
                       onPressed: () {
                         Get.to(() => const CatalogPage());
                       },

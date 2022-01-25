@@ -4,11 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
-import 'package:vapeteka/translations/locale_keys.g.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 
-import '../../controllers/api_controller.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
   const ChangeLanguageScreen({Key? key}) : super(key: key);
@@ -18,8 +18,10 @@ class ChangeLanguageScreen extends StatefulWidget {
 }
 
 class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
-  late bool language;
+
   ApiController apiController = Get.find();
+  late bool language;
+
 
   @override
   void initState() {
@@ -30,6 +32,8 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
     log(locale.toString(), name: toString());
     await context.setLocale(locale);
     await Get.updateLocale(locale);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getBool('language').toString());
   }
 
   @override
@@ -85,12 +89,13 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 value: false,
                 groupValue: language,
                 onChanged: (value) {
-                  _setLanguage(Locale('ru'));
                   setState(() {
                     language = value!;
                     apiController.language = value;
                     PreferencesService.setLngBool(!apiController.language);
+                    // print(apiController.language);
                   });
+                  _setLanguage(Locale('ru'));
                 },
               ),
             ),
@@ -108,12 +113,14 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 value: true,
                 groupValue: language,
                 onChanged: (value) {
-                  _setLanguage(Locale('en'));
                   setState(() {
                     language = value!;
                     apiController.language = value;
                     PreferencesService.setLngBool(!apiController.language);
+                    // print(apiController.language);
+
                   });
+                  _setLanguage(Locale('en'));
                 },
               ),
             ),

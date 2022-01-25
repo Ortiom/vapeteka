@@ -42,6 +42,8 @@
   "tenge": "тенге",
   "items": "шт",
   "final_price": "Итого:",
+  "basket_empty": "Ваша корзина пуста!",
+  "basket_comeback": "Вернуться к покупкам",
 
 
   "order_created": "Ваш заказ создан!",

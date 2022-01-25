@@ -28,4 +28,8 @@ class PreferencesService {
       _sharedPreferences?.setBool(_language, data);
   static bool getLngBool() =>
       _sharedPreferences?.getBool(_language) ?? false;
+  // static Future setLngBool(bool data) async =>
+  //     _sharedPreferences?.setBool(_language, data);
+  // static bool getLngBool() =>
+  //     _sharedPreferences?.getBool(_language) ?? false;
 }

@@ -40,23 +40,27 @@ class _SplashScreenState extends State<SplashScreen> {
     prefs.getBool('discount') != null
         ? apiController.discount = prefs.getBool('discount')!
         : apiController.discount = false;
+    print(prefs.getBool('discount').toString());
+    print(apiController.discount);
 
+    // prefs.getBool('language') != null
+    //     ? apiController.language = prefs.getBool('language')!
+    //     : apiController.language = false;
+  }
+  void getLngBool() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.getBool('language') != null
         ? apiController.language = prefs.getBool('language')!
         : apiController.language = false;
+    print(prefs.getBool('language').toString());
+    print(apiController.language);
   }
-  // void getLngBool() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.getBool('language') != null
-  //       ? apiController.language = prefs.getBool('language')!
-  //       : apiController.language = false;
-  // }
 
   @override
   void initState() {
     getUser();
     getBool();
-    // getLngBool();
+    getLngBool();
     super.initState();
   }
 

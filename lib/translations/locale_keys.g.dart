@@ -38,6 +38,8 @@ abstract class  LocaleKeys {
   static const tenge = 'tenge';
   static const items = 'items';
   static const final_price = 'final_price';
+  static const basket_empty = 'basket_empty';
+  static const basket_comeback = 'basket_comeback';
   static const order_created = 'order_created';
   static const order_details = 'order_details';
 

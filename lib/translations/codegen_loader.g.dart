@@ -52,6 +52,8 @@ class CodegenLoader extends AssetLoader{
   "tenge": "tenge",
   "items": "items",
   "final_price": "Final price:",
+  "basket_empty": "Your shopping cart is empty!",
+  "basket_comeback": "Back to shopping",
   "order_created": "Your order has been created!",
   "order_details": "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
 };
@@ -93,6 +95,8 @@ static const Map<String,dynamic> ru = {
   "tenge": "тенге",
   "items": "шт",
   "final_price": "Итого:",
+  "basket_empty": "Ваша корзина пуста!",
+  "basket_comeback": "Вернуться к покупкам",
   "order_created": "Ваш заказ создан!",
   "order_details": "Наши сотрудники свяжутся с Вами по контактному телефону для согласования заказа и уточнения условий доставки."
 };

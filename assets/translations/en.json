@@ -42,6 +42,8 @@
   "tenge": "tenge",
   "items": "items",
   "final_price": "Final price:",
+  "basket_empty": "Your shopping cart is empty!",
+  "basket_comeback": "Back to shopping",
 
 
   "order_created": "Your order has been created!",
