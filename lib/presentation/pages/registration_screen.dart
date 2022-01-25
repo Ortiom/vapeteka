@@ -111,7 +111,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       middleName: _middleNameController.text,
       password: _passwordController.text,
       passConfirm: _passwordConfirmController.text,
-      phoneNumber: _phoneController.text,
+      phoneNumber: '7' + maskFormatter.getUnmaskedText(),
       birthday: _birthdayController.text,
     );
 

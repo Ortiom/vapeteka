@@ -19,12 +19,14 @@ class SingleProductScreen extends StatefulWidget {
 
 class _SingleProductScreenState extends State<SingleProductScreen> {
   ApiController apiController = Get.find();
-  int amount = 1;
   late Products products;
+  int price = 0;
 
   @override
   void initState() {
     products = Get.arguments;
+    products.amount = 1;
+    price = products.price!;
     super.initState();
   }
 
@@ -88,18 +90,23 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(LocaleKeys.price, style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 24.sp,
-                          color: Colors.white)).tr(),
-                      Text(' ${products.price} ',style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 24.sp,
-                          color: Colors.white)),
-                      Text(LocaleKeys.tenge,style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 24.sp,
-                          color: Colors.white)).tr(),
+                      Text(LocaleKeys.price,
+                              style: TextStyle(
+                                  fontFamily: 'BlissPro',
+                                  fontSize: 24.sp,
+                                  color: Colors.white))
+                          .tr(),
+                      Text(' $price ',
+                          style: TextStyle(
+                              fontFamily: 'BlissPro',
+                              fontSize: 24.sp,
+                              color: Colors.white)),
+                      Text(LocaleKeys.tenge,
+                              style: TextStyle(
+                                  fontFamily: 'BlissPro',
+                                  fontSize: 24.sp,
+                                  color: Colors.white))
+                          .tr(),
                     ],
                   ),
                   Row(
@@ -111,10 +118,11 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                             fontSize: 24.sp,
                             color: Colors.white),
                       ).tr(),
-                      Text(' $amount ',style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 24.sp,
-                          color: Colors.white)),
+                      Text(' ${products.amount} ',
+                          style: TextStyle(
+                              fontFamily: 'BlissPro',
+                              fontSize: 24.sp,
+                              color: Colors.white)),
                       Text(
                         LocaleKeys.items,
                         style: TextStyle(
@@ -143,7 +151,8 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      amount++;
+                      products.amount = products.amount! + 1;
+                      price = products.price! * products.amount!;
                       setState(() {});
                     },
                     child: DecoratedBox(
@@ -162,7 +171,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                     ),
                   ),
                   Text(
-                    amount.toString(),
+                    products.amount.toString(),
                     style: TextStyle(
                       fontFamily: 'BlissPro',
                       fontSize: 48.sp,
@@ -172,8 +181,9 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      if (amount > 0) {
-                        amount--;
+                      if (products.amount! > 0) {
+                        products.amount = products.amount! - 1;
+                        price = products.price! * products.amount!;
                       }
                       setState(() {});
                     },
@@ -199,7 +209,26 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
           SizedBox(height: 40.h),
           GreenButton(
             label: 'add',
-            onPressed: () {},
+            onPressed: () {
+              if (apiController.productsInCart!
+                  .where((element) => element.id == products.id)
+                  .isNotEmpty) {
+                Get.snackbar('Упс!', 'Продукт уже находится в корзине',
+                    backgroundColor: Colors.transparent,
+                    colorText: Colors.white,
+                    duration: 4.seconds);
+              } else if (products.amount == 0) {
+                Get.snackbar('Упс!',
+                    'Вы не указали количество продукта, который хотите добавить в корзину',
+                    backgroundColor: Colors.transparent,
+                    colorText: Colors.white,
+                    duration: 4.seconds);
+              } else {
+                products.initialPrice = products.price;
+                apiController.productsInCart!.add(products);
+                apiController.update();
+              }
+            },
           ),
           SizedBox(height: 26.h),
         ],

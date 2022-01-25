@@ -46,9 +46,9 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
+                  formatter: maskFormatter,
                   prefix: '+7 ',
                   controller: _phoneController,
-                  formatter: maskFormatter,
                   label: 'phone_number',
                   textInputType: TextInputType.phone,
                 ),
@@ -88,7 +88,7 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
 
   Future postData() async {
     RegWithCard regWithCard = RegWithCard(
-      phoneNumber: _phoneController.text,
+      phoneNumber: '7' + maskFormatter.getUnmaskedText(),
       password: _passwordController.text,
       passConfirm: _passwordConfirmController.text,
       qrCode: _qrCodeController.text,

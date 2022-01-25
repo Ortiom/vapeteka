@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
+import 'package:vapeteka/models/products_models/order_model.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/presentation/pages/catalog_page.dart';
 import 'package:vapeteka/presentation/pages/complete_oreder_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/containers.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
+import 'package:vapeteka/services/response_result.dart';
 import 'package:vapeteka/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -78,9 +80,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 products![index].amount!;
                             getTotalPrice();
                           }
-                          // else if (products![index].amount! == 0) {
-                          //   products!.remove(products![index]);
-                          // } удаление продуктов из корзины
                           setState(() {});
                         },
                         plusButton: () {
@@ -137,7 +136,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 GreenButton(
                   label: 'order',
                   onPressed: () {
-                    Get.to(() => const CompleteOrderScreen());
+                    postData();
                   },
                 ),
                 SizedBox(height: 20.h),
@@ -192,5 +191,25 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               ),
             ),
     );
+  }
+
+  Future postData() async {
+    Order order = Order(products: <ProductsForOrder>[]);
+    for (int i = 0; i < products!.length; i++) {
+      order.products?.add(ProductsForOrder(
+          productId: products![i].id, quantity: products![i].amount));
+    }
+
+    apiController.orderRequest(order).then((value) {
+      print(order.products!.length);
+      if (value.status == Status.success) {
+        Get.to(() => const CompleteOrderScreen());
+      } else {
+        Get.snackbar('Ошибка', value.errorText.toString(),
+            backgroundColor: Colors.redAccent,
+            colorText: Colors.white,
+            duration: 4.seconds);
+      }
+    });
   }
 }

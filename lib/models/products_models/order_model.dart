@@ -1,13 +1,13 @@
 class Order {
-  List<Products>? products;
+  List<ProductsForOrder>? products;
 
   Order({this.products});
 
   Order.fromJson(Map<String, dynamic> json) {
     if (json['products'] != null) {
-      products = <Products>[];
+      products = <ProductsForOrder>[];
       json['products'].forEach((v) {
-        products!.add(Products.fromJson(v));
+        products!.add(ProductsForOrder.fromJson(v));
       });
     }
   }
@@ -21,13 +21,13 @@ class Order {
   }
 }
 
-class Products {
+class ProductsForOrder {
   int? productId;
   int? quantity;
 
-  Products({this.productId, this.quantity});
+  ProductsForOrder({this.productId, this.quantity});
 
-  Products.fromJson(Map<String, dynamic> json) {
+  ProductsForOrder.fromJson(Map<String, dynamic> json) {
     productId = json['product_id'];
     quantity = json['quantity'];
   }

@@ -12,3 +12,4 @@ const productsUrl = "products/";
 const deviceTokenUrl = "get-token";
 const logout = "logout";
 const promotionUrl = "notifications";
+const orderUrl = "order";

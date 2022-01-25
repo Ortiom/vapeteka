@@ -6,6 +6,7 @@ import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/models/login_models/register.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
+import 'package:vapeteka/models/products_models/order_model.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/models/promotion_model.dart';
 import 'package:vapeteka/services/response_result.dart';
@@ -245,6 +246,23 @@ class ApiController extends GetxController {
     print(result.errorText);
     if (result.status == Status.success) {
       promotionsModel = PromotionsModel.fromJson(result.data);
+      loading = false;
+      update();
+    } else if (result.status == Status.error) {
+      loading = false;
+      update();
+    }
+    return result;
+  }
+
+  Future<Result> orderRequest(Order model) async {
+    loading = true;
+    update();
+    print(model.toJson());
+    final request =
+        restService.request(orderUrl, method: post, data: model.toJson());
+    var result = await request;
+    if (result.status == Status.success) {
       loading = false;
       update();
     } else if (result.status == Status.error) {

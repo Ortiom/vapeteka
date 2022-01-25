@@ -102,7 +102,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Future postData() async {
     Login login = Login(
-      phoneNumber: '7' + _phoneController.text,
+      phoneNumber:
+          '7' + _phoneController.text, //TODO: переделать под текст из макски
       password: _passwordController.text,
     );
 
