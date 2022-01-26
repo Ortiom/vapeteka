@@ -44,8 +44,15 @@
   "final_price": "Final price:",
   "basket_empty": "Your shopping cart is empty!",
   "basket_comeback": "Back to shopping",
-
-
+  "oops": "Oops!",
+  "try_again": "Try again",
+  "network_problems": "Network problems",
+  "product_already": "The product is already in the cart",
+  "product_amount": "You have not specified the quantity of the product you want to add to the cart",
+  "error": "Error",
+  "auth_success": "Authorization was successful",
+  "reg_success": "Registration was successful",
+  "check_success": "The check was successful",
   "order_created": "Your order has been created!",
   "order_details": "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
 }

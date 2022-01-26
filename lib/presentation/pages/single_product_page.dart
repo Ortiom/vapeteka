@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/constants/url.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
@@ -213,13 +214,13 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
               if (apiController.productsInCart!
                   .where((element) => element.id == products.id)
                   .isNotEmpty) {
-                Get.snackbar('Упс!', 'Продукт уже находится в корзине',
+                Get.snackbar(oops, product_already,
                     backgroundColor: Colors.transparent,
                     colorText: Colors.white,
                     duration: 4.seconds);
               } else if (products.amount == 0) {
-                Get.snackbar('Упс!',
-                    'Вы не указали количество продукта, который хотите добавить в корзину',
+                Get.snackbar(oops,
+                    product_amount,
                     backgroundColor: Colors.transparent,
                     colorText: Colors.white,
                     duration: 4.seconds);

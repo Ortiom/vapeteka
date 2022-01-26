@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
@@ -99,12 +100,12 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
         .registrationWithCardReq(regWithCard)
         .then((value) async {
       if (value.status == Status.success) {
-        Get.snackbar('Авторизация прошла успешно', '',
+        Get.snackbar(auth_success, '',
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
       } else {
-        Get.snackbar('Ошибка', value.errorText.toString(),
+        Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,
             duration: 4.seconds);

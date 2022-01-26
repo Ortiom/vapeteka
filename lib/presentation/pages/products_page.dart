@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/presentation/pages/shopping_cart_page.dart';
@@ -91,15 +92,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       products.products![index].id)
                                   .isNotEmpty) {
                                 Get.snackbar(
-                                    'Упс!', 'Продукт уже находится в корзине',
-                                    backgroundColor: Colors.transparent,
+                                    oops, product_already,
+                                    backgroundColor: Colors.transparent.withOpacity(0.80),
                                     colorText: Colors.white,
                                     duration: 4.seconds);
                               } else if (products.products![index].amount ==
                                   0) {
-                                Get.snackbar('Упс!',
-                                    'Вы не указали количество продукта, который хотите добавить в корзину',
-                                    backgroundColor: Colors.transparent,
+                                Get.snackbar(oops,
+                                    product_amount,
+                                    backgroundColor: Colors.transparent.withOpacity(0.80),
                                     colorText: Colors.white,
                                     duration: 4.seconds);
                               } else {

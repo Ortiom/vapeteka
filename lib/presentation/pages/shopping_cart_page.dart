@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/products_models/order_model.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
@@ -116,7 +117,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        LocaleKeys.final_price,
+                        LocaleKeys.final_price ,
                         style: TextStyle(
                           fontFamily: 'BlissPro',
                           fontSize: 24.sp,
@@ -217,7 +218,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       if (value.status == Status.success) {
         Get.to(() => const CompleteOrderScreen());
       } else {
-        Get.snackbar('Ошибка', value.errorText.toString(),
+        Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,
             duration: 4.seconds);

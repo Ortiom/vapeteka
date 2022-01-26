@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/pages/welcome_screen.dart';
@@ -90,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'Упс! Проблмы с сетью',
+                          '$oops $network_problems',
                           style: TextStyle(
                               fontFamily: 'BlissPro',
                               fontSize: 22.w,
@@ -108,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 onPressed: () {
                                   getUser();
                                 },
-                                child: const Text('Попробовать снова')),
+                                child:  Text(try_again)),
                           ),
                         ),
                       ],

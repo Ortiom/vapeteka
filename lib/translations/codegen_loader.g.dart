@@ -54,6 +54,15 @@ class CodegenLoader extends AssetLoader{
   "final_price": "Final price:",
   "basket_empty": "Your shopping cart is empty!",
   "basket_comeback": "Back to shopping",
+  "oops": "Oops!",
+  "try_again": "Try again",
+  "network_problems": "Network problems",
+  "product_already": "The product is already in the cart",
+  "product_amount": "You have not specified the quantity of the product you want to add to the cart",
+  "error": "Error",
+  "auth_success": "Authorization was successful",
+  "reg_success": "Registration was successful",
+  "check_success": "The check was successful",
   "order_created": "Your order has been created!",
   "order_details": "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
 };
@@ -97,8 +106,17 @@ static const Map<String,dynamic> ru = {
   "final_price": "Итого:",
   "basket_empty": "Ваша корзина пуста!",
   "basket_comeback": "Вернуться к покупкам",
+  "oops": "Упс!",
+  "try_again": "Попробовать снова",
+  "network_problems": "Проблемы с сетью",
+  "product_already": "Продукт уже находится в корзине",
+  "product_amount": "Вы не указали количество продукта, который хотите добавить в корзину",
+  "error": "Ошибка",
   "order_created": "Ваш заказ создан!",
-  "order_details": "Наши сотрудники свяжутся с Вами по контактному телефону для согласования заказа и уточнения условий доставки."
+  "order_details": "Наши сотрудники свяжутся с Вами по контактному телефону для согласования заказа и уточнения условий доставки.",
+  "auth_success": "Авторизация прошла успешно",
+  "reg_success": "Регистрация прошла успешно",
+  "check_success": "Проверка прошла успешно"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }
