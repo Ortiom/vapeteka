@@ -61,29 +61,31 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
             color: const Color(0xFF505050),
           ),
         ),
-        child: Column(
-          children: [
-            SizedBox(height: 13.h),
-            Text(
-              'change_lng',
-              style: TextStyle(
-                  fontFamily: 'BlissPro',
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ).tr(),
-            SizedBox(height: 25.h),
-            ListTile(
-              title: Text(
-                'russian',
+        child: Theme(
+          data: Theme.of(context).copyWith(
+              unselectedWidgetColor: Colors.white, disabledColor: Colors.white),
+          child: Column(
+            children: [
+              SizedBox(height: 13.h),
+              Text(
+                'change_lng',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
-                    fontSize: 20.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
               ).tr(),
-              leading: Radio<bool>(
-                fillColor: MaterialStateProperty.all(Colors.white),
+              SizedBox(height: 25.h),
+              RadioListTile<bool>(
+                activeColor: Colors.white,
+                title: Text(
+                  'russian',
+                  style: TextStyle(
+                      fontFamily: 'BlissPro',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ).tr(),
                 value: false,
                 groupValue: language,
                 onChanged: (value) {
@@ -96,18 +98,16 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   _setLanguage(Locale('ru'));
                 },
               ),
-            ),
-            ListTile(
-              title: Text(
-                'english',
-                style: TextStyle(
-                    fontFamily: 'BlissPro',
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ).tr(),
-              leading: Radio<bool>(
-                fillColor: MaterialStateProperty.all(Colors.white),
+              RadioListTile<bool>(
+                activeColor: Colors.white,
+                title: Text(
+                  'english',
+                  style: TextStyle(
+                      fontFamily: 'BlissPro',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ).tr(),
                 value: true,
                 groupValue: language,
                 onChanged: (value) {
@@ -120,8 +120,8 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   _setLanguage(Locale('en'));
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

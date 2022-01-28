@@ -23,7 +23,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   ApiController apiController = Get.find();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _middleNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmController =
       TextEditingController();
@@ -69,12 +68,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   textInputType: TextInputType.text,
                 ),
                 SizedBox(height: 19.w),
-                LoginTextField(
-                  controller: _middleNameController,
-                  label: 'middle_name',
-                  textInputType: TextInputType.text,
-                ),
-                SizedBox(height: 19.w),
                 PasswordTextField(
                   controller: _passwordController,
                   label: 'password',
@@ -109,7 +102,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Register register = Register(
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
-      middleName: _middleNameController.text,
       password: _passwordController.text,
       passConfirm: _passwordConfirmController.text,
       phoneNumber: '7' + maskFormatter.getUnmaskedText(),

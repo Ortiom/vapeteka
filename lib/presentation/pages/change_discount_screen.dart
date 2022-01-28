@@ -50,31 +50,33 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
             color: const Color(0xFF505050),
           ),
         ),
-        child: Column(
-          children: [
-            SizedBox(height: 13.h),
-            Text(
-              'code_type',
-              style: TextStyle(
-                  fontFamily: 'BlissPro',
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ).tr(),
-            SizedBox(height: 25.h),
-            ListTile(
-              title: Text(
-                'barcode',
+        child: Theme(
+          data: Theme.of(context).copyWith(
+              unselectedWidgetColor: Colors.white, disabledColor: Colors.white),
+          child: Column(
+            children: [
+              SizedBox(height: 13.h),
+              Text(
+                'code_type',
                 style: TextStyle(
                     fontFamily: 'BlissPro',
-                    fontSize: 18.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
               ).tr(),
-              leading: Radio<bool>(
-                fillColor: MaterialStateProperty.all(Colors.white),
+              SizedBox(height: 25.h),
+              RadioListTile<bool>(
+                groupValue: discount,
+                activeColor: Colors.white,
                 value: false,
-                groupValue: discount,
+                title: Text(
+                  'barcode',
+                  style: TextStyle(
+                      fontFamily: 'BlissPro',
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ).tr(),
                 onChanged: (value) {
                   setState(() {
                     discount = value!;
@@ -84,20 +86,10 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
                   });
                 },
               ),
-            ),
-            ListTile(
-              title: Text(
-                'qr_code',
-                style: TextStyle(
-                    fontFamily: 'BlissPro',
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ).tr(),
-              leading: Radio<bool>(
-                fillColor: MaterialStateProperty.all(Colors.white),
+              RadioListTile<bool>(
+                groupValue: discount,
+                activeColor: Colors.white,
                 value: true,
-                groupValue: discount,
                 onChanged: (value) {
                   setState(() {
                     discount = value!;
@@ -106,9 +98,17 @@ class _ChangeDiscountScreenState extends State<ChangeDiscountScreen> {
                     // print(apiController.discount);
                   });
                 },
+                title: Text(
+                  'qr_code',
+                  style: TextStyle(
+                      fontFamily: 'BlissPro',
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ).tr(),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

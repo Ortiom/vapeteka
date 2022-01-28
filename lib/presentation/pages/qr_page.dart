@@ -66,7 +66,7 @@ class _QRPageState extends State<QRPage> {
                               ),
                               SizedBox(height: 25.w),
                               Text(
-                                apiController.discountString! + '%',
+                                apiController.discountInt.toString() + '%',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 48.sp,
@@ -129,7 +129,7 @@ class _QRPageState extends State<QRPage> {
                               ),
                               SizedBox(height: 25.w),
                               Text(
-                                apiController.discountString! + '%',
+                                apiController.discountInt.toString() + '%',
                                 style: TextStyle(
                                   fontFamily: 'BlissPro',
                                   fontSize: 48.sp,

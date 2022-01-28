@@ -28,7 +28,7 @@ class ApiController extends GetxController {
   bool discount = false.obs();
   bool language = false.obs();
   PromotionsModel promotionsModel = PromotionsModel().obs();
-  String? discountString = ''.obs();
+  int? discountInt = 0.obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
@@ -36,7 +36,6 @@ class ApiController extends GetxController {
     FormData formData = FormData.fromMap({
       'first_name': model.firstName,
       'last_name': model.lastName,
-      'middle_name': model.middleName,
       'password': model.password,
       'conf_password': model.passConfirm,
       'phone_number': model.phoneNumber,
@@ -152,7 +151,8 @@ class ApiController extends GetxController {
         secondResult.status == Status.success) {
       print(token);
       qrCode = result.data['qr_code']['qr_code'];
-      discountString = secondResult.data['discount']['discount'];
+      discountInt = int.parse(secondResult.data['discount']['discount']);
+      print('asdasdasd $discountInt');
       loading = false;
       update();
     } else if (result.status == Status.error ||

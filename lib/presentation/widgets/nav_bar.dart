@@ -1,9 +1,8 @@
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/presentation/pages/catalog_page.dart';
 import 'package:vapeteka/presentation/pages/promotion_page.dart';
 import 'package:vapeteka/presentation/pages/settings_page.dart';
@@ -18,125 +17,220 @@ class CustomNavBar extends StatefulWidget {
 }
 
 class _CustomNavBarState extends State<CustomNavBar> {
+  ApiController apiController = Get.find();
+
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(
-        color: Color(0xFF333333),
-      ),
-      child: SizedBox(
-        height: 56.w,
-        width: 1.sw,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 35.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.offAll(() => const QRPage());
-                },
-                child: SizedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.crop_free,
-                        color: Colors.white.withOpacity(0.74),
-                      ),
-                      Text(
-                        'QR',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white.withOpacity(0.74),
+    return apiController.discountInt! >= 10
+        ? DecoratedBox(
+            decoration: const BoxDecoration(
+              color: Color(0xFF333333),
+            ),
+            child: SizedBox(
+              height: 56.w,
+              width: 1.sw,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAll(() => const QRPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.crop_free,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'QR',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.off(() => const CatalogPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.store_outlined,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'catalog',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.off(() => const PromotionPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.info_outlined,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'discount',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.off(() => const SettingsPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.settings_outlined,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'settings',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Get.off(() => const CatalogPage());
-                },
-                child: SizedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.store_outlined,
-                        color: Colors.white.withOpacity(0.74),
-                      ),
-                      Text(
-                        'catalog',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white.withOpacity(0.74),
+            ),
+          )
+        : DecoratedBox(
+            decoration: const BoxDecoration(
+              color: Color(0xFF333333),
+            ),
+            child: SizedBox(
+              height: 56.w,
+              width: 1.sw,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAll(() => const QRPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.crop_free,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'QR',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ),
+                          ],
                         ),
-                      ).tr(),
-                    ],
-                  ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.off(() => const PromotionPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.info_outlined,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'discount',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.off(() => const SettingsPage());
+                      },
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.settings_outlined,
+                              color: Colors.white.withOpacity(0.74),
+                            ),
+                            Text(
+                              'settings',
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white.withOpacity(0.74),
+                              ),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Get.off(() => const PromotionPage());
-                },
-                child: SizedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.info_outlined,
-                        color: Colors.white.withOpacity(0.74),
-                      ),
-                      Text(
-                        'discount',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white.withOpacity(0.74),
-                        ),
-                      ).tr(),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.off(() => const SettingsPage());
-                },
-                child: SizedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.settings_outlined,
-                        color: Colors.white.withOpacity(0.74),
-                      ),
-                      Text(
-                        'settings',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white.withOpacity(0.74),
-                        ),
-                      ).tr(),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
   }
 }
 
