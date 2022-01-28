@@ -102,13 +102,13 @@ class _QRPageState extends State<QRPage> {
                                   barcode: Barcode.ean13(),
                                   color: Colors.white,
                                   data: apiController.qrCode
-                                      .toString()
-                                      .substring(
-                                          0,
-                                          apiController.qrCode
-                                                  .toString()
-                                                  .length -
-                                              1),
+                                      .toString(),
+                                      // .substring(
+                                      //     0,
+                                      //     apiController.qrCode
+                                      //             .toString()
+                                      //             .length -
+                                      //         1),
                                   style: TextStyle(
                                     fontFamily: 'BlissPro',
                                     fontSize: 24.sp,

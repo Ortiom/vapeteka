@@ -6,6 +6,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
+import 'package:vapeteka/presentation/pages/sms_code_screen.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
 import 'package:vapeteka/services/response_result.dart';
@@ -77,7 +78,9 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
                 SizedBox(height: 23.w),
                 GreenButton(
                   label: 'register',
-                  onPressed: () {},
+                  onPressed: () {
+                    postData();
+                  },
                 ),
               ],
             ),
@@ -104,6 +107,7 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
+        Get.to(()=> const SmsCodeScreen());
       } else {
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
