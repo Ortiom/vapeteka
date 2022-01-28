@@ -47,7 +47,7 @@ abstract class  LocaleKeys {
   static const product_amount = 'product_amount';
   static const error = 'error';
   static const auth_success = 'auth_success';
-  static const reg_success = 'auth_error';
+  static const reg_success = 'reg_success';
   static const check_success = 'check_success';
   static const order_created = 'order_created';
   static const order_details = 'order_details';

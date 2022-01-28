@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/sms_code.dart';
+import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
@@ -72,7 +73,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
-        Get.to(() => const CustomScaffold());
+        Get.to(() => const QRPage());
       } else {
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
