@@ -78,33 +78,31 @@ class CatalogItemButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onPressed,
-      child: SizedBox(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 12.w),
-            Text(
-              title!,
-              style: TextStyle(
-                fontFamily: 'BlissPro',
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
-              ),
-            ).tr(),
-            SizedBox(height: 4.w),
-            Padding(
-              padding: EdgeInsets.only(left: 4.w),
-              child: Divider(
-                thickness: 1.w,
-                color: Colors.white,
-              ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 12.w),
+          Text(
+            title!,
+            style: TextStyle(
+              fontFamily: 'BlissPro',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
             ),
-          ],
-        ),
+          ).tr(),
+          SizedBox(height: 4.w),
+          Padding(
+            padding: EdgeInsets.only(left: 4.w),
+            child: Divider(
+              thickness: 1.w,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
