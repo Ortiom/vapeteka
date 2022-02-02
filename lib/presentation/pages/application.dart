@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ApiController apiController = Get.put(ApiController());
+
   @override
   void initState() {
     super.initState();
@@ -116,4 +117,5 @@ class _MyAppState extends State<MyApp> {
       print(token);
     }
   }
+
 }
