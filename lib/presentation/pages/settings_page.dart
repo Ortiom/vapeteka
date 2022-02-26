@@ -45,13 +45,22 @@ class _SettingsPageState extends State<SettingsPage> {
                 CatalogItemButton(
                   title: 'change_lng',
                   onPressed: () {
-                    Get.to(() =>  ChangeLanguageScreen());
+                    Get.to(() => ChangeLanguageScreen());
                   },
                 ),
                 CatalogItemButton(
                   title: 'exit',
                   onPressed: () {
                     apiController.logOut();
+                    PreferencesService.setToken('');
+                    apiController.qrCode = 0;
+                    Get.to(() => const WelcomeScreen());
+                  },
+                ),
+                CatalogItemButton(
+                  title: 'delete_acc',
+                  onPressed: () {
+                    apiController.deleteAccReq();
                     PreferencesService.setToken('');
                     apiController.qrCode = 0;
                     Get.to(() => const WelcomeScreen());

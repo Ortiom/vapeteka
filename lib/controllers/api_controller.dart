@@ -186,12 +186,11 @@ class ApiController extends GetxController {
 
   Future<Result> logOut() async {
     final request = restService.request(
-      logout,
+      logoutUrl,
       token: token,
       method: post,
     );
     var result = await request;
-    print([result.errorText, result.status, result.statusCode]);
     return result;
   }
 
@@ -269,6 +268,16 @@ class ApiController extends GetxController {
       loading = false;
       update();
     }
+    return result;
+  }
+
+  Future<Result> deleteAccReq() async {
+    final request = restService.request(
+      deleteUrl,
+      token: token,
+      method: post,
+    );
+    var result = await request;
     return result;
   }
 }
