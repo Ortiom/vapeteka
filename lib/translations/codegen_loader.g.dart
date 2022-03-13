@@ -67,7 +67,11 @@ class CodegenLoader extends AssetLoader {
     "check_success": "The check was successful",
     "order_created": "Your order has been created!",
     "order_details":
-        "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery."
+        "Our staff will contact you by phone to coordinate the order and clarify the terms of delivery.",
+    "cancel":"Cancel",
+    "confirm":"Confirm",
+    "acc_info":"Your account data will be deleted",
+    "confirm_action":"Confirm the action"
   };
   static const Map<String, dynamic> ru = {
     "enter": "ВОЙТИ",
@@ -122,7 +126,11 @@ class CodegenLoader extends AssetLoader {
         "Наши сотрудники свяжутся с Вами по контактному телефону для согласования заказа и уточнения условий доставки.",
     "auth_success": "Авторизация прошла успешно",
     "reg_success": "Регистрация прошла успешно",
-    "check_success": "Проверка прошла успешно"
+    "check_success": "Проверка прошла успешно",
+    "cancel":"Отмена",
+    "confirm":"Подтвердить",
+    "acc_info":"Данные вашего аккаунта будут удалены",
+    "confirm_action":"Подтвердите действие"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "en": en,

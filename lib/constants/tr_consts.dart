@@ -10,3 +10,4 @@ final product_amount = LocaleKeys.product_amount.tr();
 final auth_success = LocaleKeys.auth_success.tr();
 final reg_success = LocaleKeys.reg_success.tr();
 final check_success = LocaleKeys.check_success.tr();
+final confirm_action = LocaleKeys.confirm_action.tr();

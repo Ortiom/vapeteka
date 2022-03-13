@@ -52,4 +52,5 @@ abstract class LocaleKeys {
   static const check_success = 'check_success';
   static const order_created = 'order_created';
   static const order_details = 'order_details';
+  static const confirm_action = 'confirm_action';
 }

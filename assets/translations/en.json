@@ -30,6 +30,10 @@
 
   "exit" : "Exit",
   "delete_acc" : "Delete account",
+  "cancel":"Cancel",
+  "confirm":"Confirm",
+  "acc_info":"Your account data will be deleted",
+  "confirm_action":"Confirm the action",
 
   "current_discount": "Current discount",
   "product": "Product",

@@ -5,7 +5,6 @@ import 'package:vapeteka/models/catalog_models/catalogs.dart';
 import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/models/login_models/register.dart';
 import 'package:vapeteka/models/login_models/register_with_card.dart';
-import 'package:vapeteka/models/login_models/sms_code.dart';
 import 'package:vapeteka/models/products_models/order_model.dart';
 import 'package:vapeteka/models/products_models/product_model.dart';
 import 'package:vapeteka/models/promotion_model.dart';
@@ -19,6 +18,7 @@ class ApiController extends GetxController {
   RestService restService = RestService();
   bool loading = false.obs();
   String number = ''.obs();
+  String reg = ''.obs();
   String? deviceToken = ''.obs();
   String token = ''.obs();
   int qrCode = 0.obs();
@@ -36,6 +36,7 @@ class ApiController extends GetxController {
     FormData formData = FormData.fromMap({
       'first_name': model.firstName,
       'last_name': model.lastName,
+      'middle_name': model.middleName,
       'password': model.password,
       'conf_password': model.passConfirm,
       'phone_number': model.phoneNumber,
@@ -49,8 +50,10 @@ class ApiController extends GetxController {
     var result = await request;
     if (result.status == Status.success) {
       number = model.phoneNumber!;
+      reg = result.data['registered'];
       loading = false;
       update();
+      print(['RESPONSE REGISTRATION',result.data]);
     } else if (result.status == Status.error) {
       loading = false;
       update();
@@ -110,12 +113,13 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> smsCodeReq(SmsCode model) async {
+  Future<Result> smsCodeReq(String code) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({
       'phone_number': number,
-      'code': model.code,
+      'code': code,
+      'registered': reg,
     });
     final request = restService.request(
       smsCodeUrl,
@@ -153,6 +157,7 @@ class ApiController extends GetxController {
       qrCode = result.data['qr_code']['qr_code'];
       discountInt = int.parse(secondResult.data['discount']['discount']);
       print('asdasdasd $discountInt');
+      print(['secondResult', secondResult.data]);
       loading = false;
       update();
     } else if (result.status == Status.error ||

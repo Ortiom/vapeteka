@@ -4,11 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
-import 'package:vapeteka/models/login_models/sms_code.dart';
 import 'package:vapeteka/presentation/pages/qr_page.dart';
 import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
-import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/response_result.dart';
 
 class SmsCodeScreen extends StatefulWidget {
@@ -62,12 +60,8 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
   }
 
   Future postData() async {
-    SmsCode smsCode = SmsCode(
-      code: _smsCodeController.text,
-      phoneNumber: apiController.number,
-    );
 
-    await apiController.smsCodeReq(smsCode).then((value) async {
+    await apiController.smsCodeReq(_smsCodeController.text).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar(check_success, '',
             backgroundColor: Colors.green,

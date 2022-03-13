@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 
+import '../../constants/tr_consts.dart';
 import 'change_discount_screen.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -60,10 +62,38 @@ class _SettingsPageState extends State<SettingsPage> {
                 CatalogItemButton(
                   title: 'delete_acc',
                   onPressed: () {
-                    apiController.deleteAccReq();
-                    PreferencesService.setToken('');
-                    apiController.qrCode = 0;
-                    Get.to(() => const WelcomeScreen());
+                    Get.defaultDialog(
+                      backgroundColor: const Color(0xFF333333),
+                      contentPadding: const EdgeInsets.all(16),
+                      titlePadding: const EdgeInsets.symmetric(vertical: 10),
+                      title: confirm_action,
+                      content: const Text(
+                        'acc_info',
+                        style: TextStyle(color: Colors.white),
+                      ).tr(),
+                      titleStyle: const TextStyle(color: Colors.white),
+                      cancel: TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child:  Text(
+                          'cancel',
+                          style: TextStyle(color: Colors.red, fontSize: 18.sp),
+                        ).tr(),
+                      ),
+                      confirm: TextButton(
+                        onPressed: () {
+                          apiController.deleteAccReq();
+                          PreferencesService.setToken('');
+                          apiController.qrCode = 0;
+                          Get.to(() => const WelcomeScreen());
+                        },
+                        child:  Text(
+                          'confirm',
+                          style: TextStyle(color: Color(0xFF27AE60), fontSize: 18.sp),
+                        ).tr(),
+                      ),
+                    );
                   },
                 ),
               ],
@@ -74,3 +104,12 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
+// Get.dialog(AlertDialog(
+//  backgroundColor: Color(0xFF333333),
+//   content: Column(
+//     children: [
+//       Text('')
+//     ],
+//   )
+// ));
+
