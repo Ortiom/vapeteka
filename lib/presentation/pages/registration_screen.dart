@@ -67,7 +67,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   controller: _lastNameController,
                   label: 'surname',
                   textInputType: TextInputType.text,
-                ),SizedBox(height: 19.w),
+                ),
+                SizedBox(height: 19.w),
                 LoginTextField(
                   controller: _middleNameController,
                   label: 'middle_name',
@@ -121,8 +122,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
+
         Get.to(() => const SmsCodeScreen());
       } else {
+        print(value.errorText);
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,

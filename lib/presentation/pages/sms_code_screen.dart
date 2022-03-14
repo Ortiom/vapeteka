@@ -60,7 +60,6 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
   }
 
   Future postData() async {
-
     await apiController.smsCodeReq(_smsCodeController.text).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar(check_success, '',
@@ -69,6 +68,8 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
             duration: 4.seconds);
         Get.to(() => const QRPage());
       } else {
+        print(
+            'asdasdasdaasd${[value.errorText, value.data, value.statusCode]}');
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,

@@ -76,21 +76,24 @@ class _SettingsPageState extends State<SettingsPage> {
                         onPressed: () {
                           Get.back();
                         },
-                        child:  Text(
+                        child: Text(
                           'cancel',
                           style: TextStyle(color: Colors.red, fontSize: 18.sp),
                         ).tr(),
                       ),
                       confirm: TextButton(
                         onPressed: () {
-                          apiController.deleteAccReq();
-                          PreferencesService.setToken('');
+                          apiController
+                              .deleteAccReq()
+                              .then((value) => print([value.data.toString()]));
+                          PreferencesService.setToken(' ');
                           apiController.qrCode = 0;
                           Get.to(() => const WelcomeScreen());
                         },
-                        child:  Text(
+                        child: Text(
                           'confirm',
-                          style: TextStyle(color: Color(0xFF27AE60), fontSize: 18.sp),
+                          style: TextStyle(
+                              color: Color(0xFF27AE60), fontSize: 18.sp),
                         ).tr(),
                       ),
                     );
@@ -112,4 +115,3 @@ class _SettingsPageState extends State<SettingsPage> {
 //     ],
 //   )
 // ));
-

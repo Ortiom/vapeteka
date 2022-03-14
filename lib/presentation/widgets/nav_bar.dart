@@ -241,12 +241,14 @@ class CustomScaffold extends StatefulWidget {
     this.children,
     this.actions,
     this.showLeading,
+    this.navBar,
   }) : super(key: key);
 
   final String? title;
   final List<Widget>? children;
   final List<Widget>? actions;
   final bool? showLeading;
+  final Widget? navBar;
 
   @override
   _CustomScaffoldState createState() => _CustomScaffoldState();
@@ -257,7 +259,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: widget.navBar ?? const CustomNavBar(),
       appBar: AppBar(
         actions: widget.actions,
         title: Text(

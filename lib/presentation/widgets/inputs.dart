@@ -24,19 +24,13 @@ class PasswordTextField extends StatefulWidget {
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool? _passVisible;
-
-  @override
-  void initState() {
-    _passVisible = false;
-    super.initState();
-  }
+  bool _passVisible = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      obscureText: _passVisible!,
+      obscureText: _passVisible,
       style: TextStyle(
           fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
@@ -67,11 +61,11 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         ).tr(),
         suffixIcon: IconButton(
           icon: Icon(
-            _passVisible! ? Icons.visibility : Icons.visibility_off,
+            _passVisible ? Icons.visibility : Icons.visibility_off,
             color: Colors.white,
           ),
           onPressed: () => setState(() {
-            _passVisible = !_passVisible!;
+            _passVisible = !_passVisible;
           }),
         ),
       ),
