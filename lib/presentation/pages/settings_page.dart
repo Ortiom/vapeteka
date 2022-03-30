@@ -86,9 +86,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           apiController
                               .deleteAccReq()
                               .then((value) => print([value.data.toString()]));
-                          PreferencesService.setToken(' ');
+                          PreferencesService.setToken('');
                           apiController.qrCode = 0;
-                          Get.to(() => const WelcomeScreen());
+                          Get.offAll(() => const WelcomeScreen());
                         },
                         child: Text(
                           'confirm',

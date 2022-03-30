@@ -32,8 +32,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
-    _phoneController.text = '7474991201';
-    _passwordController.text = '1';
+    // _phoneController.text = '';
+    // _passwordController.text = '';
     super.initState();
   }
 
