@@ -193,24 +193,27 @@ class _QRPageState extends State<QRPage> {
                           onTap: () {
                             Get.off(() => const PromotionPage());
                           },
-                          child: SizedBox(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.info_outlined,
-                                  color: Colors.white.withOpacity(0.74),
-                                ),
-                                Text(
-                                  'discount',
-                                  style: TextStyle(
-                                    fontFamily: 'BlissPro',
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 25.w),
+                            child: SizedBox(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.info_outlined,
                                     color: Colors.white.withOpacity(0.74),
                                   ),
-                                ).tr(),
-                              ],
+                                  Text(
+                                    'discount',
+                                    style: TextStyle(
+                                      fontFamily: 'BlissPro',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white.withOpacity(0.74),
+                                    ),
+                                  ).tr(),
+                                ],
+                              ),
                             ),
                           ),
                         ),
