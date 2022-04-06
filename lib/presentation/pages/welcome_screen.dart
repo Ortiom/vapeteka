@@ -69,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             formatter: maskFormatter,
             controller: _phoneController,
             label: 'phone_number',
-            textInputType: TextInputType.phone,
+            textInputType: const TextInputType.numberWithOptions(signed: true, decimal: true),
           ),
           SizedBox(height: 27.5.w),
           PasswordTextField(

@@ -31,6 +31,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return TextFormField(
       controller: widget.controller,
       obscureText: _passVisible,
+      keyboardType: TextInputType.visiblePassword,
       style: TextStyle(
           fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(

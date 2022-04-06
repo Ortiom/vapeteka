@@ -73,38 +73,47 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(411, 731),
-      builder: () => GetMaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        theme: ThemeData(fontFamily: 'BlissPro'),
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-        // initialRoute: '/',
-        // defaultTransition: Transition.native,
-        // transitionDuration: Duration(milliseconds: 150),
-        // getPages: [
-        //   GetPage(
-        //     name: "/",
-        //     page: () => SplashScreen(),
-        //   ),
-        //   GetPage(
-        //     name: "/qr_page",
-        //     page: () => QRPage(),
-        //   ),
-        //   GetPage(
-        //     name: "/settings_page",
-        //     page: () => SettingsPage(),
-        //   ),
-        //   GetPage(
-        //     name: "/promotion_page",
-        //     page: () => PromotionPage(),
-        //   ),
-        //   GetPage(
-        //     name: "/catalog_page",
-        //     page: () => CatalogPage(),
-        //   ),
-        // ],
+      builder: () => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          }
+        },
+        child: GetMaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          theme: ThemeData(fontFamily: 'BlissPro'),
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(),
+          // initialRoute: '/',
+          // defaultTransition: Transition.native,
+          // transitionDuration: Duration(milliseconds: 150),
+          // getPages: [
+          //   GetPage(
+          //     name: "/",
+          //     page: () => SplashScreen(),
+          //   ),
+          //   GetPage(
+          //     name: "/qr_page",
+          //     page: () => QRPage(),
+          //   ),
+          //   GetPage(
+          //     name: "/settings_page",
+          //     page: () => SettingsPage(),
+          //   ),
+          //   GetPage(
+          //     name: "/promotion_page",
+          //     page: () => PromotionPage(),
+          //   ),
+          //   GetPage(
+          //     name: "/catalog_page",
+          //     page: () => CatalogPage(),
+          //   ),
+          // ],
+        ),
       ),
     );
   }
