@@ -56,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     apiController.logOut();
                     PreferencesService.setToken('');
                     apiController.qrCode = 0;
-                    Get.to(() => const WelcomeScreen());
+                    Get.offAll(() => const WelcomeScreen());
                   },
                 ),
                 CatalogItemButton(

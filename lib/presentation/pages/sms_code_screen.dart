@@ -66,7 +66,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
-        Get.to(() => const QRPage());
+        Get.offAll(() => const QRPage());
       } else {
         print(
             'asdasdasdaasd${[value.errorText, value.data, value.statusCode]}');
