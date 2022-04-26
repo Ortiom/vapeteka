@@ -19,7 +19,7 @@ class SmsCodeScreen extends StatefulWidget {
 class _SmsCodeScreenState extends State<SmsCodeScreen> {
   ApiController apiController = Get.find();
 
-  final TextEditingController _smsCodeController = TextEditingController();
+  final TextEditingController smsCodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                 ),
                 SizedBox(height: 19.w),
                 LoginTextField(
-                  controller: _smsCodeController,
+                  controller: smsCodeController,
                   label: 'code',
                   textInputType: TextInputType.number,
                 ),
@@ -60,7 +60,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
   }
 
   Future postData() async {
-    await apiController.smsCodeReq(_smsCodeController.text).then((value) async {
+    await apiController.smsCodeReq(int.parse(smsCodeController.text)).then((value) async {
       if (value.status == Status.success) {
         Get.snackbar(check_success, '',
             backgroundColor: Colors.green,

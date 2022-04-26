@@ -39,65 +39,72 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/frame.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(child: _getBody()),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(child: _getBody()),
     );
   }
 
   Widget _getBody() {
-    return Padding(
-      padding: EdgeInsets.only(top: 160.w, left: 36.w, right: 36.w),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            'assets/images/logotype.svg',
-            width: 213.w,
+    return Stack(alignment: Alignment.center,
+      children: [
+        Positioned(
+          child: Image.asset(
+            'assets/images/frame.png',
+            fit: BoxFit.cover,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
           ),
-          SizedBox(height: 50.w),
-          LoginTextField(
-            prefix: '+7 ',
-            formatter: maskFormatter,
-            controller: _phoneController,
-            label: 'phone_number',
-            textInputType: const TextInputType.numberWithOptions(signed: true, decimal: true),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 20.h),
+          child: Column(
+            children: [
+              Center(
+                child: SvgPicture.asset(
+                  'assets/images/logotype.svg',
+                  width: 213.w,
+                ),
+              ),
+              SizedBox(height: 50.w),
+              LoginTextField(
+                prefix: '+7 ',
+                formatter: maskFormatter,
+                controller: _phoneController,
+                label: 'phone_number',
+                textInputType: const TextInputType.numberWithOptions(
+                    signed: true, decimal: true),
+              ),
+              SizedBox(height: 27.5.w),
+              PasswordTextField(
+                controller: _passwordController,
+                label: 'password',
+              ),
+              SizedBox(height: 27.w),
+              GreenButton(
+                onPressed: () {
+                  postData();
+                  //Get.to(() => const NavBarPage());
+                },
+                label: 'enter',
+              ),
+              SizedBox(height: 28.w),
+              GrayButton(
+                  label: 'register',
+                  onPressed: () {
+                    Get.to(() => const RegistrationScreen());
+                  }),
+              // SizedBox(height: 16.w),
+              // GrayButton(
+              //     label: 'register_card',
+              //     onPressed: () {
+              //       Get.to(() => const RegWithCardScreen());
+              //     }),
+            ],
           ),
-          SizedBox(height: 27.5.w),
-          PasswordTextField(
-            controller: _passwordController,
-            label: 'password',
-          ),
-          SizedBox(height: 27.w),
-          GreenButton(
-            onPressed: () {
-              postData();
-              //Get.to(() => const NavBarPage());
-            },
-            label: 'enter',
-          ),
-          SizedBox(height: 28.w),
-          GrayButton(
-              label: 'register',
-              onPressed: () {
-                Get.to(() => const RegistrationScreen());
-              }),
-          SizedBox(height: 16.w),
-          GrayButton(
-              label: 'register_card',
-              onPressed: () {
-                Get.to(() => const RegWithCardScreen());
-              }),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

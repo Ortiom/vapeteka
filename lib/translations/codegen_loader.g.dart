@@ -71,6 +71,7 @@ class CodegenLoader extends AssetLoader {
     "cancel":"Cancel",
     "confirm":"Confirm",
     "acc_info":"Your account data will be deleted",
+    "about_us":"About us",
     "confirm_action":"Confirm the action"
   };
   static const Map<String, dynamic> ru = {
@@ -130,6 +131,7 @@ class CodegenLoader extends AssetLoader {
     "cancel":"Отмена",
     "confirm":"Подтвердить",
     "acc_info":"Данные вашего аккаунта будут удалены",
+    "about_us":"О нас",
     "confirm_action":"Подтвердите действие"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {

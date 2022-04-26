@@ -113,7 +113,7 @@ class ApiController extends GetxController {
     return result;
   }
 
-  Future<Result> smsCodeReq(String code) async {
+  Future<Result> smsCodeReq(int code) async {
     loading = true;
     update();
     FormData formData = FormData.fromMap({

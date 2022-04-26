@@ -269,19 +269,20 @@ class _QRPageState extends State<QRPage> {
                       ? Center(
                           child: Column(
                             children: [
-                              SizedBox(height: 20.w),
+                              SizedBox(height: 20.h),
                               SvgPicture.asset(
                                 'assets/images/logotype.svg',
-                                width: 100.w,
+                                width: 100.h,
                               ),
-                              SizedBox(height: 17.w),
+                              SizedBox(height: 17.h),
                               QrImage(
                                 data: apiController.qrCode.toString(),
                                 version: QrVersions.auto,
-                                foregroundColor: Colors.white,
-                                size: 298.w,
+                                foregroundColor: Colors.black,
+                                backgroundColor: Colors.white,
+                                size: 298.h,
                               ),
-                              SizedBox(height: 25.w),
+                              SizedBox(height: 25.h),
                               Text(
                                 apiController.discountInt.toString() + '%',
                                 style: TextStyle(
@@ -304,67 +305,43 @@ class _QRPageState extends State<QRPage> {
                           ),
                         )
                       : Center(
-                          child: Column(
-                            children: [
-                              SizedBox(height: 20.w),
-                              SvgPicture.asset(
-                                'assets/images/logotype.svg',
-                                width: 100.w,
-                              ),
-                              SizedBox(height: 17.w),
-                              SizedBox(
-                                height: 145.h,
-                                width: 363.w,
-                                child: BarcodeWidget(
-                                  barcode: Barcode.ean13(),
-                                  color: Colors.white,
-                                  data: apiController.qrCode.toString(),
-                                  // .substring(
-                                  //     0,
-                                  //     apiController.qrCode
-                                  //             .toString()
-                                  //             .length -
-                                  //         1),
-                                  style: TextStyle(
-                                    fontFamily: 'BlissPro',
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.white,
-                                  ),
-                                  errorBuilder: (context, error) => Center(
-                                      child: Text(
-                                    error,
-                                    style: TextStyle(
-                                      fontFamily: 'BlissPro',
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.white,
-                                    ),
-                                  )),
-                                ),
-                              ),
-                              SizedBox(height: 25.w),
-                              Text(
-                                apiController.discountInt.toString() + '%',
-                                style: TextStyle(
-                                  fontFamily: 'BlissPro',
-                                  fontSize: 48.sp,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                'current_discount',
-                                style: TextStyle(
-                                  fontFamily: 'BlissPro',
-                                  fontSize: 24.sp,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white,
-                                ),
-                              ).tr(),
-                            ],
-                          ),
-                        )
+            child: Column(
+              children: [
+                SizedBox(height: 20.h),
+                SvgPicture.asset(
+                  'assets/images/logotype.svg',
+                  width: 100.h,
+                ),
+                SizedBox(height: 17.h),
+                QrImage(
+                  data: apiController.qrCode.toString(),
+                  version: QrVersions.auto,
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  size: 298.h,
+                ),
+                SizedBox(height: 25.h),
+                Text(
+                  apiController.discountInt.toString() + '%',
+                  style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 48.sp,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  'current_discount',
+                  style: TextStyle(
+                    fontFamily: 'BlissPro',
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                  ),
+                ).tr(),
+              ],
+            ),
+          )
                   : const SizedBox(),
         ],
       ),

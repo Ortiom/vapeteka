@@ -10,6 +10,7 @@ import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 
 import '../../constants/tr_consts.dart';
+import 'about_us_page.dart';
 import 'change_discount_screen.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -39,15 +40,15 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               children: [
                 CatalogItemButton(
-                  title: 'code_type',
-                  onPressed: () {
-                    Get.to(() => const ChangeDiscountScreen());
-                  },
-                ),
-                CatalogItemButton(
                   title: 'change_lng',
                   onPressed: () {
                     Get.to(() => ChangeLanguageScreen());
+                  },
+                ),
+                CatalogItemButton(
+                  title: 'about_us',
+                  onPressed: () {
+                    Get.to(() => const AboutUsScreen());
                   },
                 ),
                 CatalogItemButton(
