@@ -127,6 +127,9 @@ class ApiController extends GetxController {
       data: formData,
     );
     var result = await request;
+    token = result.data['token'];
+    print(token);
+    PreferencesService.setToken(token);
     if (result.status == Status.success) {
       loading = false;
       update();
