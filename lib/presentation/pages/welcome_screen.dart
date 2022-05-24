@@ -42,7 +42,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(child: _getBody()),
+      body: SingleChildScrollView(
+
+          child: _getBody()),
     );
   }
 

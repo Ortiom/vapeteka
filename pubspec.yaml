@@ -19,7 +19,7 @@ dependencies:
   dio: ^4.0.3
   get: ^4.3.8
   flutter_screenutil: ^5.0.0+2
-  flutter_svg: ^0.23.0+1
+  flutter_svg: ^1.0.3
   google_fonts: ^2.1.0
   mask_text_input_formatter: ^2.0.0
   qr_flutter: ^4.0.0
@@ -32,6 +32,7 @@ dependencies:
   provider: ^6.0.2
   double_back_to_close_app: ^2.0.1
   pull_to_refresh: ^2.0.0
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -65,3 +66,4 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/svg_icons/

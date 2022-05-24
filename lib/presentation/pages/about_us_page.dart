@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:vapeteka/presentation/widgets/icon_link.dart';
 
 import '../../controllers/api_controller.dart';
 import '../widgets/nav_bar.dart';
@@ -11,6 +14,18 @@ class AboutUsScreen extends StatefulWidget {
 
   @override
   _AboutUsScreenState createState() => _AboutUsScreenState();
+}
+
+final Uri _urlFb = Uri.parse('https://www.facebook.com/vapeteka/');
+final Uri _urlVk = Uri.parse('https://vk.com/vapetekaofficial');
+final Uri _urlInsta = Uri.parse('https://www.instagram.com/vapeteka/');
+final Uri _urlTwitter = Uri.parse('https://twitter.com/vapeteka_com');
+final Uri _urlTelegram = Uri.parse('https://t.me/vapeteka');
+final Uri _urlYouTube =
+    Uri.parse('https://www.youtube.com/watch?v=LwimKACG7jg');
+
+Future<void> _launchUrl(Uri url) async {
+  if (!await launchUrl(url)) throw 'Could not launch $url';
 }
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
@@ -37,26 +52,65 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       bottomNavigationBar: const CustomNavBar(),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-        children:  [
+        children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
-            child: Text('VAPETEKA VAPESHOP&BAR',style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w600, color: Colors.white),textAlign: TextAlign.center,),
+            child: Text(
+              'VAPETEKA VAPESHOP&BAR',
+              style: TextStyle(
+                  fontSize: 32.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
           ),
-          ContactsInfoContainer(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlInsta),
+                  svgIcon: 'assets/svg_icons/instagram.svg',
+                ),
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlTelegram),
+                  svgIcon: 'assets/svg_icons/telegram.svg',
+                ),
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlFb),
+                  svgIcon: 'assets/svg_icons/facebook.svg',
+                ),
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlVk),
+                  svgIcon: 'assets/svg_icons/vk.svg',
+                ),
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlTwitter),
+                  svgIcon: 'assets/svg_icons/twitter.svg',
+                ),
+                LinkIconWidget(
+                  onTap: () => _launchUrl(_urlYouTube),
+                  svgIcon: 'assets/svg_icons/youtube.svg',
+                ),
+              ],
+            ),
+          ),
+          const ContactsInfoContainer(
             title: 'Vapeteka на Мендикулова',
             address: 'г.Алматы, мкрн.Самал-2, д.84',
             phoneNumber: '+7 (727) 250 00 04',
             phoneNumber2: '+7 (708) 250 00 04',
             email: 'almaty@vapeteka.kz',
           ),
-          ContactsInfoContainer(
+          const ContactsInfoContainer(
             title: 'Vapeteka на Сатпаева',
             address: 'г.Алматы, ул.Сатпаева, д.64б',
             phoneNumber: ' +7 (727) 392 00 58',
             phoneNumber2: '+7 (708) 250 01 14',
             email: 'satpayeva@vapeteka.kz',
           ),
-          ContactsInfoContainer(
+          const ContactsInfoContainer(
             title: 'Vapeteka Астана',
             address: 'г.Нур-султан, Мангилик Ел, д.28',
             phoneNumber: '+7 (708) 250 01 13',
@@ -142,21 +196,24 @@ class ContactsInfoContainer extends StatelessWidget {
                         ),
                       ],
                     ),
-                    phoneNumber2 != null ? Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 10.w),
-                          child: const Icon(Icons.phone, color: Colors.white),
-                        ),
-                        SelectableText(
-                          '$phoneNumber2',
-                          style: TextStyle(
-                              fontSize: 18.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ) : const SizedBox(),
+                    phoneNumber2 != null
+                        ? Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 10.w),
+                                child: const Icon(Icons.phone,
+                                    color: Colors.white),
+                              ),
+                              SelectableText(
+                                '$phoneNumber2',
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          )
+                        : const SizedBox(),
                     Row(
                       children: [
                         Padding(
