@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -49,9 +50,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
         ],
         title: 'products',
         children: [
-          apiController.loading && products.products == null
+          apiController.loading
               ? SizedBox(
-                  height: 1.sh,
+                  height: 0.8.sh,
                   child: Center(
                     child: CircleAvatar(
                         radius: 35.w,
@@ -66,8 +67,24 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         )),
                   ),
                 )
-              : products.products != null
-                  ? Padding(
+              : products.products!.isEmpty
+                  ? SizedBox(
+                      height: 0.8.sh,
+                      child: Center(
+                        child: Flex(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          direction: Axis.vertical,
+                          children: [
+                            Icon(Icons.sticky_note_2_outlined, color: Colors.white, size: 50.w,),
+                            Text(
+                              'catalog_empty',
+                              style: TextStyle(color: Colors.white, fontSize: 24.sp),
+                            ).tr(),
+                          ],
+                        ),
+                      ),
+                    )
+                  : Padding(
                       padding: EdgeInsets.only(top: 16.w),
                       child: ListView.builder(
                         itemCount: products.products!.length,
@@ -91,16 +108,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       element.id ==
                                       products.products![index].id)
                                   .isNotEmpty) {
-                                Get.snackbar(
-                                    oops, product_already,
-                                    backgroundColor: Colors.transparent.withOpacity(0.80),
+                                Get.snackbar(oops, product_already,
+                                    backgroundColor:
+                                        Colors.transparent.withOpacity(0.80),
                                     colorText: Colors.white,
                                     duration: 4.seconds);
                               } else if (products.products![index].amount ==
                                   0) {
-                                Get.snackbar(oops,
-                                    product_amount,
-                                    backgroundColor: Colors.transparent.withOpacity(0.80),
+                                Get.snackbar(oops, product_amount,
+                                    backgroundColor:
+                                        Colors.transparent.withOpacity(0.80),
                                     colorText: Colors.white,
                                     duration: 4.seconds);
                               } else {
@@ -133,7 +150,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         },
                       ),
                     )
-                  : const SizedBox(),
         ],
       ),
     );

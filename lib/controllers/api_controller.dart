@@ -159,7 +159,6 @@ class ApiController extends GetxController {
       print(token);
       qrCode = result.data['qr_code']['qr_code'];
       discountInt = int.parse(secondResult.data['discount']['discount']);
-      print('asdasdasd $discountInt');
       print(['secondResult', secondResult.data]);
       loading = false;
       update();

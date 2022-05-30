@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:vapeteka/presentation/widgets/icon_link.dart';
 
 import '../../controllers/api_controller.dart';
@@ -25,7 +26,7 @@ final Uri _urlYouTube =
     Uri.parse('https://www.youtube.com/watch?v=LwimKACG7jg');
 
 Future<void> _launchUrl(Uri url) async {
-  if (!await launchUrl(url)) throw 'Could not launch $url';
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication,)) throw 'Could not launch $url';
 }
 
 class _AboutUsScreenState extends State<AboutUsScreen> {

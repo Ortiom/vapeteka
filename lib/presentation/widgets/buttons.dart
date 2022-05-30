@@ -1,9 +1,12 @@
+import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 
 class GreenButton extends StatelessWidget {
-  const GreenButton({
+   GreenButton({
     Key? key,
     this.onPressed,
     this.label,
@@ -20,18 +23,19 @@ class GreenButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       color: const Color(0xFF27AE60),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      onPressed: onPressed,
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
+      onPressed:
+        onPressed,
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
       child: Text(
-        label!,
-        style: TextStyle(
-          fontFamily: 'BlissPro',
-          fontSize: fonSize ?? 16.sp,
-          fontWeight: FontWeight.w400,
-          color: Colors.white,
-          letterSpacing: 1.25.w,
-        ),
-      ).tr(),
+      label!,
+      style: TextStyle(
+        fontFamily: 'BlissPro',
+        fontSize: fonSize ?? 16.sp,
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
+        letterSpacing: 1.25.w,
+      ),
+    ).tr()
     );
   }
 }

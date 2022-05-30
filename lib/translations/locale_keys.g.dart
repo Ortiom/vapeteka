@@ -22,6 +22,7 @@ abstract class LocaleKeys {
   static const code_type = 'code_type';
   static const barcode = 'barcode';
   static const qr_code = 'qr_code';
+  static const qr = 'qr';
   static const change_lng = 'change_lng';
   static const russian = 'russian';
   static const english = 'english';
@@ -54,4 +55,5 @@ abstract class LocaleKeys {
   static const order_details = 'order_details';
   static const about_us = 'about_us';
   static const confirm_action = 'confirm_action';
+  static const catalog_empty = 'catalog_empty';
 }

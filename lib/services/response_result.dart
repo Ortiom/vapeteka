@@ -38,7 +38,7 @@ String handleError(dynamic error) {
         if (dioError.response!.data['message'] != null) {
           errorDescription = (dioError.response!.data['message']);
         } else {
-          errorDescription = ('error_unknown_response') +
+          errorDescription = ('Unknown error response, code: ') +
               dioError.response!.statusCode.toString();
         }
         break;

@@ -36,6 +36,7 @@ class CodegenLoader extends AssetLoader {
     "code_type": "Code type",
     "barcode": "Barcode",
     "qr_code": "QR code",
+    "qr": "QR",
     "change_lng": "Change the language",
     "russian": "Russian",
     "english": "English",
@@ -72,7 +73,8 @@ class CodegenLoader extends AssetLoader {
     "confirm":"Confirm",
     "acc_info":"Your account data will be deleted",
     "about_us":"About us",
-    "confirm_action":"Confirm the action"
+    "confirm_action":"Confirm the action",
+    "catalog_empty" : "This section is empty"
   };
   static const Map<String, dynamic> ru = {
     "enter": "ВОЙТИ",
@@ -96,6 +98,7 @@ class CodegenLoader extends AssetLoader {
     "code_type": "Тип кода",
     "barcode": "Штрих-код",
     "qr_code": "QR код",
+    "qr": "QR",
     "change_lng": "Сменить язык",
     "russian": "Русский",
     "english": "Английский",
@@ -132,7 +135,8 @@ class CodegenLoader extends AssetLoader {
     "confirm":"Подтвердить",
     "acc_info":"Данные вашего аккаунта будут удалены",
     "about_us":"О нас",
-    "confirm_action":"Подтвердите действие"
+    "confirm_action":"Подтвердите действие",
+    "catalog_empty": "Этот раздел пуст"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "en": en,

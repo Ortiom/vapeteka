@@ -27,131 +27,139 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
-      child: GestureDetector(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(3),
+        splashColor: Colors.grey.withOpacity(0.10),
+        overlayColor:
+            MaterialStateProperty.all(Color(0xFF27AE60).withOpacity(0.20)),
         onTap: onTap,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(
-              width: 1.w,
-              color: const Color(0xFF505050),
-            ),
-            borderRadius: BorderRadius.circular(3),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(width: 4.w),
-              SizedBox(
-                width: 84.w,
-                height: 84.w,
-                child: Image.network(
-                  baseUrl + '/storage/' + (imageUrl ?? ''),
-                  fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes!)
-                            : null,
-                      ),
-                    );
-                  },
-                  errorBuilder: (context, exception, stackTrace) {
-                    return Icon(
-                      Icons.image_outlined,
-                      size: 30.w,
-                      color: Colors.grey,
-                    );
-                  },
-                ),
+        child: Ink(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(
+                width: 1.w,
+                color: const Color(0xFF505050),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 6.w),
-                    child: SizedBox(
-                      width: 168.w,
-                      child: Text(
-                        title ?? '',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+              borderRadius: BorderRadius.circular(3),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 84.w,
+                    height: 84.w,
+                    child: Image.network(
+                      baseUrl + '/storage/' + (imageUrl ?? ''),
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    (loadingProgress.expectedTotalBytes!)
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, exception, stackTrace) {
+                        return Icon(
+                          Icons.image_outlined,
+                          size: 30.w,
+                          color: Colors.grey,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 6.w),
+                      child: SizedBox(
+                        width: 168.w,
+                        child: Text(
+                          title ?? '',
+                          style: TextStyle(
+                            fontFamily: 'BlissPro',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 110.w,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 15.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: plusButton,
-                            child: DecoratedBox(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.w),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.black,
-                                  size: 20.w,
-                                ),
-                              ),
-                            ),
-                          ),
-                          amount ??
-                              Text(
-                                amount.toString(),
-                                style: TextStyle(
-                                  fontFamily: 'BlissPro',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
+                    SizedBox(
+                      width: 110.w,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 15.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: plusButton,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: Colors.white,
                                 ),
-                              ),
-                          GestureDetector(
-                            onTap: minusButton,
-                            child: DecoratedBox(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.w),
-                                child: Icon(
-                                  Icons.remove,
-                                  color: Colors.black,
-                                  size: 20.w,
+                                child: Padding(
+                                  padding: EdgeInsets.all(4.w),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                    size: 20.w,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            amount ??
+                                Text(
+                                  amount.toString(),
+                                  style: TextStyle(
+                                    fontFamily: 'BlissPro',
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                            GestureDetector(
+                              onTap: minusButton,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(4.w),
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: Colors.black,
+                                    size: 20.w,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 35.w, 12.w, 15.w),
-                child: GreenButton(
-                  label: 'add',
-                  onPressed: addButton,
+                  ],
                 ),
-              )
-            ],
+                const Spacer(),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 30.w, 12.w, 15.w),
+                  child: GreenButton(
+                    label: 'add',
+                    onPressed: addButton,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -183,135 +191,143 @@ class ProductInCartCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
-      child: GestureDetector(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(3),
+        splashColor: Colors.grey.withOpacity(0.10),
+        overlayColor:
+            MaterialStateProperty.all(Color(0xFF27AE60).withOpacity(0.20)),
         onTap: onTap,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(
-              width: 1.w,
-              color: const Color(0xFF505050),
-            ),
-            borderRadius: BorderRadius.circular(3),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(width: 4.w),
-              SizedBox(
-                width: 84.w,
-                height: 84.w,
-                child: Image.network(
-                  baseUrl + '/storage/' + (imageUrl ?? ''),
-                  fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes!)
-                            : null,
-                      ),
-                    );
-                  },
-                  errorBuilder: (context, exception, stackTrace) {
-                    return Icon(
-                      Icons.image_outlined,
-                      size: 30.w,
-                      color: Colors.grey,
-                    );
-                  },
-                ),
+        child: Ink(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(
+                width: 1.w,
+                color: const Color(0xFF505050),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 6.w),
-                    child: SizedBox(
-                      width: 168.w,
-                      child: Text(
-                        title ?? '',
-                        style: TextStyle(
-                          fontFamily: 'BlissPro',
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+              borderRadius: BorderRadius.circular(3),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 84.w,
+                    height: 84.w,
+                    child: Image.network(
+                      baseUrl + '/storage/' + (imageUrl ?? ''),
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    (loadingProgress.expectedTotalBytes!)
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, exception, stackTrace) {
+                        return Icon(
+                          Icons.image_outlined,
+                          size: 30.w,
+                          color: Colors.grey,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 6.w),
+                      child: SizedBox(
+                        width: 168.w,
+                        child: Text(
+                          title ?? '',
+                          style: TextStyle(
+                            fontFamily: 'BlissPro',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 110.w,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 15.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: plusButton,
-                            child: DecoratedBox(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.w),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.black,
-                                  size: 20.w,
+                    SizedBox(
+                      width: 110.w,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 15.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: plusButton,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(4.w),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                    size: 20.w,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Text(
-                            amount.toString(),
-                            style: TextStyle(
-                              fontFamily: 'BlissPro',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: minusButton,
-                            child: DecoratedBox(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
+                            Text(
+                              amount.toString(),
+                              style: TextStyle(
+                                fontFamily: 'BlissPro',
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
                                 color: Colors.white,
                               ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.w),
-                                child: Icon(
-                                  Icons.remove,
-                                  color: Colors.black,
-                                  size: 20.w,
+                            ),
+                            GestureDetector(
+                              onTap: minusButton,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(4.w),
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: Colors.black,
+                                    size: 20.w,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 23.h, 16.w, 0.h),
-                child: Text(
-                  (price ?? '0') + ' KZT',
-                  style: TextStyle(
-                    fontFamily: 'BlissPro',
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+                  ],
+                ),
+                const Spacer(),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 23.h, 16.w, 0.h),
+                  child: Text(
+                    (price ?? '0') + ' KZT',
+                    style: TextStyle(
+                      fontFamily: 'BlissPro',
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

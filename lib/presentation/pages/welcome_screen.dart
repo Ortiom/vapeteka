@@ -87,7 +87,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               GreenButton(
                 onPressed: () {
                   postData();
-                  //Get.to(() => const NavBarPage());
                 },
                 label: 'enter',
               ),

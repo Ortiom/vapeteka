@@ -8,13 +8,8 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
-import 'package:vapeteka/presentation/pages/promotion_page.dart';
-import 'package:vapeteka/presentation/pages/settings_page.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 
-import '../widgets/nav_bar_main.dart';
-import '../widgets/navbar_discount.dart';
-import 'catalog_page.dart';
 
 class QRPage extends StatefulWidget {
   const QRPage({Key? key}) : super(key: key);
@@ -57,23 +52,8 @@ class _QRPageState extends State<QRPage> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ApiController>(
-        builder: (_) => Scaffold(
-            backgroundColor: Colors.black,
-            bottomNavigationBar: apiController.discountInt! >= 10
-                ? NavBarDiscount()
-                : NavBarMain(),
-            appBar: AppBar(
-              title: Text(
-                'home',
-                style: TextStyle(
-                    fontFamily: 'BlissPro',
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ).tr(),
-              backgroundColor: const Color(0xFF333333),
-              automaticallyImplyLeading: false,
-            ),
+        builder: (_) => CustomScaffold(
+          title: 'home',
             body: SmartRefresher(
               onRefresh: _onRefresh,
               onLoading: _onLoading,
