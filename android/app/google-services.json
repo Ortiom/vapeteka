@@ -9,6 +9,42 @@
       "client_info": {
         "mobilesdk_app_id": "1:446785788884:android:1cb13bd8222b78e3339441",
         "android_client_info": {
+          "package_name": "com.example.vapeteka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446785788884-4gdm59fk7tb3ir84aken1fodbve75i4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhufwHAhvh1TELM3MWdTvVS_KCqzTpYrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446785788884-4gdm59fk7tb3ir84aken1fodbve75i4f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "446785788884-i59ilvr5vmpqhbk0l8g298btp8ihhdlm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vapeteka"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446785788884:android:a1dfb39612eb89b4339441",
+        "android_client_info": {
           "package_name": "com.vapeteka.app"
         }
       },
@@ -29,6 +65,13 @@
             {
               "client_id": "446785788884-4gdm59fk7tb3ir84aken1fodbve75i4f.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "446785788884-i59ilvr5vmpqhbk0l8g298btp8ihhdlm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vapeteka"
+              }
             }
           ]
         }

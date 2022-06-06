@@ -50,6 +50,8 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
+      AppleNotification? ios = message.notification?.apple;
+
 
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
@@ -63,9 +65,33 @@ class _MyAppState extends State<MyApp> {
               styleInformation: BigTextStyleInformation(''),
               color: Colors.black,
               icon: '@drawable/vapeteka_push_logo',
-            )));
+            ),
+              iOS: IOSNotificationDetails(
+
+              ),
+            ));
       }
-    });
+      if (notification != null && ios != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              iOS: IOSNotificationDetails(
+
+              ),
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                styleInformation: BigTextStyleInformation(''),
+                color: Colors.black,
+                icon: '@drawable/vapeteka_push_logo',
+              ),
+
+            ));
+
+
+    }});
     getToken();
   }
 
