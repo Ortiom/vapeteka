@@ -36,21 +36,29 @@ class _MyAppState extends State<MyApp> {
       badge: true,
       sound: true,
     );
+    print("INITSTATE");
     const IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings(
       requestSoundPermission: true,
       requestBadgePermission: true,
       requestAlertPermission: true,
     );
+    print("INITSTATE22");
 
     var initializationSettings = InitializationSettings(
         android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-
+    print("INITSTATE33");
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    print("INITSTATE44");
+
+    FirebaseMessaging.onMessage.listen((event) { print("MESSAGE...");});
+    print("INITSTATE55");
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       AppleNotification? ios = message.notification?.apple;
+      print(notification);
+      print("wqeeqw");
 
 
       if (notification != null && android != null) {
