@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
-import 'package:vapeteka/controllers/api_controller.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
   const ChangeLanguageScreen({Key? key}) : super(key: key);
@@ -95,7 +95,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                     PreferencesService.setLngBool(language);
                     // print(apiController.language);
                   });
-                  _setLanguage(Locale('ru'));
+                  _setLanguage(const Locale('ru'));
                 },
               ),
               RadioListTile<bool>(
@@ -117,7 +117,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                     PreferencesService.setLngBool(language);
                     // print(apiController.language);
                   });
-                  _setLanguage(Locale('en'));
+                  _setLanguage(const Locale('en'));
                 },
               ),
             ],

@@ -1,12 +1,9 @@
-import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:vapeteka/controllers/api_controller.dart';
 
 class GreenButton extends StatelessWidget {
-   GreenButton({
+   const GreenButton({
     Key? key,
     this.onPressed,
     this.label,

@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,12 +32,12 @@ class _CustomNavBarState extends State<CustomNavBar> {
               child: SizedBox(
                 height: 56.w,
                 width: 1.sw,
-                child: SizedBox(),
+                child: const SizedBox(),
               )),
         ),
         Positioned.fill(
           child: Ink(
-            color: Color(0xFF333333),
+            color: const Color(0xFF333333),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

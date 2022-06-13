@@ -5,15 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:vapeteka/presentation/pages/promotion_page.dart';
-import 'package:vapeteka/presentation/pages/qr_page.dart';
-import 'package:vapeteka/presentation/pages/settings_page.dart';
 import 'package:vapeteka/presentation/pages/splash_screen.dart';
 
 import '../../controllers/api_controller.dart';
 import '../../main.dart';
 import '../../services/shared_preferences.dart';
-import 'catalog_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -51,7 +47,9 @@ class _MyAppState extends State<MyApp> {
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
     print("INITSTATE44");
 
-    FirebaseMessaging.onMessage.listen((event) { print("MESSAGE...");});
+    FirebaseMessaging.onMessage.listen((event) {
+      print("MESSAGE...");
+    });
     print("INITSTATE55");
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
@@ -60,23 +58,20 @@ class _MyAppState extends State<MyApp> {
       print(notification);
       print("wqeeqw");
 
-
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
             notification.title,
             notification.body,
             NotificationDetails(
-                android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
-              styleInformation: BigTextStyleInformation(''),
-              color: Colors.black,
-              icon: '@drawable/vapeteka_push_logo',
-            ),
-              iOS: IOSNotificationDetails(
-
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                styleInformation: const BigTextStyleInformation(''),
+                color: Colors.black,
+                icon: '@drawable/vapeteka_push_logo',
               ),
+              iOS: const IOSNotificationDetails(),
             ));
       }
       if (notification != null && ios != null) {
@@ -85,21 +80,17 @@ class _MyAppState extends State<MyApp> {
             notification.title,
             notification.body,
             NotificationDetails(
-              iOS: IOSNotificationDetails(
-
-              ),
+              iOS: const IOSNotificationDetails(),
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                styleInformation: BigTextStyleInformation(''),
+                styleInformation: const BigTextStyleInformation(''),
                 color: Colors.black,
                 icon: '@drawable/vapeteka_push_logo',
               ),
-
             ));
-
-
-    }});
+      }
+    });
     getToken();
   }
 
@@ -107,11 +98,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(411, 731),
-      builder: () => GestureDetector(
+      builder: (widget) => GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
-          if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
             FocusManager.instance.primaryFocus?.unfocus();
           }
         },
@@ -121,7 +113,7 @@ class _MyAppState extends State<MyApp> {
           locale: context.locale,
           theme: ThemeData(fontFamily: 'BlissPro'),
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: const SplashScreen(),
           // initialRoute: '/',
           // defaultTransition: Transition.native,
           // transitionDuration: Duration(milliseconds: 150),
@@ -160,5 +152,4 @@ class _MyAppState extends State<MyApp> {
       print(token);
     }
   }
-
 }

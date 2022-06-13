@@ -197,7 +197,7 @@ class _BirthTextFieldState extends State<BirthTextField> {
       style: TextStyle(
           fontFamily: 'BlissPro', fontSize: 16.sp, color: Colors.white),
       decoration: InputDecoration(
-        hintText: apiController.language == true ? 'MM/DD/YYYY' : 'ММ/ДД/ГГГГ',
+        hintText: apiController.language == true ? 'DD/MM/YYYY' : 'ДД/ММ/ГГГГ',
         hintStyle: TextStyle(color: Colors.white.withOpacity(0.64)),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(

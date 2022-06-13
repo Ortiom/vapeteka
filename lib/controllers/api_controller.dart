@@ -53,7 +53,7 @@ class ApiController extends GetxController {
       reg = result.data['registered'];
       loading = false;
       update();
-      print(['RESPONSE REGISTRATION',result.data]);
+      print(['RESPONSE REGISTRATION', result.data]);
     } else if (result.status == Status.error) {
       loading = false;
       update();

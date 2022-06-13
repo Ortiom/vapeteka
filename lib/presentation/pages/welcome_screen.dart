@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,11 +7,11 @@ import 'package:vapeteka/constants/tr_consts.dart';
 import 'package:vapeteka/controllers/api_controller.dart';
 import 'package:vapeteka/models/login_models/login.dart';
 import 'package:vapeteka/presentation/pages/qr_page.dart';
-import 'package:vapeteka/presentation/pages/reg_with_card_screen.dart';
 import 'package:vapeteka/presentation/pages/registration_screen.dart';
-import 'package:vapeteka/presentation/widgets/buttons.dart';
 import 'package:vapeteka/presentation/widgets/inputs.dart';
 import 'package:vapeteka/services/response_result.dart';
+
+import '../widgets/buttons.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -42,14 +41,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-
-          child: _getBody()),
+      body: SingleChildScrollView(child: _getBody()),
     );
   }
 
   Widget _getBody() {
-    return Stack(alignment: Alignment.center,
+    return Stack(
+      alignment: Alignment.center,
       children: [
         Positioned(
           child: Image.asset(

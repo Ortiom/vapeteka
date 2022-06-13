@@ -7,7 +7,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vapeteka/presentation/pages/application.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 import 'package:vapeteka/translations/codegen_loader.g.dart';
+
 import 'firebase_options.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('BG message: ${message.messageId}');
@@ -29,9 +31,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await PreferencesService.init();
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   NotificationSettings settings =
       await FirebaseMessaging.instance.requestPermission(
     alert: true,
