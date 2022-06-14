@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vapeteka/presentation/pages/application.dart';
+import 'package:vapeteka/services/notification_service.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 import 'package:vapeteka/translations/codegen_loader.g.dart';
 import 'firebase_options.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('BG message: ${message.messageId}');
@@ -29,32 +31,42 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await PreferencesService.init();
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
-  );
-  NotificationSettings settings =
-      await FirebaseMessaging.instance.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
-    sound: true,
-  );
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    print('User granted permission');
-  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-    print('User granted provisional permission');
-  } else {
-    print('User declined or has not accepted permission');
-  }
+  await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await flutterLocalNotificationsPlugin
+
+  await FlutterLocalNotificationsPlugin()
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
-  await FirebaseMessaging.instance.subscribeToTopic('android');
+  await PushNotificationService().init();
+
+  // await Firebase.initializeApp(
+  //     options: DefaultFirebaseOptions.currentPlatform
+  // );
+  // NotificationSettings settings =
+  //     await FirebaseMessaging.instance.requestPermission(
+  //   alert: true,
+  //   announcement: false,
+  //   badge: true,
+  //   carPlay: false,
+  //   criticalAlert: false,
+  //   provisional: false,
+  //   sound: true,
+  // );
+  // if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+  //   print('User granted permission');
+  // } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+  //   print('User granted provisional permission');
+  // } else {
+  //   print('User declined or has not accepted permission');
+  // }
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // await flutterLocalNotificationsPlugin
+  //     .resolvePlatformSpecificImplementation<
+  //         AndroidFlutterLocalNotificationsPlugin>()
+  //     ?.createNotificationChannel(channel);
+  // await FirebaseMessaging.instance.subscribeToTopic('android');
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);

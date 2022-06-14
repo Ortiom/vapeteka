@@ -29,78 +29,57 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    var initializationSettingsAndroid =
-        const AndroidInitializationSettings('@drawable/vapeteka_push_logo');
-    FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-      alert: true, // Required to display a heads up notification
-      badge: true,
-      sound: true,
-    );
-    print("INITSTATE");
-    const IOSInitializationSettings initializationSettingsIOS =
-        IOSInitializationSettings(
-      requestSoundPermission: true,
-      requestBadgePermission: true,
-      requestAlertPermission: true,
-    );
-    print("INITSTATE22");
+    // var initializationSettingsAndroid =
+    //     const AndroidInitializationSettings('@drawable/vapeteka_push_logo');
+    // FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    //   alert: true, // Required to display a heads up notification
+    //   badge: true,
+    //   sound: true,
+    // );
+    // print("INITSTATE");
+    // const IOSInitializationSettings initializationSettingsIOS =
+    //     IOSInitializationSettings(
+    //   requestSoundPermission: true,
+    //   requestBadgePermission: true,
+    //   requestAlertPermission: true,
+    // );
+    // print("INITSTATE22");
 
-    var initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-    print("INITSTATE33");
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
-    print("INITSTATE44");
+    // var initializationSettings = InitializationSettings(
+    //     android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    // print("INITSTATE33");
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    // print("INITSTATE44");
 
-    FirebaseMessaging.onMessage.listen((event) { print("MESSAGE...");});
-    print("INITSTATE55");
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      AppleNotification? ios = message.notification?.apple;
-      print(notification);
-      print("wqeeqw");
+    // FirebaseMessaging.onMessage.listen((event) { print("MESSAGE...");});
+    // print("INITSTATE55");
+    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //   RemoteNotification? notification = message.notification;
+    //   AndroidNotification? android = message.notification?.android;
+    //   AppleNotification? ios = message.notification?.apple;
+    //   print(notification);
+    //   print("wqeeqw");
 
+    //   if (notification != null && android != null) {
+    //     flutterLocalNotificationsPlugin.show(
+    //         notification.hashCode,
+    //         notification.title,
+    //         notification.body,
+    //         NotificationDetails(
+    //             android: AndroidNotificationDetails(
+    //           channel.id,
+    //           channel.name,
+    //           styleInformation: BigTextStyleInformation(''),
+    //           color: Colors.black,
+    //           icon: '@drawable/vapeteka_push_logo',
+    //         ),
+    //           iOS: IOSNotificationDetails(
 
-      if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-                android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
-              styleInformation: BigTextStyleInformation(''),
-              color: Colors.black,
-              icon: '@drawable/vapeteka_push_logo',
-            ),
-              iOS: IOSNotificationDetails(
-
-              ),
-            ));
-      }
-      if (notification != null && ios != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              iOS: IOSNotificationDetails(
-
-              ),
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                styleInformation: BigTextStyleInformation(''),
-                color: Colors.black,
-                icon: '@drawable/vapeteka_push_logo',
-              ),
-
-            ));
-
-
-    }});
-    getToken();
+    //           ),
+    //         ));
+    //   }
+    //   });
+    // getToken();
   }
 
   @override
@@ -111,7 +90,8 @@ class _MyAppState extends State<MyApp> {
         behavior: HitTestBehavior.opaque,
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
-          if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
             FocusManager.instance.primaryFocus?.unfocus();
           }
         },
@@ -160,5 +140,4 @@ class _MyAppState extends State<MyApp> {
       print(token);
     }
   }
-
 }
