@@ -31,7 +31,7 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(3),
         splashColor: Colors.grey.withOpacity(0.10),
         overlayColor:
-            MaterialStateProperty.all(Color(0xFF27AE60).withOpacity(0.20)),
+            MaterialStateProperty.all(const Color(0xFF27AE60).withOpacity(0.20)),
         onTap: onTap,
         child: Ink(
           child: DecoratedBox(
@@ -195,7 +195,7 @@ class ProductInCartCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(3),
         splashColor: Colors.grey.withOpacity(0.10),
         overlayColor:
-            MaterialStateProperty.all(Color(0xFF27AE60).withOpacity(0.20)),
+            MaterialStateProperty.all(const Color(0xFF27AE60).withOpacity(0.20)),
         onTap: onTap,
         child: Ink(
           child: DecoratedBox(

@@ -1,6 +1,4 @@
-import 'package:barcode_widget/barcode_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,7 +28,7 @@ class _QRPageState extends State<QRPage> {
   }
 
   void _onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     apiController.qrCodeReq();
     apiController.sendDeviceToken();
     print('device token: ${apiController.deviceToken}');
@@ -39,10 +37,12 @@ class _QRPageState extends State<QRPage> {
   }
 
   void _onLoading() async {
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
 
-    if (mounted) setState(() {
+    if (mounted) {
+      setState(() {
     });
+    }
     _refreshController.loadComplete();
   }
 

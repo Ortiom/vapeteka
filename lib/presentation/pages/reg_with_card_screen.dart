@@ -107,7 +107,7 @@ class _RegWithCardScreenState extends State<RegWithCardScreen> {
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
-        Get.to(()=> const SmsCodeScreen());
+        Get.to(() => const SmsCodeScreen());
       } else {
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,

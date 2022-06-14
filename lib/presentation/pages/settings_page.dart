@@ -11,7 +11,6 @@ import 'package:vapeteka/services/shared_preferences.dart';
 
 import '../../constants/tr_consts.dart';
 import 'about_us_page.dart';
-import 'change_discount_screen.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -42,7 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 CatalogItemButton(
                   title: 'change_lng',
                   onPressed: () {
-                    Get.to(() => ChangeLanguageScreen());
+                    Get.to(() => const ChangeLanguageScreen());
                   },
                 ),
                 CatalogItemButton(
@@ -94,7 +93,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: Text(
                           'confirm',
                           style: TextStyle(
-                              color: Color(0xFF27AE60), fontSize: 18.sp),
+                              color: const Color(0xFF27AE60), fontSize: 18.sp),
                         ).tr(),
                       ),
                     );

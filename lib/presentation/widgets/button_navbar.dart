@@ -16,8 +16,8 @@ class ButtonNavbar extends StatelessWidget {
       flex: 1,
       child: InkWell(
         borderRadius: BorderRadius.circular(3),
-        highlightColor: Color(0xFF27AE60).withOpacity(0.40),
-        overlayColor: MaterialStateProperty.all(Color(0xFF27AE60).withOpacity(0.40)),
+        highlightColor: const Color(0xFF27AE60).withOpacity(0.40),
+        overlayColor: MaterialStateProperty.all(const Color(0xFF27AE60).withOpacity(0.40)),
         onTap:
           onTap,
         child: Ink(

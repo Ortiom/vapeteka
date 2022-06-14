@@ -5,15 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:vapeteka/presentation/pages/promotion_page.dart';
-import 'package:vapeteka/presentation/pages/qr_page.dart';
-import 'package:vapeteka/presentation/pages/settings_page.dart';
 import 'package:vapeteka/presentation/pages/splash_screen.dart';
 
 import '../../controllers/api_controller.dart';
 import '../../main.dart';
 import '../../services/shared_preferences.dart';
-import 'catalog_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -80,6 +76,74 @@ class _MyAppState extends State<MyApp> {
     //   }
     //   });
     // getToken();
+
+    var initializationSettingsAndroid =
+        const AndroidInitializationSettings('@drawable/vapeteka_push_logo');
+    FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, // Required to display a heads up notification
+      badge: true,
+      sound: true,
+    );
+    print("INITSTATE");
+    const IOSInitializationSettings initializationSettingsIOS =
+        IOSInitializationSettings(
+      requestSoundPermission: true,
+      requestBadgePermission: true,
+      requestAlertPermission: true,
+    );
+    print("INITSTATE22");
+
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    print("INITSTATE33");
+    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    print("INITSTATE44");
+
+    FirebaseMessaging.onMessage.listen((event) {
+      print("MESSAGE...");
+    });
+    print("INITSTATE55");
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+      AppleNotification? ios = message.notification?.apple;
+      print(notification);
+      print("wqeeqw");
+
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                styleInformation: const BigTextStyleInformation(''),
+                color: Colors.black,
+                icon: '@drawable/vapeteka_push_logo',
+              ),
+              iOS: const IOSNotificationDetails(),
+            ));
+      }
+      if (notification != null && ios != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              iOS: const IOSNotificationDetails(),
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                styleInformation: const BigTextStyleInformation(''),
+                color: Colors.black,
+                icon: '@drawable/vapeteka_push_logo',
+              ),
+            ));
+      }
+    });
+    getToken();
   }
 
   @override
@@ -101,7 +165,7 @@ class _MyAppState extends State<MyApp> {
           locale: context.locale,
           theme: ThemeData(fontFamily: 'BlissPro'),
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: const SplashScreen(),
           // initialRoute: '/',
           // defaultTransition: Transition.native,
           // transitionDuration: Duration(milliseconds: 150),

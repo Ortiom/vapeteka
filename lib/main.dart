@@ -8,6 +8,7 @@ import 'package:vapeteka/presentation/pages/application.dart';
 import 'package:vapeteka/services/notification_service.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 import 'package:vapeteka/translations/codegen_loader.g.dart';
+
 import 'firebase_options.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -32,6 +33,26 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
   await PreferencesService.init();
   await Firebase.initializeApp();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  NotificationSettings settings =
+      await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    print('User granted permission');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    print('User granted provisional permission');
+  } else {
+    print('User declined or has not accepted permission');
+  }
+
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await FlutterLocalNotificationsPlugin()
