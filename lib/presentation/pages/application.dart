@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(411, 731),
-      builder: () => GestureDetector(
+      builder: (widget) => GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
