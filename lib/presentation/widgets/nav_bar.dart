@@ -109,7 +109,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
     return Scaffold(
       backgroundColor: Colors.black,
       bottomNavigationBar:
-          CustomNavBar(showCatalog: apiController.discountInt! != 10 ? false : true),
+          CustomNavBar(showCatalog: apiController.discountInt != 10 ? false : true),
       appBar: AppBar(
         actions: widget.actions,
         title: Text(

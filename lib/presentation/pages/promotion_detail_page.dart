@@ -23,20 +23,8 @@ class _PromotionDetailScreenState extends State<PromotionDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text(
-          'discount',
-          style: TextStyle(
-              fontFamily: 'BlissPro',
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.white),
-        ).tr(),
-        backgroundColor: const Color(0xFF333333),
-      ),
-      bottomNavigationBar: const CustomNavBar(),
+    return CustomScaffold(
+      title: 'discount',
       body: Container(
         width: 1.sw,
         height: 1.sh,
