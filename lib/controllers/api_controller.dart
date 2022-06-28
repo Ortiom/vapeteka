@@ -28,7 +28,7 @@ class ApiController extends GetxController {
   bool discount = false.obs();
   bool language = false.obs();
   PromotionsModel promotionsModel = PromotionsModel().obs();
-  int? discountInt = 0.obs();
+  int discountInt = 0.obs();
 
   Future<Result> registrationReq(Register model) async {
     loading = true;
