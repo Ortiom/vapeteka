@@ -55,7 +55,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   onPressed: () {
                     apiController.logOut();
                     PreferencesService.setToken('');
-                    apiController.qrCode = 0;
+                    apiController.qrCode = '';
                     Get.offAll(() => const WelcomeScreen());
                   },
                 ),
@@ -87,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               .deleteAccReq()
                               .then((value) => print([value.data.toString()]));
                           PreferencesService.setToken('');
-                          apiController.qrCode = 0;
+                          apiController.qrCode = '';
                           Get.offAll(() => const WelcomeScreen());
                         },
                         child: Text(
