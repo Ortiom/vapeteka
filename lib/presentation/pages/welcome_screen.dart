@@ -22,6 +22,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   ApiController apiController = Get.find();
+  bool loading = false;
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   var maskFormatter = MaskTextInputFormatter(
@@ -86,6 +87,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 onPressed: () {
                   postData();
                 },
+                isLoading: loading,
                 label: 'enter',
               ),
               SizedBox(height: 28.w),
@@ -108,6 +110,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   Future postData() async {
+    loading = true;
+    setState(() {});
     Login login = Login(
       phoneNumber: '7' + maskFormatter.getUnmaskedText(),
       password: _passwordController.text,
@@ -115,12 +119,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
     await apiController.loginReq(login).then((value) async {
       if (value.status == Status.success) {
+        loading = false;
+        setState(() {});
         Get.snackbar(auth_success, '',
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
         Get.offAll(() => const QRPage());
       } else {
+        loading = false;
+        setState(() {});
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,

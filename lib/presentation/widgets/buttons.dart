@@ -3,37 +3,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GreenButton extends StatelessWidget {
-   const GreenButton({
+  const GreenButton({
     Key? key,
     this.onPressed,
     this.label,
     this.fonSize,
+    this.isLoading = false,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
   final String? label;
   final double? fonSize;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      color: const Color(0xFF27AE60),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      onPressed:
-        onPressed,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        color: const Color(0xFF27AE60),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        onPressed: isLoading ? () {} : onPressed,
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.w),
-      child: Text(
-      label!,
-      style: TextStyle(
-        fontFamily: 'BlissPro',
-        fontSize: fonSize ?? 16.sp,
-        fontWeight: FontWeight.w400,
-        color: Colors.white,
-        letterSpacing: 1.25.w,
-      ),
-    ).tr()
-    );
+        child: isLoading
+            ? const SizedBox(
+                child: CircularProgressIndicator(),
+                height: 20,
+                width: 20,
+              )
+            : Text(
+                label!,
+                style: TextStyle(
+                  fontFamily: 'BlissPro',
+                  fontSize: fonSize ?? 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                  letterSpacing: 1.25.w,
+                ),
+              ).tr());
   }
 }
 
