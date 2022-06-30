@@ -32,6 +32,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     mask: '(###) ###-##-##',
     filter: {"#": RegExp(r'[0-9]')},
   );
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +92,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 SizedBox(height: 23.w),
                 GreenButton(
+                  isLoading: loading,
                   label: 'register',
                   onPressed: () {
                     postData();
@@ -105,6 +107,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   Future postData() async {
+    loading = true;
+    setState(() {});
+
     Register register = Register(
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
@@ -117,6 +122,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     await apiController.registrationReq(register).then((value) async {
       if (value.status == Status.success) {
+        loading = false;
+        setState(() {});
         Get.snackbar(reg_success, '',
             backgroundColor: Colors.green,
             colorText: Colors.white,
@@ -124,6 +131,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
         Get.to(() => const SmsCodeScreen());
       } else {
+        loading = false;
+        setState(() {});
         print(value.errorText);
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
