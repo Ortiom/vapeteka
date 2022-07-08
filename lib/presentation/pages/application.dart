@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(411, 731),
-        builder: (context, widget) {
+        builder: (widget) {
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
