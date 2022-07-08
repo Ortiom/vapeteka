@@ -149,51 +149,52 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(411, 731),
-      builder: (widget) => GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          FocusScopeNode currentFocus = FocusScope.of(context);
-          if (!currentFocus.hasPrimaryFocus &&
-              currentFocus.focusedChild != null) {
-            FocusManager.instance.primaryFocus?.unfocus();
-          }
-        },
-        child: GetMaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: ThemeData(fontFamily: 'BlissPro'),
-          debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
-          // initialRoute: '/',
-          // defaultTransition: Transition.native,
-          // transitionDuration: Duration(milliseconds: 150),
-          // getPages: [
-          //   GetPage(
-          //     name: "/",
-          //     page: () => SplashScreen(),
-          //   ),
-          //   GetPage(
-          //     name: "/qr_page",
-          //     page: () => QRPage(),
-          //   ),
-          //   GetPage(
-          //     name: "/settings_page",
-          //     page: () => SettingsPage(),
-          //   ),
-          //   GetPage(
-          //     name: "/promotion_page",
-          //     page: () => PromotionPage(),
-          //   ),
-          //   GetPage(
-          //     name: "/catalog_page",
-          //     page: () => CatalogPage(),
-          //   ),
-          // ],
-        ),
-      ),
-    );
+        designSize: const Size(411, 731),
+        builder: (context, widget) {
+          return GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus &&
+                  currentFocus.focusedChild != null) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              }
+            },
+            child: GetMaterialApp(
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              theme: ThemeData(fontFamily: 'BlissPro'),
+              debugShowCheckedModeBanner: false,
+              home: const SplashScreen(),
+              // initialRoute: '/',
+              // defaultTransition: Transition.native,
+              // transitionDuration: Duration(milliseconds: 150),
+              // getPages: [
+              //   GetPage(
+              //     name: "/",
+              //     page: () => SplashScreen(),
+              //   ),
+              //   GetPage(
+              //     name: "/qr_page",
+              //     page: () => QRPage(),
+              //   ),
+              //   GetPage(
+              //     name: "/settings_page",
+              //     page: () => SettingsPage(),
+              //   ),
+              //   GetPage(
+              //     name: "/promotion_page",
+              //     page: () => PromotionPage(),
+              //   ),
+              //   GetPage(
+              //     name: "/catalog_page",
+              //     page: () => CatalogPage(),
+              //   ),
+              // ],
+            ),
+          );
+        });
   }
 
   getToken() async {

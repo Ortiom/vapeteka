@@ -21,7 +21,7 @@ class ApiController extends GetxController {
   String reg = ''.obs();
   String? deviceToken = ''.obs();
   String token = ''.obs();
-  int qrCode = 0.obs();
+  String qrCode = ''.obs();
   CatalogsModel? catalogs = CatalogsModel().obs();
   ProductsModel? products = ProductsModel().obs();
   List<Products>? productsInCart = <Products>[].obs();
@@ -156,8 +156,7 @@ class ApiController extends GetxController {
     var secondResult = await secondRequest;
     if (result.status == Status.success &&
         secondResult.status == Status.success) {
-      print(token);
-      qrCode = result.data['qr_code']['qr_code'];
+      qrCode = result.data['qr_code'];
       discountInt = int.parse(secondResult.data['discount']['discount']);
       print(['secondResult', secondResult.data]);
       loading = false;

@@ -18,8 +18,8 @@ class SmsCodeScreen extends StatefulWidget {
 
 class _SmsCodeScreenState extends State<SmsCodeScreen> {
   ApiController apiController = Get.find();
-
   final TextEditingController smsCodeController = TextEditingController();
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                 ),
                 SizedBox(height: 23.w),
                 GreenButton(
+                  isLoading: loading,
                   label: 'check_sms',
                   onPressed: () {
                     postData();
@@ -60,16 +61,22 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
   }
 
   Future postData() async {
-    await apiController.smsCodeReq(int.parse(smsCodeController.text)).then((value) async {
+    loading = true;
+    setState(() {});
+    await apiController
+        .smsCodeReq(int.parse(smsCodeController.text))
+        .then((value) async {
       if (value.status == Status.success) {
+        loading = false;
+        setState(() {});
         Get.snackbar(check_success, '',
             backgroundColor: Colors.green,
             colorText: Colors.white,
             duration: 4.seconds);
         Get.offAll(() => const QRPage());
       } else {
-        print(
-            'asdasdasdaasd${[value.errorText, value.data, value.statusCode]}');
+        loading = false;
+        setState(() {});
         Get.snackbar(error, value.errorText.toString(),
             backgroundColor: Colors.redAccent,
             colorText: Colors.white,
