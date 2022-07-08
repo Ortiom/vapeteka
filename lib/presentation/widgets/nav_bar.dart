@@ -68,14 +68,13 @@ class _CustomNavBarState extends State<CustomNavBar> {
                   label: 'settings',
                   icon: Icons.settings_outlined,
                   onTap: () {
-                    Get.off(() => const SettingsPage());
+                    Get.off(() => SettingsPage());
                   },
                 ),
               ],
             ),
           ),
         ),
-
       ],
     );
   }

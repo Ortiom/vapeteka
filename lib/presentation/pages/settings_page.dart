@@ -13,7 +13,8 @@ import '../../constants/tr_consts.dart';
 import 'about_us_page.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  SettingsPage({Key? key, this.showCatalog= false}) : super(key: key);
+  bool? showCatalog;
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -29,6 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    widget.showCatalog = apiController.discountInt >= 10 ? true : false;
     return GetBuilder<ApiController>(
       builder: (_) => CustomScaffold(
         showLeading: false,
@@ -44,6 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Get.to(() => const ChangeLanguageScreen());
                   },
                 ),
+                widget.showCatalog == false ? const SizedBox() :
                 CatalogItemButton(
                   title: 'about_us',
                   onPressed: () {
