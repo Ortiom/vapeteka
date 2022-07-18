@@ -10,7 +10,6 @@ import 'package:vapeteka/presentation/widgets/nav_bar.dart';
 import 'package:vapeteka/services/shared_preferences.dart';
 
 import '../../constants/tr_consts.dart';
-import 'about_us_page.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key? key, this.showCatalog= false}) : super(key: key);
@@ -44,13 +43,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'change_lng',
                   onPressed: () {
                     Get.to(() => const ChangeLanguageScreen());
-                  },
-                ),
-                widget.showCatalog == false ? const SizedBox() :
-                CatalogItemButton(
-                  title: 'about_us',
-                  onPressed: () {
-                    Get.to(() => const AboutUsScreen());
                   },
                 ),
                 CatalogItemButton(
